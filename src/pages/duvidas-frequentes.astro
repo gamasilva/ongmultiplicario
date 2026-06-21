@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqItem from '../components/FaqItem.astro';
+import DonateButton from '../components/DonateButton.astro';
+
+const title = "Dúvidas Frequentes";
+const description = "Tire suas dúvidas sobre doações, transparência e o trabalho do Instituto MultiplicaRio na Penha, Rio de Janeiro. Saiba como sua doação transforma vidas.";
+
+const faqData = [
+  {
+    question: "1. Para onde vai o meu dinheiro? Quanto realmente chega em quem precisa?",
+    answer: "Cada doação é aplicada diretamente nos nossos projetos de educação, saúde, cultura, meio ambiente e assistência social na comunidade da Penha e região. Trabalhamos para que a maior parte possível dos recursos chegue às pessoas atendidas, e você pode acompanhar a aplicação dos recursos na nossa página de Transparência, com relatórios e prestação de contas."
+  },
+  {
+    question: "2. O Instituto MultiplicaRio é uma organização legalizada?",
+    answer: "Sim. Somos uma organização da sociedade civil sem fins lucrativos, devidamente registrada e com CNPJ ativo: [INSERIR CNPJ]. Atuamos desde [INSERIR ANO] na Penha, Rio de Janeiro, e nossos documentos institucionais estão disponíveis para consulta."
+  },
+  {
+    question: "3. Como sei que minha doação é segura e não é golpe?",
+    answer: "Todas as nossas formas de doação são oficiais e vinculadas ao CNPJ do Instituto. Nosso Pix está cadastrado no nome do Instituto MultiplicaRio — sempre confira se o destinatário aparece como nossa razão social antes de confirmar. Nunca solicitamos doações por canais não oficiais ou por mensagens pessoais inesperadas."
+  },
+  {
+    question: "4. Vocês prestam contas? Existe relatório ou balanço?",
+    answer: "Sim. Publicamos relatórios de atividades e prestação de contas periodicamente na nossa página de Transparência. Acreditamos que prestar contas não é uma obrigação, e sim um compromisso com cada pessoa que confia no nosso trabalho."
+  },
+  {
+    question: "5. Quem está por trás do Instituto?",
+    answer: "O MultiplicaRio é conduzido por uma equipe de pessoas comprometidas com a transformação social da nossa comunidade, junto a voluntários e parceiros. Você pode conhecer nossa história, missão e equipe na página Sobre."
+  },
+  {
+    question: "6. Posso visitar o Instituto e conhecer o trabalho de perto?",
+    answer: "Com certeza, e ficaríamos felizes em receber você. Transparência também é abrir as portas. Entre em contato pela página de Contato para agendar uma visita e ver de perto o impacto do seu apoio."
+  },
+  {
+    question: "7. Vou receber recibo da minha doação? É dedutível no Imposto de Renda?",
+    answer: "Emitimos recibo para as doações mediante solicitação. Sobre dedução no Imposto de Renda, oriente-se conforme as regras vigentes da Receita Federal; fale com a gente que ajudamos a esclarecer os documentos necessários."
+  },
+  {
+    question: "8. Qual valor de doação faz diferença?",
+    answer: "Toda doação faz diferença, independente do valor. Mesmo uma pequena quantia, somada à de outras pessoas, se multiplica em impacto real — é daí que vem o nosso nome. Na página Como Ajudar você encontra exemplos do que cada valor é capaz de transformar."
+  },
+  {
+    question: "9. Preciso me comprometer com uma doação mensal ou posso doar só uma vez?",
+    answer: "Você decide. É possível fazer uma doação única, quando e quanto quiser, ou se tornar um doador recorrente para ajudar a manter nossos projetos de forma contínua. Sem compromisso obrigatório e sem burocracia."
+  },
+  {
+    question: "10. Se eu doar, vocês vão ficar me cobrando ou usar meus dados?",
+    answer: "Não. Respeitamos você e os seus dados, em conformidade com a LGPD (Lei Geral de Proteção de Dados). Não compartilhamos nem vendemos suas informações, e você só receberá contato se autorizar. Doar é um ato de generosidade, nunca um motivo para incômodo."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Add FAQPage JSON-LD to head -->
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <!-- Hero Section -->
+  <section class="bg-bg-lightgreen py-20 lg:py-28 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center space-y-6">
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-dark">
+          Perguntas Frequentes
+        </h1>
+        <p class="text-lg md:text-xl text-text-body/90 leading-relaxed font-medium">
+          Transparência é a base da confiança. Aqui respondemos com sinceridade as dúvidas mais comuns de quem deseja apoiar o Instituto MultiplicaRio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 md:py-24 bg-bg-offwhite">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="faq-container space-y-4">
+          {faqData.map((faq, index) => (
+            <FaqItem question={faq.question} answer={faq.answer} isOpen={index === 0} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-accent py-16 md:py-20 relative">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-3xl mx-auto space-y-8">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-bg-offwhite leading-tight">
+          Ainda tem dúvidas? Fale com a gente.
+        </h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+          <DonateButton variant="primary" class="w-full sm:w-auto justify-center text-lg px-8 py-4 bg-primary text-white hover:bg-primary-dark border-none" />
+          <a 
+            href="/contato"
+            class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white focus-visible:ring-offset-accent text-lg"
+          >
+            Entrar em Contato
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const icon = button.querySelector('.faq-icon');
+        const answerId = button.getAttribute('aria-controls');
+        const answerContainer = document.getElementById(answerId!);
+        
+        // Toggle state
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          icon?.classList.remove('rotate-180');
+          if (answerContainer) {
+            answerContainer.style.gridTemplateRows = '0fr';
+            answerContainer.setAttribute('aria-hidden', 'true');
+          }
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          icon?.classList.add('rotate-180');
+          if (answerContainer) {
+            answerContainer.style.gridTemplateRows = '1fr';
+            answerContainer.setAttribute('aria-hidden', 'false');
+          }
+        }
+      });
+    });
+  });
+</script>

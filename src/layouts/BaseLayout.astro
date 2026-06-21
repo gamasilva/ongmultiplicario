@@ -1,0 +1,150 @@
+---
+import '../styles/global.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/700.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	fullTitle?: string;
+	description?: string;
+	image?: string;
+	heroImage?: string;
+}
+
+const {
+  title,
+  fullTitle,
+  description = "Instituto MultiplicaRio — ONG sem fins lucrativos que atua em educação, saúde, cultura e assistência social na Penha, Rio de Janeiro.",
+  image = "/images/og-image.webp",
+  heroImage
+} = Astro.props;
+
+const pageTitle = fullTitle ?? `${title} | Instituto MultiplicaRio`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://institutomultiplica.rio');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NGO",
+      "@id": "https://institutomultiplica.rio/#organization",
+      "name": "Instituto MultiplicaRio",
+      "legalName": "Instituto de Desenvolvimento Social Cultural de Esporte e Lazer MultiplicaRio",
+      "alternateName": ["MultiplicaRio", "Instituto MultiplicaRio ONG"],
+      "url": "https://institutomultiplica.rio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://institutomultiplica.rio/images/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "ONG sem fins lucrativos que promove o bem-estar e o desenvolvimento social em educação, saúde, cultura, meio ambiente e assistência social na Penha e região, Rio de Janeiro.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Montevideo, 824, Loja F",
+        "addressLocality": "Penha",
+        "addressRegion": "Rio de Janeiro",
+        "postalCode": "21020-290",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -22.8265,
+        "longitude": -43.2863
+      },
+      "telephone": "+55-21-6459-4790",
+      "email": "imultiplicar@gmail.com",
+      "taxID": "62.559.044/0001-03",
+      "areaServed": [
+        { "@type": "City", "name": "Rio de Janeiro" },
+        { "@type": "Neighborhood", "name": "Penha" }
+      ],
+      "knowsAbout": ["educação social", "saúde comunitária", "assistência social", "preservação ambiental", "cultura popular"],
+      "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 1 },
+      "sameAs": [
+        "https://www.facebook.com/institutomultiplicario",
+        "https://www.instagram.com/institutomultiplicario"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://institutomultiplica.rio/#website",
+      "url": "https://institutomultiplica.rio",
+      "name": "Instituto MultiplicaRio",
+      "description": description,
+      "publisher": { "@id": "https://institutomultiplica.rio/#organization" },
+      "inLanguage": "pt-BR"
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+		<title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Instituto MultiplicaRio" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- GEO / Local SEO -->
+    <meta name="geo.region" content="BR-RJ" />
+    <meta name="geo.placename" content="Penha, Rio de Janeiro, Brasil" />
+    <meta name="geo.position" content="-22.8265;-43.2863" />
+    <meta name="ICBM" content="-22.8265, -43.2863" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Instituto MultiplicaRio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- JSON-LD base (NGO + WebSite) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Slot para schema adicional por página (FAQPage, BreadcrumbList, etc.) -->
+    <slot name="head" />
+
+    <!-- Preconnect para imagens externas -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Preload da imagem hero quando fornecida pela página -->
+    {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" />}
+	</head>
+	<body class="flex flex-col min-h-screen">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-bg-offwhite px-4 py-2 rounded-md z-50">
+      Pular para conteúdo principal
+    </a>
+    
+    <Header />
+    
+		<main id="main-content" class="flex-grow">
+			<slot />
+		</main>
+
+    <Footer />
+	</body>
+</html>

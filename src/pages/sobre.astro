@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import { Target, Eye, HeartHandshake, ShieldCheck, BookOpen, Users } from 'lucide-astro';
+
+const title = "Sobre Nós";
+const description = "Conheça a história, missão e valores do Instituto MultiplicaRio, atuando na promoção do bem-estar social na Penha.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-bg-lightgreen py-20 border-b border-primary/10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-dark mb-6">Sobre Nós</h1>
+      <p class="text-xl text-text-body/80 leading-relaxed">
+        Conheça quem somos, o que nos move e as pessoas por trás do Instituto MultiplicaRio.
+      </p>
+    </div>
+  </section>
+
+  <!-- Nossa História (Expandida) -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="space-y-6 text-lg text-text-body/90 leading-relaxed">
+        <h2 class="font-serif text-3xl font-bold text-primary-dark mb-8 text-center">Nossa História</h2>
+        <p>O Instituto MultiplicaRio nasceu com o propósito de transformar realidades e promover o bem-estar social de indivíduos e comunidades na região da Penha, atuando sempre sem fins lucrativos.</p>
+        <p>[INSERIR HISTÓRIA DETALHADA AQUI - Falar sobre os fundadores, os primeiros desafios, como a ONG começou, que ano foi fundada e quais foram os primeiros projetos.]</p>
+        <p>[INSERIR HISTÓRIA DETALHADA AQUI - Falar sobre o crescimento, evolução, parceiros principais que ajudaram a construir o Instituto e o momento atual da ONG.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Missão, Visão e Valores -->
+  <section class="py-24 bg-bg-offwhite">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
+          <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Target class="w-8 h-8" aria-hidden="true" />
+          </div>
+          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4">Nossa Missão</h2>
+          <p class="text-text-body/80 leading-relaxed">
+            "Ajudando a cuidar de vidas." Atuar nas áreas de educação, saúde, meio ambiente, cultura e direitos humanos para construir uma sociedade mais justa.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
+          <div class="w-16 h-16 bg-secondary/20 text-secondary-dark rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Eye class="w-8 h-8 text-secondary" aria-hidden="true" />
+          </div>
+          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4">Nossa Visão</h2>
+          <p class="text-text-body/80 leading-relaxed">
+            Ser referência na transformação social da Penha e do Rio de Janeiro, reconhecida pela transparência, impacto real e acolhimento humano.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
+          <div class="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <HeartHandshake class="w-8 h-8" aria-hidden="true" />
+          </div>
+          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4">Nossos Valores</h2>
+          <p class="text-text-body/80 leading-relaxed">
+            Solidariedade, empatia, transparência absoluta, respeito incondicional à dignidade humana e compromisso com o desenvolvimento sustentável.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="py-24 bg-white border-y border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary-dark mb-6">Nossos Objetivos</h2>
+        <p class="text-lg text-text-body/80">Trabalhamos focados em quatro pilares fundamentais para garantir impacto duradouro.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
+          <div class="flex-shrink-0 mt-1">
+            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+              <ShieldCheck class="w-6 h-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Melhoria da Qualidade de Vida</h3>
+            <p class="text-text-body/80 leading-relaxed">Buscar a melhoria da qualidade de vida de grupos vulneráveis e marginalizados, como crianças, jovens, mulheres e famílias em situação de vulnerabilidade.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
+          <div class="flex-shrink-0 mt-1">
+            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+              <Users class="w-6 h-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Inclusão Social</h3>
+            <p class="text-text-body/80 leading-relaxed">Promover a inclusão social por meio de atividades como formação profissional, inclusão digital e atividades esportivas e recreativas.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
+          <div class="flex-shrink-0 mt-1">
+            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+              <BookOpen class="w-6 h-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Educação e Desenvolvimento Humano</h3>
+            <p class="text-text-body/80 leading-relaxed">Contribuir para o desenvolvimento integral das pessoas, da primeira infância à idade adulta, com atividades educacionais e profissionalizantes que promovam a autossuficiência.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
+          <div class="flex-shrink-0 mt-1">
+            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+              <HeartHandshake class="w-6 h-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Proteção e Dignidade</h3>
+            <p class="text-text-body/80 leading-relaxed">Contribuir para a proteção da vida e da dignidade humana, mitigando a pobreza e garantindo os direitos básicos a todos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nossa Equipe -->
+  <section class="py-24 bg-bg-offwhite border-t border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+      <h2 class="font-serif text-3xl font-bold text-primary-dark mb-4">Nossa Equipe</h2>
+      <p class="text-lg text-text-body/80 mb-16">Conheça as pessoas que lideram e coordenam nossas ações diárias.</p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Membro 1 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center">
+          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" alt="[INSERIR NOME]" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          </div>
+          <h3 class="font-bold text-xl text-primary-dark">[INSERIR NOME]</h3>
+          <p class="text-secondary-dark font-medium text-sm">[INSERIR CARGO / DIRETOR]</p>
+        </div>
+        <!-- Membro 2 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center">
+          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="[INSERIR NOME]" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          </div>
+          <h3 class="font-bold text-xl text-primary-dark">[INSERIR NOME]</h3>
+          <p class="text-secondary-dark font-medium text-sm">[INSERIR CARGO / COORDENADOR]</p>
+        </div>
+        <!-- Membro 3 -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center">
+          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-200">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop" alt="[INSERIR NOME]" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          </div>
+          <h3 class="font-bold text-xl text-primary-dark">[INSERIR NOME]</h3>
+          <p class="text-secondary-dark font-medium text-sm">[INSERIR CARGO / VOLUNTÁRIO LÍDER]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dados Legais / CNPJ -->
+  <section class="py-16 bg-primary-dark text-bg-offwhite text-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+      <h2 class="font-serif text-2xl font-bold mb-4">Dados Institucionais</h2>
+      <p class="text-bg-lightgreen/80 mb-2">INSTITUTO DE DESENVOLVIMENTO SOCIAL CULTURAL DE ESPORTE E LAZER MULTIPLICARIO</p>
+      <p class="text-bg-lightgreen/80 font-mono text-lg font-bold mb-2">CNPJ: <span class="select-all">62.559.044/0001-03</span></p>
+      <p class="text-bg-lightgreen/80">Sede: Rua Montevideo, 824 - Loja F, Penha, Rio de Janeiro - RJ</p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTASection />
+</BaseLayout>

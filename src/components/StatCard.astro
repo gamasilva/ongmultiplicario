@@ -1,0 +1,14 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  delay?: number;
+}
+
+const { value, label, delay = 0 } = Astro.props;
+---
+
+<div class="flex-1 flex flex-col items-center justify-center p-8 md:p-10 text-center transition-colors duration-300" style={`animation-delay: ${delay}ms; background-color: #F08A4B;`}>
+  <span class="font-serif text-5xl md:text-6xl font-bold mb-2 drop-shadow-sm" style="color: #0E5C54;">{value}</span>
+  <span class="text-sm md:text-base font-bold tracking-widest uppercase" style="color: #0E5C54;">{label}</span>
+</div>

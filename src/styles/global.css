@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1B998B;
+  --color-primary-dark: #0E5C54;
+  --color-secondary: #FFC857;
+  --color-secondary-dark: #7A5800;
+  --color-accent: #F08A4B;
+  --color-accent-hover: #D97435;
+  --color-bg-offwhite: #FAF9F6;
+  --color-text-body: #2E2E2E;
+  --color-bg-lightgreen: #E8F3F1;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Fraunces', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-offwhite text-text-body font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-primary-dark;
+  }
+
+  /* Focus visible accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary transition-all;
+  }
+
+  /* Hide scrollbar for carousels */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

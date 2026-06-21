@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ShieldAlert } from 'lucide-astro';
+
+const title = "Política de Privacidade";
+const description = "Termos de uso e política de privacidade e proteção de dados do Instituto MultiplicaRio.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-primary-dark py-20 text-bg-offwhite text-center border-b border-primary/10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+        <ShieldAlert class="w-8 h-8 text-secondary" aria-hidden="true" />
+      </div>
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">Política de Privacidade</h1>
+      <p class="text-xl text-bg-lightgreen/80 leading-relaxed">
+        Nosso compromisso com a segurança e privacidade dos seus dados.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="prose prose-lg prose-green max-w-none text-text-body/80">
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">1. Introdução</h2>
+        <p class="mb-6">
+          O <strong>Instituto MultiplicaRio</strong> tem o compromisso de proteger a privacidade e os dados pessoais de seus doadores, voluntários, parceiros e usuários do site, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).
+        </p>
+
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">2. Coleta de Dados</h2>
+        <p class="mb-6">
+          Coletamos informações pessoais que você nos fornece voluntariamente ao realizar uma doação, cadastrar-se como voluntário ou entrar em contato conosco através dos nossos formulários. Estes dados podem incluir:
+        </p>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li>Nome completo;</li>
+          <li>Endereço de e-mail;</li>
+          <li>Número de telefone ou WhatsApp;</li>
+          <li>Dados de identificação fiscal (CPF/CNPJ) estritamente para emissão de recibos e processamento de doações.</li>
+        </ul>
+
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">3. Uso das Informações</h2>
+        <p class="mb-6">
+          As informações coletadas são utilizadas exclusivamente para:
+        </p>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li>Processar e confirmar doações;</li>
+          <li>Prestar contas sobre o impacto das suas contribuições;</li>
+          <li>Enviar comunicações sobre campanhas e resultados (mediante autorização prévia);</li>
+          <li>Responder a dúvidas e solicitações de contato.</li>
+        </ul>
+
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">4. Compartilhamento de Dados</h2>
+        <p class="mb-6">
+          O Instituto MultiplicaRio <strong>não vende, aluga ou comercializa</strong> seus dados pessoais. As informações só serão compartilhadas com terceiros quando estritamente necessário para o processamento de pagamentos (operadoras de cartão e bancos) ou por exigência legal.
+        </p>
+
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">5. Segurança</h2>
+        <p class="mb-6">
+          Empregamos medidas técnicas e organizacionais para proteger seus dados contra acessos não autorizados, perdas ou alterações. Nosso site utiliza certificado SSL (Secure Socket Layer) para garantir a criptografia durante a transmissão de dados.
+        </p>
+
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">6. Seus Direitos</h2>
+        <p class="mb-6">
+          Você tem o direito de solicitar a qualquer momento: o acesso aos seus dados, a correção de informações incompletas ou desatualizadas, a revogação do consentimento para recebimento de e-mails e a exclusão dos seus dados da nossa base (exceto aqueles que precisamos manter por obrigação legal/fiscal).
+        </p>
+
+        <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4 mt-8">7. Contato</h2>
+        <p class="mb-6">
+          Para exercer seus direitos ou esclarecer dúvidas sobre esta Política de Privacidade, entre em contato através do e-mail: <strong>[INSERIR E-MAIL DPO/CONTATO]</strong>.
+        </p>
+
+        <div class="mt-12 p-6 bg-bg-lightgreen rounded-2xl text-sm text-gray-600">
+          <p><em>Última atualização: [INSERIR DATA DA ÚLTIMA ATUALIZAÇÃO]</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

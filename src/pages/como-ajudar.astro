@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DonationTierCard from '../components/DonationTierCard.astro';
+import { Copy, QrCode, CreditCard, Gift, Users, HeartPulse, ShieldCheck, Building2 } from 'lucide-astro';
+
+const title = "Como Ajudar";
+const description = "Faça sua doação via PIX, torne-se um voluntário ou doe itens. Toda ajuda multiplica a esperança na vida de quem precisa.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-accent text-bg-offwhite py-20 text-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">Como Ajudar</h1>
+      <p class="text-xl text-white/90 leading-relaxed">
+        Sua doação é segura e transparente. Existem várias formas de multiplicar a esperança. Escolha a que melhor se adapta a você.
+      </p>
+    </div>
+  </section>
+
+  <!-- Como sua doação ajuda -->
+  <section class="py-16 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="font-serif text-3xl font-bold text-primary-dark mb-4">Como sua doação se multiplica</h2>
+        <p class="text-lg text-text-body/80">Independentemente da forma de pagamento, veja o impacto que valores sugeridos podem causar.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <DonationTierCard amount="30" impact="Garante material escolar completo para uma criança durante um mês." />
+        <DonationTierCard amount="80" impact="Custeia uma cesta básica nutritiva para uma família em vulnerabilidade." isPopular={true} />
+        <DonationTierCard amount="150" impact="Financia atendimento médico preventivo para três idosos." />
+      </div>
+    </div>
+  </section>
+
+  <!-- Formas de Doação -->
+  <section class="py-24 bg-bg-offwhite">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="flex items-center justify-center gap-2 mb-10 bg-bg-lightgreen text-primary-dark w-fit mx-auto px-4 py-2 rounded-full border border-primary/20">
+        <ShieldCheck class="w-5 h-5 text-primary" aria-hidden="true" />
+        <span class="text-sm font-bold">Ambiente 100% seguro. Suas informações são criptografadas.</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <!-- Doação PIX -->
+        <div class="bg-white p-8 md:p-10 rounded-3xl shadow-lg border-2 border-primary relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-4 bg-primary text-bg-offwhite rounded-bl-3xl">
+            <QrCode class="w-8 h-8" aria-hidden="true" />
+          </div>
+          
+          <h2 class="font-serif text-3xl font-bold text-primary-dark mb-6">Doação via PIX</h2>
+          <p class="text-text-body/80 mb-8 leading-relaxed">A forma mais rápida e direta de ajudar. O valor cai na hora e é revertido imediatamente para nossos projetos.</p>
+          
+          <div class="bg-bg-lightgreen p-6 rounded-2xl mb-8 flex flex-col items-center justify-center space-y-4">
+            <span class="text-sm text-gray-500 font-bold uppercase tracking-wider">Chave PIX (CNPJ)</span>
+            <span class="text-2xl md:text-3xl font-mono font-bold text-primary-dark select-all" id="pix-key">62.559.044/0001-03</span>
+            <button 
+              id="copy-btn"
+              class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-bg-offwhite px-6 py-3 rounded-full font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary mt-2"
+              aria-label="Copiar chave PIX"
+            >
+              <Copy class="w-5 h-5" aria-hidden="true" />
+              <span>Copiar Chave</span>
+            </button>
+          </div>
+
+          <div class="text-center text-sm text-gray-500">
+            <p>Instituto MultiplicaRio - Instituição de Pagamento: [Banco]</p>
+          </div>
+        </div>
+
+        <!-- Transferência & Recorrente -->
+        <div class="space-y-8">
+          <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex gap-6 items-start">
+            <div class="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center flex-shrink-0 text-secondary-dark mt-1">
+              <CreditCard class="w-6 h-6" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl font-bold text-primary-dark mb-3">Transferência Bancária</h3>
+              <p class="text-text-body/80 mb-4">Para doações via TED ou DOC:</p>
+              <ul class="text-sm font-mono text-gray-700 space-y-1">
+                <li><strong>Banco:</strong> [Nome do Banco]</li>
+                <li><strong>Agência:</strong> [0000]</li>
+                <li><strong>Conta Corrente:</strong> [00000-0]</li>
+                <li><strong>Favorecido:</strong> Instituto MultiplicaRio</li>
+                <li><strong>CNPJ:</strong> 62.559.044/0001-03</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex gap-6 items-start">
+            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0 text-accent mt-1">
+              <HeartPulse class="w-6 h-6" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl font-bold text-primary-dark mb-3">Doação Recorrente</h3>
+              <p class="text-text-body/80 mb-4">Torne-se um mantenedor. Sua contribuição mensal garante a estabilidade dos nossos projetos de longo prazo.</p>
+              <a href="#" class="inline-flex items-center gap-2 text-accent font-bold hover:text-accent-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md p-1">
+                Configurar doação mensal →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Outras formas de ajudar -->
+  <section class="py-24 bg-primary-dark text-bg-offwhite border-t border-primary/20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-4xl font-bold text-bg-offwhite mb-4">Outras Formas de Multiplicar</h2>
+        <p class="text-lg text-bg-lightgreen/80">O seu tempo e os seus bens também são muito valiosos para nós.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+          <div class="flex items-center gap-4 mb-6">
+            <Users class="w-8 h-8 text-secondary" aria-hidden="true" />
+            <h3 class="font-serif text-2xl font-bold">Voluntariado</h3>
+          </div>
+          <p class="text-bg-lightgreen/80 mb-6 leading-relaxed">
+            Junte-se ao nosso time! Precisamos de profissionais de saúde, professores, advogados, e pessoas com muita vontade de ajudar em eventos e rotinas da ONG.
+          </p>
+          <a href="/contato" class="inline-block bg-secondary text-primary-dark font-bold px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary-dark">
+          <a href="/contato" class="inline-block bg-secondary text-primary-dark font-bold px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary focus-visible:ring-offset-primary-dark">
+            Quero ser voluntário
+          </a>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+          <div class="flex items-center gap-4 mb-6">
+            <Building2 class="w-8 h-8 text-white" aria-hidden="true" />
+            <h3 class="font-serif text-2xl font-bold">Parcerias Corporativas</h3>
+          </div>
+          <p class="text-bg-lightgreen/80 mb-6 leading-relaxed">
+            Sua empresa pode multiplicar impacto! Oferecemos opções de patrocínio a projetos, voluntariado corporativo e doações via dedução fiscal.
+          </p>
+          <a href="/contato" class="inline-block bg-transparent border-2 border-white text-white font-bold px-6 py-3 rounded-full hover:bg-white hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white focus-visible:ring-offset-primary-dark">
+            Ser empresa parceira
+          </a>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-3 max-w-2xl mx-auto w-full text-center">
+
+        <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+          <div class="flex items-center gap-4 mb-6">
+            <Gift class="w-8 h-8 text-accent" aria-hidden="true" />
+            <h3 class="font-serif text-2xl font-bold">Doação de Itens</h3>
+          </div>
+          <p class="text-bg-lightgreen/80 mb-6 leading-relaxed">
+            Aceitamos roupas em bom estado, alimentos não perecíveis, brinquedos, móveis e material escolar. Entregue diretamente em nossa sede na Penha.
+          </p>
+          <a href="/contato" class="inline-block bg-transparent border-2 border-white text-white font-bold px-6 py-3 rounded-full hover:bg-white hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white focus-visible:ring-offset-primary-dark">
+            Ver endereço de entrega
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script para copiar PIX -->
+  <script>
+    const copyBtn = document.getElementById('copy-btn');
+    const pixKey = document.getElementById('pix-key');
+
+    if(copyBtn && pixKey) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(pixKey.textContent || '');
+          const span = copyBtn.querySelector('span');
+          if(span) {
+            const originalText = span.textContent;
+            span.textContent = 'Copiado!';
+            copyBtn.classList.replace('bg-primary', 'bg-green-600');
+            setTimeout(() => {
+              span.textContent = originalText;
+              copyBtn.classList.replace('bg-green-600', 'bg-primary');
+            }, 2000);
+          }
+        } catch (err) {
+          console.error('Falha ao copiar:', err);
+        }
+      });
+    }
+  </script>
+</BaseLayout>

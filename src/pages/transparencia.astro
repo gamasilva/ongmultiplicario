@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import { FileText, Download, ShieldCheck, CheckCircle2 } from 'lucide-astro';
+
+const title = "Transparência";
+const description = "O Instituto MultiplicaRio preza pela transparência absoluta. Acesse nossos relatórios financeiros, estatuto e prestação de contas.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Page Header -->
+  <section class="bg-primary-dark text-bg-offwhite py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+      <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+        <ShieldCheck class="w-8 h-8 text-secondary" aria-hidden="true" />
+      </div>
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">Transparência Absoluta</h1>
+      <p class="text-xl text-bg-lightgreen/80 leading-relaxed">
+        Acreditamos que a confiança se constrói com clareza. Aqui você tem acesso a todos os nossos dados, relatórios financeiros e documentos oficiais.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dados Oficiais -->
+  <section class="py-16 bg-bg-offwhite border-b border-gray-200">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center justify-between">
+        <div>
+          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-2">Dados Oficiais da Instituição</h2>
+          <p class="text-text-body/80">Razão Social: INSTITUTO DE DESENVOLVIMENTO SOCIAL CULTURAL DE ESPORTE E LAZER MULTIPLICARIO</p>
+          <p class="text-text-body/80 font-mono mt-1">CNPJ: <span class="select-all font-bold text-primary-dark">62.559.044/0001-03</span></p>
+          <p class="text-text-body/80 mt-1">Sede: Rua Montevideo, 824 - Loja F, Penha, Rio de Janeiro - RJ</p>
+        </div>
+        <div class="flex-shrink-0">
+          <div class="bg-bg-lightgreen text-primary-dark px-6 py-4 rounded-2xl flex items-center gap-3">
+            <CheckCircle2 class="w-6 h-6 text-primary" aria-hidden="true" />
+            <span class="font-bold">ONG Regularizada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relatórios e Documentos -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-3xl font-bold text-primary-dark mb-4">Relatórios e Documentos</h2>
+        <p class="text-lg text-text-body/80">Faça o download dos nossos relatórios anuais de atividades e prestação de contas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Relatório 2023 -->
+        <div class="flex items-center justify-between p-6 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-md transition-all group bg-bg-offwhite">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+              <FileText class="w-6 h-6" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-bold text-primary-dark">Relatório Anual 2023</h3>
+              <p class="text-sm text-gray-500">PDF • 2.4 MB</p>
+            </div>
+          </div>
+          <a href="#" class="p-3 text-gray-400 hover:text-primary hover:bg-white rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Baixar Relatório 2023">
+            <Download class="w-6 h-6" aria-hidden="true" />
+          </a>
+        </div>
+
+        <!-- Relatório 2022 -->
+        <div class="flex items-center justify-between p-6 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-md transition-all group bg-bg-offwhite">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+              <FileText class="w-6 h-6" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-bold text-primary-dark">Relatório Anual 2022</h3>
+              <p class="text-sm text-gray-500">PDF • 1.8 MB</p>
+            </div>
+          </div>
+          <a href="#" class="p-3 text-gray-400 hover:text-primary hover:bg-white rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Baixar Relatório 2022">
+            <Download class="w-6 h-6" aria-hidden="true" />
+          </a>
+        </div>
+
+        <!-- Estatuto -->
+        <div class="flex items-center justify-between p-6 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-md transition-all group bg-bg-offwhite md:col-span-2">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-secondary-dark shadow-sm group-hover:bg-secondary group-hover:text-primary-dark transition-colors">
+              <FileText class="w-6 h-6" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-bold text-primary-dark">Estatuto Social</h3>
+              <p class="text-sm text-gray-500">Documento de fundação e regimento interno atualizado.</p>
+            </div>
+          </div>
+          <a href="#" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-secondary-dark bg-secondary/20 hover:bg-secondary hover:text-primary-dark rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
+            <Download class="w-4 h-4" aria-hidden="true" />
+            Baixar PDF
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Prestação de Contas Financeira -->
+  <section class="py-24 bg-bg-offwhite border-t border-gray-200">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-3xl font-bold text-primary-dark mb-4">Onde investimos cada doação</h2>
+        <p class="text-lg text-text-body/80 max-w-2xl mx-auto">Trabalhamos para que o máximo de recursos chegue diretamente na ponta, financiando nossos projetos e ações sociais.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+        <!-- Gráfico placeholder -->
+        <div class="flex justify-center">
+          <div class="w-64 h-64 rounded-full border-[16px] border-primary relative flex items-center justify-center shadow-inner">
+            <!-- Segmento CSS para simular pizza -->
+            <div class="absolute inset-[-16px] rounded-full border-[16px] border-secondary" style="clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);"></div>
+            <div class="text-center z-10 bg-white w-40 h-40 rounded-full flex flex-col items-center justify-center shadow-lg">
+              <span class="text-3xl font-bold text-primary-dark">2023</span>
+              <span class="text-sm font-medium text-gray-500 uppercase tracking-widest">Balanço</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-4 h-4 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
+            <div>
+              <h3 class="font-bold text-lg text-primary-dark">85% - Projetos Sociais</h3>
+              <p class="text-text-body/80 text-sm mt-1">Aplicação direta em saúde, educação, assistência, cultura e meio ambiente.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="w-4 h-4 rounded-full bg-secondary mt-1.5 flex-shrink-0"></div>
+            <div>
+              <h3 class="font-bold text-lg text-primary-dark">15% - Administrativo e Captação</h3>
+              <p class="text-text-body/80 text-sm mt-1">Manutenção da sede, taxas bancárias, contabilidade e equipe de suporte operacional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parceiros e Selos -->
+  <section class="py-24 bg-bg-lightgreen">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+      <h2 class="font-serif text-3xl font-bold text-primary-dark mb-12">Selos e Certificações</h2>
+      
+      <div class="flex flex-wrap justify-center gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <!-- Placeholders para selos -->
+        <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
+          <span class="text-xs font-bold text-gray-400 text-center px-2">[Selo de Transparência]</span>
+        </div>
+        <div class="w-40 h-24 bg-white rounded-xl flex items-center justify-center shadow-sm border border-gray-200">
+          <span class="text-xs font-bold text-gray-400 text-center px-2">[Conselho Municipal]</span>
+        </div>
+        <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
+          <span class="text-xs font-bold text-gray-400 text-center px-2">[OSCIP]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTASection 
+    title="Com sua ajuda, podemos ir mais longe."
+    subtitle="Veja os resultados dos nossos relatórios e faça parte dessa corrente do bem."
+    primaryButtonText="Fazer uma Doação"
+  />
+</BaseLayout>

@@ -1,0 +1,159 @@
+---
+import DonateButton from './DonateButton.astro';
+import { Menu, X } from 'lucide-astro';
+
+const navItems = [
+  { href: '/', label: 'Início' },
+  { href: '/sobre', label: 'Sobre Nós' },
+  { href: '/areas-de-atuacao', label: 'Áreas de Atuação' },
+  { href: '/como-ajudar', label: 'Como Ajudar' },
+  { href: '/transparencia', label: 'Transparência' },
+  { href: '/duvidas-frequentes', label: 'Dúvidas Frequentes' },
+  { href: '/contato', label: 'Contato' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Barra do header — NÃO coloca o menu mobile aqui por causa do backdrop-filter stacking context -->
+<header class="sticky top-0 z-40 w-full bg-bg-offwhite/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0 flex items-center gap-2 text-primary-dark hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
+        <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight"><span class="text-primary">MultiplicaRio</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex space-x-6 xl:space-x-8 items-center" aria-label="Navegação Principal">
+        {navItems.map((item) => {
+          const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+          return (
+            <a
+              href={item.href}
+              class={`font-medium text-sm transition-colors px-2 py-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isActive ? 'text-primary font-bold underline underline-offset-4 decoration-2' : 'text-text-body hover:text-primary'}`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+        <DonateButton />
+      </nav>
+
+      <!-- Botão hambúrguer (mobile) -->
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl text-text-body hover:text-primary hover:bg-bg-lightgreen transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Abrir menu"
+      >
+        <Menu class="h-6 w-6" aria-hidden="true" />
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!--
+  Menu mobile e overlay ficam FORA do <header>.
+  O backdrop-blur-sm no header cria um stacking context que impede
+  que filhos com position:fixed cubram o viewport inteiro.
+-->
+
+<!-- Overlay escuro (toque fora para fechar) -->
+<div
+  id="mobile-menu-overlay"
+  class="lg:hidden fixed inset-0 z-40 bg-black/60 hidden"
+  aria-hidden="true"
+></div>
+
+<!-- Painel do menu mobile -->
+<div
+  id="mobile-menu"
+  class="lg:hidden fixed inset-y-0 left-0 z-50 w-full max-w-xs bg-bg-offwhite shadow-2xl flex flex-col -translate-x-full transition-transform duration-300 ease-in-out"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navegação"
+>
+  <!-- Cabeçalho do painel -->
+  <div class="flex items-center justify-between px-5 h-16 border-b border-gray-100 flex-shrink-0">
+    <span class="font-serif font-bold text-lg text-primary-dark"><span class="text-primary">MultiplicaRio</span></span>
+    <button
+      id="close-mobile-menu"
+      type="button"
+      class="flex items-center justify-center w-10 h-10 rounded-xl text-text-body hover:text-primary hover:bg-bg-lightgreen transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      aria-label="Fechar menu"
+    >
+      <X class="h-5 w-5" aria-hidden="true" />
+    </button>
+  </div>
+
+  <!-- Links de navegação -->
+  <nav class="flex-grow overflow-y-auto px-3 py-4" aria-label="Menu mobile">
+    {navItems.map((item) => {
+      const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+      return (
+        <a
+          href={item.href}
+          class={`mobile-nav-link flex items-center px-4 py-3.5 rounded-xl mb-1 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isActive ? 'bg-primary/10 text-primary' : 'text-primary-dark hover:bg-bg-lightgreen hover:text-primary'}`}
+          aria-current={isActive ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      );
+    })}
+  </nav>
+
+  <!-- Botão doe agora no rodapé do painel -->
+  <div class="flex-shrink-0 p-4 border-t border-gray-100">
+    <DonateButton class="w-full justify-center py-4 text-base shadow-lg" />
+  </div>
+</div>
+
+<script>
+  function initMobileMenu() {
+    const menuBtn    = document.getElementById('mobile-menu-button');
+    const closeBtn   = document.getElementById('close-mobile-menu');
+    const menu       = document.getElementById('mobile-menu');
+    const overlay    = document.getElementById('mobile-menu-overlay');
+    const navLinks   = document.querySelectorAll('.mobile-nav-link');
+
+    if (!menuBtn || !closeBtn || !menu || !overlay) return;
+
+    function openMenu() {
+      menu.classList.remove('-translate-x-full');
+      overlay.classList.remove('hidden');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      // Pequeno delay para o foco não travar na animação
+      setTimeout(() => closeBtn.focus(), 50);
+    }
+
+    function closeMenu() {
+      menu.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuBtn.focus();
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    navLinks.forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+  document.addEventListener('astro:page-load', initMobileMenu);
+</script>

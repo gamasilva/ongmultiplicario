@@ -1,0 +1,42 @@
+---
+import { ChevronDown } from 'lucide-astro';
+
+interface Props {
+  question: string;
+  answer: string;
+  isOpen?: boolean;
+}
+
+const { question, answer, isOpen = false } = Astro.props;
+// We use a random suffix for ID to ensure uniqueness for aria-controls
+const id = Math.random().toString(36).substring(2, 9);
+---
+
+<div class="faq-item border border-gray-200 rounded-2xl bg-white shadow-sm overflow-hidden mb-4 transition-all duration-300">
+  <button 
+    type="button"
+    class="faq-button w-full px-6 py-5 text-left flex justify-between items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset group hover:bg-bg-lightgreen/30 transition-colors"
+    aria-expanded={isOpen ? "true" : "false"}
+    aria-controls={`faq-answer-${id}`}
+  >
+    <span class="font-serif text-lg md:text-xl font-bold text-primary-dark group-hover:text-primary transition-colors pr-4">
+      {question}
+    </span>
+    <span class="faq-icon transition-transform duration-300 flex-shrink-0 text-primary" class:list={[{ 'rotate-180': isOpen }]}>
+      <ChevronDown class="w-6 h-6" aria-hidden="true" />
+    </span>
+  </button>
+  
+  <div 
+    id={`faq-answer-${id}`}
+    class="faq-answer grid transition-all duration-300 ease-in-out"
+    style={isOpen ? "grid-template-rows: 1fr;" : "grid-template-rows: 0fr;"}
+    aria-hidden={isOpen ? "false" : "true"}
+  >
+    <div class="overflow-hidden">
+      <div class="px-6 pb-6 pt-2 text-text-body/90 text-base md:text-lg leading-relaxed">
+        {answer}
+      </div>
+    </div>
+  </div>
+</div>

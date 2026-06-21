@@ -1,0 +1,45 @@
+---
+import DonateButton from './DonateButton.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryButtonText?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+}
+
+const { 
+  title = "Faça parte dessa transformação", 
+  subtitle = "Sua contribuição é fundamental para continuarmos multiplicando esperança na Penha e no Rio de Janeiro. Cada doação importa.",
+  primaryButtonText = "Quero Doar",
+  secondaryButtonText = "Conheça nossas ações",
+  secondaryButtonHref = "/areas-de-atuacao"
+} = Astro.props;
+---
+
+<section class="bg-primary-dark py-16 md:py-20 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-primary rounded-full opacity-20 blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-secondary rounded-full opacity-10 blur-3xl"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
+      <h2 class="font-serif text-3xl md:text-5xl font-bold text-bg-offwhite leading-tight">
+        {title}
+      </h2>
+      <p class="text-bg-lightgreen/90 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full">
+        <DonateButton variant="primary" class="w-full sm:w-auto justify-center text-lg px-8 py-4" />
+        <a 
+          href={secondaryButtonHref}
+          class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent border-2 border-bg-lightgreen/30 text-bg-offwhite hover:bg-bg-lightgreen/10 px-8 py-4 rounded-full font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-bg-offwhite focus-visible:ring-offset-primary-dark text-lg"
+        >
+          {secondaryButtonText}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

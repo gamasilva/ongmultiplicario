@@ -1,0 +1,31 @@
+---
+interface Props {
+  amount: string;
+  impact: string;
+  isPopular?: boolean;
+}
+
+const { amount, impact, isPopular = false } = Astro.props;
+---
+
+<div class={`relative flex flex-col p-6 sm:p-8 rounded-2xl border ${isPopular ? 'border-accent shadow-lg scale-105 z-10 bg-bg-offwhite' : 'border-gray-200 bg-white shadow-sm'} transition-transform hover:shadow-md`}>
+  {isPopular && (
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full" style="background-color: #F08A4B; color: #0E5C54;">
+      Mais Escolhido
+    </div>
+  )}
+  <div class="text-center mb-6">
+    <span class="text-gray-500 font-medium text-lg">R$</span>
+    <span class="font-serif text-5xl font-bold text-primary-dark ml-1">{amount}</span>
+  </div>
+  <p class="text-text-body text-center mb-8 flex-grow">
+    {impact}
+  </p>
+  <a 
+    href={`/como-ajudar?amount=${amount}`}
+    class={`w-full text-center py-3 rounded-full font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${isPopular ? 'hover:bg-accent-hover focus-visible:ring-accent' : 'bg-bg-lightgreen text-primary-dark hover:bg-primary hover:text-white focus-visible:ring-primary'}`}
+    style={isPopular ? 'background-color: #F08A4B; color: #0E5C54;' : ''}
+  >
+    Doar R$ {amount}
+  </a>
+</div>
