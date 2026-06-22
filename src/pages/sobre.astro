@@ -1,65 +1,187 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTASection from '../components/CTASection.astro';
 import { Target, Eye, HeartHandshake, ShieldCheck, BookOpen, Users } from 'lucide-astro';
 
 const title = "Sobre Nós";
-const description = "Conheça a história, missão e valores do Instituto MultiplicaRio, atuando na promoção do bem-estar social na Penha.";
+const description = "Conheça a história, missão e valores do MultiplicaRio, atuando na promoção do bem-estar social na Penha.";
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Page Header -->
-  <section class="bg-bg-lightgreen py-20 border-b border-primary/10">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
-      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-primary-dark mb-6">Sobre Nós</h1>
-      <p class="text-xl text-text-body/80 leading-relaxed">
-        Conheça quem somos, o que nos move e as pessoas por trás do Instituto MultiplicaRio.
+
+  <!-- ───── HERO COM IMAGEM ───── -->
+  <section class="relative bg-primary-dark overflow-hidden py-28 md:py-36">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://i.ibb.co/6004bPrb/Whats-App-Image-2026-06-22-at-07-28-02-2.jpg"
+        alt="Comunidade unida"
+        width="1400" height="800"
+        class="w-full h-full object-cover opacity-20"
+        fetchpriority="high" decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/80 to-primary-dark/30"></div>
+      <div class="absolute inset-0 dot-pattern opacity-20 pointer-events-none"></div>
+    </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10">
+      <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary bg-secondary/15 px-4 py-1.5 rounded-full border border-secondary/30 mb-6">
+        MultiplicaRio
+      </span>
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-bg-offwhite mb-6" style="letter-spacing: -0.03em;">
+        Sobre Nós
+      </h1>
+      <p class="text-xl text-white/75 leading-relaxed max-w-2xl mx-auto">
+        Conheça quem somos, o que nos move e as pessoas por trás do MultiplicaRio.
       </p>
     </div>
   </section>
 
-  <!-- Nossa História (Expandida) -->
-  <section class="py-24 bg-white">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-      <div class="space-y-6 text-lg text-text-body/90 leading-relaxed">
-        <h2 class="font-serif text-3xl font-bold text-primary-dark mb-8 text-center">Nossa História</h2>
-        <p>O Instituto MultiplicaRio nasceu com o propósito de transformar realidades e promover o bem-estar social de indivíduos e comunidades na região da Penha, atuando sempre sem fins lucrativos.</p>
-        <p>[INSERIR HISTÓRIA DETALHADA AQUI - Falar sobre os fundadores, os primeiros desafios, como a ONG começou, que ano foi fundada e quais foram os primeiros projetos.]</p>
-        <p>[INSERIR HISTÓRIA DETALHADA AQUI - Falar sobre o crescimento, evolução, parceiros principais que ajudaram a construir o Instituto e o momento atual da ONG.]</p>
+  <!-- ───── NOSSA HISTÓRIA (DOIS COLUNAS) ───── -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="flex flex-col lg:flex-row gap-16 xl:gap-24 items-center">
+
+        <!-- Foto -->
+        <div class="lg:w-5/12 relative flex-shrink-0">
+          <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-200">
+            <img
+              src="https://i.ibb.co/Fbg433Kj/Whats-App-Image-2026-06-22-at-07-28-01-1.jpg"
+              alt="Comunidade MultiplicaRio"
+              width="640" height="800"
+              class="w-full h-full object-cover"
+              loading="lazy" decoding="async"
+            />
+          </div>
+          <!-- Badge flutuante -->
+          <div class="absolute -bottom-6 -right-6 bg-primary p-6 rounded-3xl shadow-xl hidden md:flex flex-col items-center justify-center w-32 h-32">
+            <span class="font-serif font-bold text-3xl text-primary-dark leading-none">10+</span>
+            <span class="text-primary-dark/70 text-xs font-bold uppercase tracking-wider text-center mt-1">anos de impacto</span>
+          </div>
+          <!-- Dot decorativo -->
+          <div class="absolute -top-4 -left-4 w-20 h-20 dot-pattern rounded-2xl opacity-40 pointer-events-none"></div>
+        </div>
+
+        <!-- Texto -->
+        <div class="lg:w-7/12 space-y-6">
+          <span class="section-label">Nossa trajetória</span>
+          <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900">Nossa História</h2>
+          <p class="text-lg text-text-body/75 leading-relaxed">
+            O MultiplicaRio nasceu com o propósito de transformar realidades e promover o bem-estar social de indivíduos e comunidades na região da Penha, atuando sempre sem fins lucrativos.
+          </p>
+          <p class="text-lg text-text-body/75 leading-relaxed">
+            [INSERIR HISTÓRIA DETALHADA — fundadores, primeiros desafios, ano de fundação e primeiros projetos.]
+          </p>
+          <p class="text-lg text-text-body/75 leading-relaxed">
+            [INSERIR HISTÓRIA DETALHADA — crescimento, evolução, parceiros principais e momento atual da ONG.]
+          </p>
+
+          <!-- Destaque de missão -->
+          <blockquote class="border-l-4 border-primary pl-6 py-2 mt-4">
+            <p class="font-serif text-xl font-bold text-primary-dark italic">"Ajudando a cuidar de vidas."</p>
+            <cite class="text-sm text-text-body/50 font-medium not-italic mt-1 block">— Missão do MultiplicaRio</cite>
+          </blockquote>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Missão, Visão e Valores -->
+  <!-- ───── GALERIA DE IMPACTO ───── -->
+  <section class="py-6 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <!-- Foto grande (2 colunas) -->
+        <div class="col-span-2 aspect-video rounded-2xl overflow-hidden group">
+          <img
+            src="https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg"
+            alt="Voluntários em ação"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy" decoding="async"
+          />
+        </div>
+        <!-- Foto pequena -->
+        <div class="aspect-square rounded-2xl overflow-hidden group">
+          <img
+            src="https://i.ibb.co/FbBTGmbF/Whats-App-Image-2026-06-22-at-07-28-02-1.jpg"
+            alt="Educação na comunidade"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy" decoding="async"
+          />
+        </div>
+        <!-- Foto pequena -->
+        <div class="aspect-square rounded-2xl overflow-hidden group">
+          <img
+            src="https://i.ibb.co/7Jh8fYQj/Whats-App-Image-2026-06-22-at-07-28-02.jpg"
+            alt="Saúde comunitária"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy" decoding="async"
+          />
+        </div>
+        <!-- Foto pequena -->
+        <div class="aspect-square rounded-2xl overflow-hidden group">
+          <img
+            src="https://i.ibb.co/GQfFXDZC/Whats-App-Image-2026-06-22-at-07-28-01-3.jpg"
+            alt="Meio ambiente"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy" decoding="async"
+          />
+        </div>
+        <!-- Foto pequena -->
+        <div class="aspect-square rounded-2xl overflow-hidden group">
+          <img
+            src="https://i.ibb.co/8g4DS0jR/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg"
+            alt="Assistência social comunitária"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy" decoding="async"
+          />
+        </div>
+        <!-- Foto grande (2 colunas) -->
+        <div class="col-span-2 aspect-video rounded-2xl overflow-hidden group">
+          <img
+            src="https://i.ibb.co/S4NfXSLt/Whats-App-Image-2026-06-22-at-07-28-00.jpg"
+            alt="Trabalho em equipe"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy" decoding="async"
+          />
+        </div>
+      </div>
+      <p class="text-center text-sm text-text-body/40 mt-4">Momentos reais de impacto na comunidade da Penha, RJ</p>
+    </div>
+  </section>
+
+  <!-- ───── MISSÃO, VISÃO E VALORES ───── -->
   <section class="py-24 bg-bg-offwhite">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
-          <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="text-center mb-14">
+        <span class="section-label mb-4 block w-fit mx-auto">Nosso propósito</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900">Missão, Visão e Valores</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-16 h-16 bg-primary/15 text-primary-dark rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
             <Target class="w-8 h-8" aria-hidden="true" />
           </div>
-          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4">Nossa Missão</h2>
-          <p class="text-text-body/80 leading-relaxed">
+          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Nossa Missão</h3>
+          <p class="text-text-body/70 leading-relaxed">
             "Ajudando a cuidar de vidas." Atuar nas áreas de educação, saúde, meio ambiente, cultura e direitos humanos para construir uma sociedade mais justa.
           </p>
         </div>
 
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
-          <div class="w-16 h-16 bg-secondary/20 text-secondary-dark rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Eye class="w-8 h-8 text-secondary" aria-hidden="true" />
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-16 h-16 bg-secondary/25 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <Eye class="w-8 h-8 text-secondary-dark" aria-hidden="true" />
           </div>
-          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4">Nossa Visão</h2>
-          <p class="text-text-body/80 leading-relaxed">
+          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Nossa Visão</h3>
+          <p class="text-text-body/70 leading-relaxed">
             Ser referência na transformação social da Penha e do Rio de Janeiro, reconhecida pela transparência, impacto real e acolhimento humano.
           </p>
         </div>
 
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center">
-          <div class="w-16 h-16 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <HeartHandshake class="w-8 h-8" aria-hidden="true" />
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div class="w-16 h-16 bg-accent/15 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <HeartHandshake class="w-8 h-8 text-accent-hover" aria-hidden="true" />
           </div>
-          <h2 class="font-serif text-2xl font-bold text-primary-dark mb-4">Nossos Valores</h2>
-          <p class="text-text-body/80 leading-relaxed">
+          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Nossos Valores</h3>
+          <p class="text-text-body/70 leading-relaxed">
             Solidariedade, empatia, transparência absoluta, respeito incondicional à dignidade humana e compromisso com o desenvolvimento sustentável.
           </p>
         </div>
@@ -67,111 +189,97 @@ const description = "Conheça a história, missão e valores do Instituto Multip
     </div>
   </section>
 
-  <!-- Objetivos -->
-  <section class="py-24 bg-white border-y border-gray-100">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary-dark mb-6">Nossos Objetivos</h2>
-        <p class="text-lg text-text-body/80">Trabalhamos focados em quatro pilares fundamentais para garantir impacto duradouro.</p>
-      </div>
+  <!-- ───── OBJETIVOS ───── -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
-          <div class="flex-shrink-0 mt-1">
-            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
-              <ShieldCheck class="w-6 h-6" aria-hidden="true" />
-            </div>
-          </div>
-          <div>
-            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Melhoria da Qualidade de Vida</h3>
-            <p class="text-text-body/80 leading-relaxed">Buscar a melhoria da qualidade de vida de grupos vulneráveis e marginalizados, como crianças, jovens, mulheres e famílias em situação de vulnerabilidade.</p>
+        <!-- Objetivos -->
+        <div class="lg:w-1/2 space-y-6">
+          <span class="section-label">Nossa atuação</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900">Nossos Objetivos</h2>
+          <p class="text-lg text-text-body/70">Trabalhamos focados em quatro pilares fundamentais para garantir impacto duradouro.</p>
+
+          <div class="space-y-4 mt-6">
+            {[
+              { icon: ShieldCheck, title: "Melhoria da Qualidade de Vida", desc: "Buscar a melhoria da qualidade de vida de grupos vulneráveis, como crianças, jovens, mulheres e famílias em situação de vulnerabilidade." },
+              { icon: Users, title: "Inclusão Social", desc: "Promover a inclusão social por meio de formação profissional, inclusão digital e atividades esportivas e recreativas." },
+              { icon: BookOpen, title: "Educação e Desenvolvimento Humano", desc: "Contribuir para o desenvolvimento integral das pessoas, da primeira infância à vida adulta." },
+              { icon: HeartHandshake, title: "Proteção e Dignidade", desc: "Contribuir para a proteção da vida e da dignidade humana, mitigando a pobreza e garantindo os direitos básicos." },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div class="flex gap-4 p-5 rounded-2xl hover:bg-bg-lightgreen/40 transition-colors group">
+                <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                  <Icon class="w-5 h-5 text-white" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 class="font-serif text-lg font-bold text-gray-900 mb-1">{title}</h3>
+                  <p class="text-text-body/70 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
-          <div class="flex-shrink-0 mt-1">
-            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
-              <Users class="w-6 h-6" aria-hidden="true" />
+        <!-- Imagem lateral -->
+        <div class="lg:w-1/2">
+          <div class="relative">
+            <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-200">
+              <img
+                src="https://i.ibb.co/QvDwL7XK/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg"
+                alt="Impacto na comunidade"
+                width="700" height="700"
+                class="w-full h-full object-cover"
+                loading="lazy" decoding="async"
+              />
             </div>
-          </div>
-          <div>
-            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Inclusão Social</h3>
-            <p class="text-text-body/80 leading-relaxed">Promover a inclusão social por meio de atividades como formação profissional, inclusão digital e atividades esportivas e recreativas.</p>
+            <!-- Stat card flutuante -->
+            <div class="absolute -bottom-5 -left-5 bg-accent p-6 rounded-3xl shadow-xl hidden md:block">
+              <p class="text-3xl font-serif font-bold text-white mb-1">+500</p>
+              <p class="text-white/80 text-sm font-bold uppercase tracking-wider">vidas impactadas</p>
+            </div>
           </div>
         </div>
 
-        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
-          <div class="flex-shrink-0 mt-1">
-            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
-              <BookOpen class="w-6 h-6" aria-hidden="true" />
-            </div>
-          </div>
-          <div>
-            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Educação e Desenvolvimento Humano</h3>
-            <p class="text-text-body/80 leading-relaxed">Contribuir para o desenvolvimento integral das pessoas, da primeira infância à idade adulta, com atividades educacionais e profissionalizantes que promovam a autossuficiência.</p>
-          </div>
-        </div>
-
-        <div class="flex gap-6 p-6 rounded-2xl hover:bg-bg-lightgreen/50 transition-colors">
-          <div class="flex-shrink-0 mt-1">
-            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
-              <HeartHandshake class="w-6 h-6" aria-hidden="true" />
-            </div>
-          </div>
-          <div>
-            <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">Proteção e Dignidade</h3>
-            <p class="text-text-body/80 leading-relaxed">Contribuir para a proteção da vida e da dignidade humana, mitigando a pobreza e garantindo os direitos básicos a todos.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Nossa Equipe -->
-  <section class="py-24 bg-bg-offwhite border-t border-gray-100">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
-      <h2 class="font-serif text-3xl font-bold text-primary-dark mb-4">Nossa Equipe</h2>
-      <p class="text-lg text-text-body/80 mb-16">Conheça as pessoas que lideram e coordenam nossas ações diárias.</p>
-      
+  <!-- ───── NOSSA EQUIPE ───── -->
+  <section class="py-24 bg-bg-lightgreen relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/3 h-full dot-pattern opacity-20 pointer-events-none"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center relative z-10">
+      <span class="section-label mb-4 block w-fit mx-auto">Quem faz acontecer</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nossa Equipe</h2>
+      <p class="text-lg text-text-body/70 mb-14">Conheça as pessoas que lideram e coordenam nossas ações diárias.</p>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <!-- Membro 1 -->
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center">
-          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-200">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" alt="[INSERIR NOME]" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+        {[
+          { img: "https://i.ibb.co/GQcwSVBs/Whats-App-Image-2026-06-22-at-07-27-58-1.jpg", name: "[INSERIR NOME]", role: "Diretora" },
+          { img: "https://i.ibb.co/Hf2C6ZB0/Whats-App-Image-2026-06-22-at-07-27-58.jpg", name: "[INSERIR NOME]", role: "Coordenador" },
+          { img: "https://i.ibb.co/23SyDB9g/Whats-App-Image-2026-06-22-at-07-27-58-3.jpg", name: "[INSERIR NOME]", role: "Voluntária Líder" },
+        ].map(({ img, name, role }) => (
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+            <div class="w-28 h-28 rounded-full overflow-hidden mb-5 ring-4 ring-primary/20 shadow-md">
+              <img src={img} alt={name} width="112" height="112" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="font-serif font-bold text-xl text-gray-900">{name}</h3>
+            <p class="text-primary-dark font-semibold text-sm mt-1">{role}</p>
           </div>
-          <h3 class="font-bold text-xl text-primary-dark">[INSERIR NOME]</h3>
-          <p class="text-secondary-dark font-medium text-sm">[INSERIR CARGO / DIRETOR]</p>
-        </div>
-        <!-- Membro 2 -->
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center">
-          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-200">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="[INSERIR NOME]" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-          </div>
-          <h3 class="font-bold text-xl text-primary-dark">[INSERIR NOME]</h3>
-          <p class="text-secondary-dark font-medium text-sm">[INSERIR CARGO / COORDENADOR]</p>
-        </div>
-        <!-- Membro 3 -->
-        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center">
-          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gray-200">
-            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop" alt="[INSERIR NOME]" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-          </div>
-          <h3 class="font-bold text-xl text-primary-dark">[INSERIR NOME]</h3>
-          <p class="text-secondary-dark font-medium text-sm">[INSERIR CARGO / VOLUNTÁRIO LÍDER]</p>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Dados Legais / CNPJ -->
-  <section class="py-16 bg-primary-dark text-bg-offwhite text-center">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+  <!-- ───── DADOS LEGAIS ───── -->
+  <section class="py-16 bg-primary-dark text-bg-offwhite relative overflow-hidden">
+    <div class="absolute inset-0 dot-pattern opacity-20 pointer-events-none"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center relative z-10">
       <h2 class="font-serif text-2xl font-bold mb-4">Dados Institucionais</h2>
-      <p class="text-bg-lightgreen/80 mb-2">INSTITUTO DE DESENVOLVIMENTO SOCIAL CULTURAL DE ESPORTE E LAZER MULTIPLICARIO</p>
-      <p class="text-bg-lightgreen/80 font-mono text-lg font-bold mb-2">CNPJ: <span class="select-all">62.559.044/0001-03</span></p>
-      <p class="text-bg-lightgreen/80">Sede: Rua Montevideo, 824 - Loja F, Penha, Rio de Janeiro - RJ</p>
+      <p class="text-white/70 mb-2 text-sm leading-relaxed">INSTITUTO DE DESENVOLVIMENTO SOCIAL CULTURAL DE ESPORTE E LAZER MULTIPLICARIO</p>
+      <p class="text-white/80 font-mono text-xl font-bold my-3">CNPJ: <span class="select-all text-secondary">62.559.044/0001-03</span></p>
+      <p class="text-white/60 text-sm">Sede: Rua Montevideo, 824 - Loja F, Penha, Rio de Janeiro - RJ</p>
     </div>
   </section>
 
-  <!-- CTA Section -->
   <CTASection />
 </BaseLayout>

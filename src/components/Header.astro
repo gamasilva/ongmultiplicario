@@ -1,5 +1,6 @@
 ---
 import DonateButton from './DonateButton.astro';
+import Logo from './Logo.astro';
 import { Menu, X } from 'lucide-astro';
 
 const navItems = [
@@ -15,63 +16,60 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<!-- Barra do header — NÃO coloca o menu mobile aqui por causa do backdrop-filter stacking context -->
-<header class="sticky top-0 z-40 w-full bg-bg-offwhite/95 backdrop-blur-sm border-b border-gray-200">
+<header class="sticky top-0 z-40 w-full bg-bg-offwhite/96 backdrop-blur-md border-b border-gray-100 shadow-sm">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 sm:h-20">
+    <div class="flex items-center justify-between h-16 sm:h-[72px]">
 
       <!-- Logo -->
-      <a href="/" class="flex-shrink-0 flex items-center gap-2 text-primary-dark hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
-        <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight"><span class="text-primary">MultiplicaRio</span></span>
+      <a href="/" class="flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1" aria-label="MultiplicaRio — Início">
+        <Logo class="group-hover:[&>span:first-child]:scale-105" />
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex space-x-6 xl:space-x-8 items-center" aria-label="Navegação Principal">
+      <nav class="hidden lg:flex space-x-1 xl:space-x-1.5 items-center" aria-label="Navegação Principal">
         {navItems.map((item) => {
           const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
           return (
             <a
               href={item.href}
-              class={`font-medium text-sm transition-colors px-2 py-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isActive ? 'text-primary font-bold underline underline-offset-4 decoration-2' : 'text-text-body hover:text-primary'}`}
+              class={`font-medium text-sm transition-all px-3 py-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                isActive
+                  ? 'text-primary-dark font-bold bg-primary/15'
+                  : 'text-text-body hover:text-primary-dark hover:bg-primary/10'
+              }`}
               aria-current={isActive ? 'page' : undefined}
             >
               {item.label}
             </a>
           );
         })}
-        <DonateButton />
+        <div class="ml-2">
+          <DonateButton />
+        </div>
       </nav>
 
       <!-- Botão hambúrguer (mobile) -->
       <button
         id="mobile-menu-button"
         type="button"
-        class="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl text-text-body hover:text-primary hover:bg-bg-lightgreen transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        class="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl text-text-body hover:text-primary-dark hover:bg-primary/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label="Abrir menu"
       >
-        <Menu class="h-6 w-6" aria-hidden="true" />
+        <Menu class="h-5 w-5" aria-hidden="true" />
       </button>
 
     </div>
   </div>
 </header>
 
-<!--
-  Menu mobile e overlay ficam FORA do <header>.
-  O backdrop-blur-sm no header cria um stacking context que impede
-  que filhos com position:fixed cubram o viewport inteiro.
--->
-
-<!-- Overlay escuro (toque fora para fechar) -->
 <div
   id="mobile-menu-overlay"
-  class="lg:hidden fixed inset-0 z-40 bg-black/60 hidden"
+  class="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden"
   aria-hidden="true"
 ></div>
 
-<!-- Painel do menu mobile -->
 <div
   id="mobile-menu"
   class="lg:hidden fixed inset-y-0 left-0 z-50 w-full max-w-xs bg-bg-offwhite shadow-2xl flex flex-col -translate-x-full transition-transform duration-300 ease-in-out"
@@ -79,27 +77,31 @@ const currentPath = Astro.url.pathname;
   aria-modal="true"
   aria-label="Menu de navegação"
 >
-  <!-- Cabeçalho do painel -->
   <div class="flex items-center justify-between px-5 h-16 border-b border-gray-100 flex-shrink-0">
-    <span class="font-serif font-bold text-lg text-primary-dark"><span class="text-primary">MultiplicaRio</span></span>
+    <a href="/" class="mobile-nav-link rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="MultiplicaRio — Ir para o início">
+      <Logo size="sm" />
+    </a>
     <button
       id="close-mobile-menu"
       type="button"
-      class="flex items-center justify-center w-10 h-10 rounded-xl text-text-body hover:text-primary hover:bg-bg-lightgreen transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      class="flex items-center justify-center w-10 h-10 rounded-xl text-text-body hover:text-primary-dark hover:bg-primary/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       aria-label="Fechar menu"
     >
       <X class="h-5 w-5" aria-hidden="true" />
     </button>
   </div>
 
-  <!-- Links de navegação -->
   <nav class="flex-grow overflow-y-auto px-3 py-4" aria-label="Menu mobile">
     {navItems.map((item) => {
       const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
       return (
         <a
           href={item.href}
-          class={`mobile-nav-link flex items-center px-4 py-3.5 rounded-xl mb-1 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${isActive ? 'bg-primary/10 text-primary' : 'text-primary-dark hover:bg-bg-lightgreen hover:text-primary'}`}
+          class={`mobile-nav-link flex items-center px-4 py-3.5 rounded-xl mb-1 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+            isActive
+              ? 'bg-primary/20 text-primary-dark'
+              : 'text-gray-900 hover:bg-primary/10 hover:text-primary-dark'
+          }`}
           aria-current={isActive ? 'page' : undefined}
         >
           {item.label}
@@ -108,7 +110,6 @@ const currentPath = Astro.url.pathname;
     })}
   </nav>
 
-  <!-- Botão doe agora no rodapé do painel -->
   <div class="flex-shrink-0 p-4 border-t border-gray-100">
     <DonateButton class="w-full justify-center py-4 text-base shadow-lg" />
   </div>
@@ -116,11 +117,11 @@ const currentPath = Astro.url.pathname;
 
 <script>
   function initMobileMenu() {
-    const menuBtn    = document.getElementById('mobile-menu-button');
-    const closeBtn   = document.getElementById('close-mobile-menu');
-    const menu       = document.getElementById('mobile-menu');
-    const overlay    = document.getElementById('mobile-menu-overlay');
-    const navLinks   = document.querySelectorAll('.mobile-nav-link');
+    const menuBtn  = document.getElementById('mobile-menu-button');
+    const closeBtn = document.getElementById('close-mobile-menu');
+    const menu     = document.getElementById('mobile-menu');
+    const overlay  = document.getElementById('mobile-menu-overlay');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
 
     if (!menuBtn || !closeBtn || !menu || !overlay) return;
 
@@ -129,7 +130,6 @@ const currentPath = Astro.url.pathname;
       overlay.classList.remove('hidden');
       menuBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
-      // Pequeno delay para o foco não travar na animação
       setTimeout(() => closeBtn.focus(), 50);
     }
 
@@ -144,13 +144,9 @@ const currentPath = Astro.url.pathname;
     menuBtn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenu);
     overlay.addEventListener('click', closeMenu);
-
     navLinks.forEach((link) => link.addEventListener('click', closeMenu));
-
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
-        closeMenu();
-      }
+      if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') closeMenu();
     });
   }
 

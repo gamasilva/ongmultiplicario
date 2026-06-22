@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AreaCard from '../components/AreaCard.astro';
 import StatCard from '../components/StatCard.astro';
@@ -6,56 +6,81 @@ import DonationTierCard from '../components/DonationTierCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import CTASection from '../components/CTASection.astro';
 import DonateButton from '../components/DonateButton.astro';
-import { HeartPulse, BookOpen, Brush, TreePine, Users, ChevronLeft, ChevronRight, Calendar } from 'lucide-astro';
+import { HeartPulse, BookOpen, Brush, TreePine, Users, ChevronLeft, ChevronRight, Calendar, ArrowRight } from 'lucide-astro';
 
 const title = "Início";
-const fullTitle = "Instituto MultiplicaRio | ONG de Educação e Saúde na Penha, Rio de Janeiro";
-const description = "Instituto MultiplicaRio é uma ONG que atua há mais de 10 anos na Penha (RJ) em saúde, educação, cultura, meio ambiente e assistência social. Conheça e doe.";
-const heroImage = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=75&w=1400&fm=avif&fit=crop";
+const fullTitle = "MultiplicaRio | ONG de Educação e Saúde na Penha, Rio de Janeiro";
+const description = "MultiplicaRio é uma ONG que atua há mais de 10 anos na Penha (RJ) em saúde, educação, cultura, meio ambiente e assistência social. Conheça e doe.";
+const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27-57.jpg";
 ---
 
 <BaseLayout title={title} fullTitle={fullTitle} description={description} heroImage={heroImage}>
-  <!-- Hero Section -->
-  <section class="relative bg-primary-dark overflow-hidden min-h-[90vh] flex items-center">
-    <!-- Placeholder Background Image -->
+
+  <!-- ───── HERO ───── -->
+  <section class="relative bg-primary-dark overflow-hidden min-h-[92vh] flex items-center">
+    <!-- Imagem de fundo -->
     <div class="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=75&w=1400&fm=avif&fit=crop"
-        alt="Comunidade unida" 
-        width="1920" 
-        height="1080" 
-        class="w-full h-full object-cover opacity-30" 
-        fetchpriority="high" 
-        decoding="async" 
+      <img
+        src="https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27-57.jpg"
+        alt="Comunidade unida"
+        width="1920" height="1080"
+        class="w-full h-full object-cover object-top opacity-30"
+        fetchpriority="high" decoding="async"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/80 to-transparent"></div>
+      <!-- Gradiente direcional -->
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/85 to-primary-dark/30"></div>
+      <!-- Gradiente vertical inferior -->
+      <div class="absolute inset-0 bg-gradient-to-t from-primary-dark/60 via-transparent to-transparent"></div>
     </div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 md:py-20">
-      <div class="max-w-3xl space-y-6 md:space-y-8">
-        <span class="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary font-bold text-sm tracking-wider uppercase mb-2 border border-secondary/50">
-          ONG MultiplicaRio
+    <!-- Decorações -->
+    <div class="absolute top-16 right-10 w-80 h-80 rounded-full bg-primary/8 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-20 right-32 w-56 h-56 rounded-full bg-secondary/8 blur-3xl pointer-events-none"></div>
+    <!-- Padrão de pontos -->
+    <div class="absolute top-0 right-0 w-1/2 h-full dot-pattern opacity-20 pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-28">
+      <div class="max-w-3xl space-y-7 md:space-y-9">
+        <!-- Badge -->
+        <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-primary/20 text-primary border border-primary/30 font-bold text-xs tracking-[0.14em] uppercase animate-fade-up">
+          ✦ MultiplicaRio
         </span>
-        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-bg-offwhite leading-tight">
-          Multiplicando esperança, <span class="text-secondary block">transformando vidas</span>
+
+        <!-- Heading -->
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-bg-offwhite animate-fade-up animate-fade-up-delay-1" style="letter-spacing: -0.03em; line-height: 1.08;">
+          Multiplicando esperança,<br/>
+          <span class="text-secondary">transformando vidas</span>
         </h1>
-        <p class="text-lg sm:text-xl md:text-2xl text-bg-lightgreen/90 leading-relaxed max-w-2xl font-light">
-          Ajudando a cuidar de vidas e promover o bem-estar e o desenvolvimento social na Penha e região.
+
+        <!-- Subtítulo -->
+        <p class="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed max-w-xl font-light animate-fade-up animate-fade-up-delay-2">
+          Ajudando a cuidar de vidas e promover o bem-estar social na Penha e região há mais de 10 anos.
         </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
+
+        <!-- Botões -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-2 animate-fade-up animate-fade-up-delay-3">
           <DonateButton variant="primary" class="w-full sm:w-auto justify-center text-lg px-8 py-4" />
-          <a href="#quem-somos" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent border-2 border-bg-offwhite text-bg-offwhite hover:bg-bg-offwhite hover:text-primary-dark px-8 py-4 rounded-full font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-bg-offwhite focus-visible:ring-offset-primary-dark text-lg">
+          <a
+            href="#quem-somos"
+            class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white/40 text-bg-offwhite hover:bg-white/10 hover:border-white/60 px-8 py-4 rounded-full font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-bg-offwhite focus-visible:ring-offset-primary-dark text-lg"
+          >
             Conheça nosso trabalho
           </a>
         </div>
       </div>
     </div>
+
+    <!-- Indicador de scroll -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40 pointer-events-none animate-bounce">
+      <div class="w-5 h-8 rounded-full border-2 border-white/50 flex items-start justify-center pt-1.5">
+        <div class="w-1 h-2 rounded-full bg-white/70"></div>
+      </div>
+    </div>
   </section>
 
-  <!-- Impact/Stats Section -->
+  <!-- ───── STATS ───── -->
   <section class="relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto lg:max-w-5xl">
-    <div class="bg-accent rounded-3xl shadow-2xl overflow-hidden">
+    <div class="bg-accent rounded-3xl shadow-2xl overflow-hidden ring-1 ring-accent-hover/20">
       <div class="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/20">
         <StatCard value="+500" label="Vidas impactadas" delay={0} />
         <StatCard value="10 anos" label="De atuação" delay={150} />
@@ -64,229 +89,307 @@ const heroImage = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?
     </div>
   </section>
 
-  <!-- Quem Somos (Resumo) -->
-  <section id="quem-somos" class="py-16 md:py-24 bg-bg-offwhite">
+  <!-- ───── QUEM SOMOS ───── -->
+  <section id="quem-somos" class="py-20 md:py-32 bg-bg-offwhite">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-24">
+
+        <!-- Texto -->
         <div class="lg:w-1/2 space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary-dark">Quem Somos</h2>
-          <p class="text-lg text-text-body/80 leading-relaxed">
-            O intuito principal do Instituto MultiplicaRio é promover o bem-estar e o desenvolvimento social de indivíduos e comunidades, atuando sem fins lucrativos.
+          <span class="section-label">Nossa história</span>
+          <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900">
+            Quem Somos
+          </h2>
+          <p class="text-lg text-text-body/75 leading-relaxed">
+            O intuito principal do MultiplicaRio é promover o bem-estar e o desenvolvimento social de indivíduos e comunidades, atuando sem fins lucrativos.
           </p>
-          <p class="text-lg text-text-body/80 leading-relaxed">
-            Trabalhamos incansavelmente nas áreas de educação, saúde, meio ambiente, cultura e direitos humanos, visando à construção de uma sociedade mais justa e solidária para todos.
+          <p class="text-lg text-text-body/75 leading-relaxed">
+            Trabalhamos incansavelmente nas áreas de educação, saúde, meio ambiente, cultura e direitos humanos, visando à construção de uma sociedade mais justa e solidária.
           </p>
-          <div class="pt-4">
-            <a href="/sobre" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:text-primary transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
+          <div class="pt-2">
+            <a href="/sobre" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
               Saiba mais sobre nossa história
-              <span class="transform transition-transform group-hover:translate-x-1">→</span>
+              <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </a>
           </div>
         </div>
+
+        <!-- Imagem -->
         <div class="lg:w-1/2 relative">
-          <div class="aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl">
-             <img src="https://images.unsplash.com/photo-1593113516832-f19b26b38c20?q=75&w=800&fm=avif&fit=crop" alt="Voluntários trabalhando" width="800" height="800" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-200">
+            <img
+              src="https://i.ibb.co/JPpm3ZD/Whats-App-Image-2026-06-22-at-07-28-01.jpg"
+              alt="Voluntários trabalhando"
+              width="800" height="800"
+              class="w-full h-full object-cover"
+              loading="lazy" decoding="async"
+            />
           </div>
-          <div class="absolute -bottom-6 -left-6 bg-secondary text-primary-dark p-8 rounded-3xl shadow-xl hidden md:block max-w-xs">
-            <p class="font-serif font-bold text-xl leading-snug">
-              "Ajudando a cuidar de vidas."
+          <!-- Quote card flutuante -->
+          <div class="absolute -bottom-6 -left-6 bg-secondary p-7 rounded-3xl shadow-xl hidden md:block max-w-[240px] ring-1 ring-secondary-dark/10">
+            <div class="text-4xl text-secondary-dark/30 font-serif leading-none mb-2">"</div>
+            <p class="font-serif font-bold text-lg text-secondary-dark leading-snug">
+              Ajudando a cuidar de vidas.
             </p>
+            <p class="text-secondary-dark/60 text-sm mt-2 font-medium">Nossa missão</p>
           </div>
+          <!-- Dot decorativo -->
+          <div class="absolute -top-4 -right-4 w-24 h-24 dot-pattern rounded-2xl opacity-40 pointer-events-none"></div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Áreas de Atuação -->
-  <section class="py-16 md:py-24 bg-bg-lightgreen">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary-dark mb-4 md:mb-6">Nossas Áreas de Atuação</h2>
-        <p class="text-base sm:text-lg text-text-body/80">Atuamos de forma integrada para garantir o desenvolvimento pleno das comunidades que apoiamos.</p>
+  <!-- ───── ÁREAS DE ATUAÇÃO ───── -->
+  <section class="py-20 md:py-28 bg-bg-lightgreen relative overflow-hidden">
+    <!-- Decoração sutil -->
+    <div class="absolute top-0 right-0 w-1/3 h-full dot-pattern opacity-20 pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-14 md:mb-18">
+        <span class="section-label mb-4 block text-center mx-auto w-fit">O que fazemos</span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-5">Nossas Áreas de Atuação</h2>
+        <p class="text-base sm:text-lg text-text-body/75">Atuamos de forma integrada para garantir o desenvolvimento pleno das comunidades que apoiamos.</p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AreaCard 
-          title="Saúde" 
-          description="Promoção da saúde, assistência médica preventiva e formação de profissionais comunitários."
-        >
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+        <AreaCard title="Saúde" description="Promoção da saúde, assistência médica preventiva e formação de profissionais comunitários.">
           <HeartPulse slot="icon" class="w-6 h-6" aria-hidden="true" />
         </AreaCard>
-        
-        <AreaCard 
-          title="Educação" 
-          description="Gratuidade educacional, métodos inovadores e integração total entre escola e comunidade."
-        >
+        <AreaCard title="Educação" description="Gratuidade educacional, métodos inovadores e integração total entre escola e comunidade.">
           <BookOpen slot="icon" class="w-6 h-6" aria-hidden="true" />
         </AreaCard>
-        
-        <AreaCard 
-          title="Cultura" 
-          description="Preservação do patrimônio histórico e fomento ativo de atividades artístico-culturais locais."
-        >
+        <AreaCard title="Cultura" description="Preservação do patrimônio histórico e fomento ativo de atividades artístico-culturais locais.">
           <Brush slot="icon" class="w-6 h-6" aria-hidden="true" />
         </AreaCard>
-        
-        <AreaCard 
-          title="Meio Ambiente" 
-          description="Defesa, preservação e conservação ambiental com foco em desenvolvimento sustentável."
-        >
+        <AreaCard title="Meio Ambiente" description="Defesa, preservação e conservação ambiental com foco em desenvolvimento sustentável.">
           <TreePine slot="icon" class="w-6 h-6" aria-hidden="true" />
         </AreaCard>
-        
-        <AreaCard 
-          title="Assistência Social" 
-          description="Serviços socioassistenciais e garantia incondicional dos direitos humanos fundamentais."
-        >
+        <AreaCard title="Assistência Social" description="Serviços socioassistenciais e garantia incondicional dos direitos humanos fundamentais.">
           <Users slot="icon" class="w-6 h-6" aria-hidden="true" />
         </AreaCard>
+        <!-- Card CTA -->
+        <a href="/areas-de-atuacao" class="group bg-primary-dark rounded-2xl p-7 border border-primary-dark/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-h-[180px]">
+          <p class="font-serif text-xl font-bold text-bg-offwhite leading-snug">Ver todas as nossas áreas de atuação</p>
+          <div class="flex items-center gap-2 text-secondary font-bold text-sm mt-4 group-hover:gap-3 transition-all duration-200">
+            <span>Explorar</span>
+            <ArrowRight class="w-4 h-4" aria-hidden="true" />
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Ações Realizadas (Carrossel) -->
-  <section class="py-16 md:py-24 bg-white relative overflow-hidden">
+  <!-- ───── SERVIÇOS OFERECIDOS ───── -->
+  <section class="py-20 md:py-28 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="section-label mb-4 block w-fit mx-auto">Atendimento à comunidade</span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-5">O que oferecemos</h2>
+        <p class="text-lg text-text-body/75">Oferecemos uma ampla gama de serviços gratuitos para apoiar a saúde, os direitos e o bem-estar das famílias da nossa comunidade.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Saúde & Bem-estar -->
+        <div class="bg-bg-offwhite rounded-3xl p-8 border border-gray-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-primary/15 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <HeartPulse class="w-6 h-6 text-primary-dark" aria-hidden="true" />
+            </div>
+            <h3 class="font-serif text-xl font-bold text-gray-900">Saúde & Bem-estar</h3>
+          </div>
+          <ul class="space-y-3">
+            {[
+              "Aferição de pressão arterial",
+              "Teste glicêmico",
+              "Reflexologia",
+              "Apoio emocional e escuta qualificada",
+              "Saúde mental e bem-estar",
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="text-text-body/80 text-sm leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Assistência Social & Jurídica -->
+        <div class="bg-bg-offwhite rounded-3xl p-8 border border-gray-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-accent/15 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <Users class="w-6 h-6 text-accent-hover" aria-hidden="true" />
+            </div>
+            <h3 class="font-serif text-xl font-bold text-gray-900">Assistência Social & Jurídica</h3>
+          </div>
+          <ul class="space-y-3">
+            {[
+              "Orientação jurídica (INSS, LOAS, BPC)",
+              "Cadastro para famílias em situação de vulnerabilidade",
+              "Apoio em questões escolares",
+              "Empoderamento feminino",
+              "Atendimento terapêutico para mulheres",
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="text-text-body/80 text-sm leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 text-center">
+        <a href="/contato" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
+          Agendar atendimento ou saber mais
+          <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── VÍDEO ───── -->
+  <section class="py-20 md:py-28 bg-primary-dark relative overflow-hidden">
+    <div class="absolute inset-0 dot-pattern opacity-10 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
+
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary bg-secondary/15 px-4 py-1.5 rounded-full border border-secondary/30 mb-6">
+          Em ação
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-bg-offwhite mb-5" style="letter-spacing:-0.02em;">
+          Conheça um pouco do nosso trabalho
+        </h2>
+        <p class="text-lg text-white/65 leading-relaxed">
+          Realizamos palestras, oficinas e eventos de capacitação gratuitos para jovens e adultos da comunidade. Veja como a transformação acontece na prática.
+        </p>
+      </div>
+
+      <!-- Player de Vídeo -->
+      <div class="flex justify-center">
+        <div class="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.6)] ring-1 ring-white/10 bg-black" style="aspect-ratio: 9/16;">
+          <video
+            controls
+            preload="none"
+            poster="https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg"
+            class="w-full h-full object-cover"
+            aria-label="Vídeo da Palestra de Capacitação Profissional do MultiplicaRio"
+          >
+            <source src="/V%C3%ADdeo%20Palestra.mp4" type="video/mp4" />
+            Seu navegador não suporta reprodução de vídeo.
+          </video>
+        </div>
+      </div>
+
+      <!-- Legenda -->
+      <p class="text-center text-white/40 text-sm mt-5 tracking-wide">
+        Palestra de Capacitação Profissional · Jovens Aprendiz (14–23 anos) · Penha, Rio de Janeiro
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ───── AÇÕES REALIZADAS ───── -->
+  <section class="py-20 md:py-28 bg-white relative overflow-hidden border-t border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-6">
         <div class="max-w-2xl">
-          <h2 class="font-serif text-3xl md:text-4xl font-bold text-primary-dark mb-4">Ações Realizadas</h2>
-          <p class="text-base sm:text-lg text-text-body/80">Acompanhe os projetos recentes e o impacto direto que nossa comunidade tem recebido através das suas doações.</p>
+          <span class="section-label mb-4 block w-fit">Nosso trabalho</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Ações Realizadas</h2>
+          <p class="text-base sm:text-lg text-text-body/75">Acompanhe os projetos recentes e o impacto direto que nossas ações têm na comunidade.</p>
         </div>
-        <!-- Botões do Carrossel -->
-        <div class="flex gap-3 hidden sm:flex">
-          <button id="prev-action" class="w-12 h-12 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Ação anterior">
-            <ChevronLeft class="w-6 h-6" aria-hidden="true" />
+        <div class="hidden sm:flex gap-3 flex-shrink-0">
+          <button id="prev-action" class="w-12 h-12 rounded-full border-2 border-primary text-primary-dark flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm" aria-label="Ação anterior">
+            <ChevronLeft class="w-5 h-5" aria-hidden="true" />
           </button>
-          <button id="next-action" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Próxima ação">
-            <ChevronRight class="w-6 h-6" aria-hidden="true" />
+          <button id="next-action" class="w-12 h-12 rounded-full bg-primary text-primary-dark flex items-center justify-center hover:bg-primary-dark hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm" aria-label="Próxima ação">
+            <ChevronRight class="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
       </div>
-      
-      <!-- Container do Carrossel -->
-      <div id="actions-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar scroll-smooth">
-        
-        <!-- Card 1 -->
-        <div class="flex-none w-[85vw] sm:w-80 md:w-96 snap-start bg-bg-offwhite rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="h-48 sm:h-56 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=75&w=800&fm=avif&fit=crop" alt="Mutirão de Saúde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
-            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-sm">
-              <Calendar class="w-3.5 h-3.5" aria-hidden="true" />
-              15 Ago 2025
-            </div>
-          </div>
-          <div class="p-6 md:p-8 flex flex-col flex-grow">
-            <span class="text-xs font-bold tracking-widest text-secondary-dark uppercase mb-3">Saúde</span>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-primary-dark mb-3 leading-snug group-hover:text-primary transition-colors">Mutirão de Saúde na Comunidade</h3>
-            <p class="text-text-body/80 text-sm md:text-base leading-relaxed mb-6 flex-grow">
-              Realizamos mais de 300 atendimentos médicos preventivos, incluindo exames oftalmológicos e vacinação para crianças e idosos da região da Penha.
-            </p>
-            <a href="#" class="text-primary-dark font-bold text-sm hover:text-primary inline-flex items-center gap-2 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-colors">
-              Detalhes da ação <span class="transform transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-          </div>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="flex-none w-[85vw] sm:w-80 md:w-96 snap-start bg-bg-offwhite rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="h-48 sm:h-56 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=75&w=800&fm=avif&fit=crop" alt="Distribuição de Kits" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
-            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-sm">
-              <Calendar class="w-3.5 h-3.5" aria-hidden="true" />
-              02 Fev 2025
-            </div>
-          </div>
-          <div class="p-6 md:p-8 flex flex-col flex-grow">
-            <span class="text-xs font-bold tracking-widest text-secondary-dark uppercase mb-3">Educação</span>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-primary-dark mb-3 leading-snug group-hover:text-primary transition-colors">Entrega de Kits Escolares</h3>
-            <p class="text-text-body/80 text-sm md:text-base leading-relaxed mb-6 flex-grow">
-              Garantimos um início de ano letivo digno para 150 crianças, com a entrega de mochilas, cadernos e materiais completos arrecadados em nossa campanha.
-            </p>
-            <a href="#" class="text-primary-dark font-bold text-sm hover:text-primary inline-flex items-center gap-2 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-colors">
-              Detalhes da ação <span class="transform transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-          </div>
-        </div>
+      <div id="actions-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 no-scrollbar scroll-smooth">
 
-        <!-- Card 3 -->
-        <div class="flex-none w-[85vw] sm:w-80 md:w-96 snap-start bg-bg-offwhite rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="h-48 sm:h-56 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=75&w=800&fm=avif&fit=crop" alt="Horta Comunitária" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
-            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-sm">
-              <Calendar class="w-3.5 h-3.5" aria-hidden="true" />
-              10 Nov 2024
+        {[
+          { img: "https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg", tag: "Saúde", title: "Aferição de Pressão e Teste Glicêmico", desc: "Oferecemos aferição de pressão arterial, teste glicêmico e reflexologia para a comunidade, promovendo prevenção e cuidado com a saúde de forma gratuita.", alt: "Atendimento de saúde na comunidade" },
+          { img: "https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg", tag: "Educação", title: "Apoio em Questões Escolares", desc: "Auxiliamos famílias com dúvidas e dificuldades escolares, orientando pais e responsáveis sobre direitos educacionais e apoio pedagógico.", alt: "Apoio educacional para a comunidade" },
+          { img: "https://i.ibb.co/zVpZxwMh/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg", tag: "Assistência Social", title: "Orientação Jurídica Gratuita", desc: "Disponibilizamos advogados para orientação em processos de INSS, LOAS e BPC, além do cadastro de famílias em situação de vulnerabilidade.", alt: "Orientação jurídica para a comunidade" },
+          { img: "https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg", tag: "Mulheres", title: "Atendimento Terapêutico para Mulheres", desc: "Programa de apoio emocional, escuta qualificada, empoderamento feminino e saúde mental para mulheres da comunidade da Penha e região.", alt: "Atendimento terapêutico para mulheres" },
+        ].map((card) => (
+          <div class="flex-none w-[85vw] sm:w-80 md:w-[22rem] snap-start bg-bg-offwhite rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
+            <div class="h-52 overflow-hidden relative">
+              <img src={card.img} alt={card.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              <span class="absolute bottom-4 left-4 bg-primary-dark/80 backdrop-blur-sm text-secondary text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full">
+                {card.tag}
+              </span>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-serif text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-primary-dark transition-colors">{card.title}</h3>
+              <p class="text-text-body/70 text-sm leading-relaxed mb-5 flex-grow">{card.desc}</p>
+              <a href="/contato" class="inline-flex items-center gap-2 text-primary-dark font-bold text-sm hover:gap-3 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+                Saber mais <ArrowRight class="w-4 h-4" aria-hidden="true" />
+              </a>
             </div>
           </div>
-          <div class="p-6 md:p-8 flex flex-col flex-grow">
-            <span class="text-xs font-bold tracking-widest text-secondary-dark uppercase mb-3">Meio Ambiente</span>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-primary-dark mb-3 leading-snug group-hover:text-primary transition-colors">Revitalização e Horta</h3>
-            <p class="text-text-body/80 text-sm md:text-base leading-relaxed mb-6 flex-grow">
-              Com o apoio de 40 voluntários, transformamos um espaço abandonado em uma praça com horta comunitária, ensinando plantio sustentável às famílias.
-            </p>
-            <a href="#" class="text-primary-dark font-bold text-sm hover:text-primary inline-flex items-center gap-2 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-colors">
-              Detalhes da ação <span class="transform transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="flex-none w-[85vw] sm:w-80 md:w-96 snap-start bg-bg-offwhite rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group flex flex-col">
-          <div class="h-48 sm:h-56 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=75&w=800&fm=avif&fit=crop" alt="Campanha do Agasalho" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
-            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-sm">
-              <Calendar class="w-3.5 h-3.5" aria-hidden="true" />
-              15 Jun 2024
-            </div>
-          </div>
-          <div class="p-6 md:p-8 flex flex-col flex-grow">
-            <span class="text-xs font-bold tracking-widest text-secondary-dark uppercase mb-3">Assistência Social</span>
-            <h3 class="font-serif text-xl md:text-2xl font-bold text-primary-dark mb-3 leading-snug group-hover:text-primary transition-colors">Campanha Inverno Quente</h3>
-            <p class="text-text-body/80 text-sm md:text-base leading-relaxed mb-6 flex-grow">
-              Arrecadamos e distribuímos mais de 2 mil peças de roupas e cobertores para famílias em situação de vulnerabilidade nos dias mais frios do ano.
-            </p>
-            <a href="#" class="text-primary-dark font-bold text-sm hover:text-primary inline-flex items-center gap-2 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm transition-colors">
-              Detalhes da ação <span class="transform transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-          </div>
-        </div>
+        ))}
 
       </div>
     </div>
   </section>
 
-  <!-- Depoimentos -->
-  <section class="py-24 bg-primary-dark text-bg-offwhite">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="font-serif text-4xl font-bold text-bg-offwhite mb-6">Histórias de Impacto</h2>
-        <p class="text-lg text-bg-lightgreen/80">Conheça as pessoas que tiveram suas vidas transformadas pelo Instituto.</p>
+  <!-- ───── DEPOIMENTOS ───── -->
+  <section class="py-24 md:py-32 bg-primary-dark relative overflow-hidden">
+    <!-- Decorações -->
+    <div class="absolute top-0 right-0 w-80 h-80 rounded-full bg-primary/10 -mt-20 -mr-20 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-secondary/8 -mb-16 -ml-16 blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 dot-pattern opacity-20 pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary bg-secondary/15 px-4 py-1.5 rounded-full border border-secondary/30 mb-5">
+          Histórias reais
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-bg-offwhite mb-4">Histórias de Impacto</h2>
+        <p class="text-lg text-white/70">Conheça as pessoas que tiveram suas vidas transformadas pelo MultiplicaRio.</p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <TestimonialCard 
-          quote="O apoio do Instituto foi fundamental quando mais precisei. Hoje meus filhos têm acesso à educação de qualidade e eu consegui um trabalho."
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <TestimonialCard
+          quote="O apoio do MultiplicaRio foi fundamental quando mais precisei. Hoje meus filhos têm acesso à educação de qualidade e eu consegui um trabalho."
           author="Maria Silva"
           role="Moradora da Penha"
           imagePath="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop"
         />
-        <TestimonialCard 
+        <TestimonialCard
           quote="Ser voluntário aqui me mostrou o verdadeiro significado de comunidade. A transformação que vemos todos os dias é emocionante."
           author="João Ferreira"
-          role="Voluntário - Área de Saúde"
+          role="Voluntário — Área de Saúde"
           imagePath="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
         />
       </div>
     </div>
   </section>
 
-  <!-- Como sua doação ajuda -->
-  <section class="py-24 bg-bg-offwhite">
+  <!-- ───── COMO SUA DOAÇÃO AJUDA ───── -->
+  <section class="py-20 md:py-28 bg-bg-offwhite">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="font-serif text-4xl font-bold text-primary-dark mb-6">Como sua doação ajuda</h2>
-        <p class="text-lg text-text-body/80">Cada contribuição é transformada diretamente em ações que mudam a realidade da nossa região.</p>
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="section-label mb-4 block w-fit mx-auto">Transparência</span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">Como sua doação ajuda</h2>
+        <p class="text-lg text-text-body/75">Cada contribuição é transformada diretamente em ações que mudam a realidade da nossa região.</p>
       </div>
-      
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <DonationTierCard amount="30" impact="Garante material escolar completo para uma criança durante um mês." />
         <DonationTierCard amount="80" impact="Custeia uma cesta básica nutritiva para uma família em situação de vulnerabilidade." isPopular={true} />
@@ -295,84 +398,57 @@ const heroImage = "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?
     </div>
   </section>
 
-  <!-- Parceiros e Selos -->
-  <section class="py-24 bg-white border-t border-gray-100">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
-      <h2 class="font-serif text-3xl font-bold text-primary-dark mb-12">Selos e Certificações</h2>
-      
-      <div class="flex flex-wrap justify-center gap-8 items-center grayscale hover:grayscale-0 transition-all duration-500">
-        <!-- Placeholders para selos -->
-        <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
-          <span class="text-xs font-bold text-gray-600 text-center px-2">[Selo de Transparência]</span>
-        </div>
-        <div class="w-40 h-24 bg-white rounded-xl flex items-center justify-center shadow-sm border border-gray-200">
-          <span class="text-xs font-bold text-gray-600 text-center px-2">[Conselho Municipal]</span>
-        </div>
-        <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
-          <span class="text-xs font-bold text-gray-600 text-center px-2">[OSCIP]</span>
-        </div>
+  <!-- ───── OUTRAS FORMAS ───── -->
+  <section class="py-20 md:py-28 bg-bg-lightgreen relative overflow-hidden">
+    <div class="absolute bottom-0 right-0 w-1/3 h-full dot-pattern opacity-20 pointer-events-none"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
+      <div class="text-center mb-12">
+        <span class="section-label mb-4 block w-fit mx-auto">Participe</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Outras Formas de se Envolver</h2>
+        <p class="text-lg text-text-body/75">O seu tempo e os seus bens também são muito valiosos para nós.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Formas de se envolver -->
-  <section class="py-24 bg-bg-lightgreen">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
-      <h2 class="font-serif text-3xl font-bold text-primary-dark mb-6">Outras Formas de se Envolver</h2>
-      <p class="text-lg text-text-body/80 mb-12">O seu tempo e os seus bens também são muito valiosos para nós.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-          <div class="flex items-center gap-4 mb-4">
-            <Users class="w-8 h-8 text-secondary" aria-hidden="true" />
-            <h3 class="font-serif text-2xl font-bold text-primary-dark">Voluntariado</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        <div class="group bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 bg-secondary/30 rounded-2xl flex items-center justify-center mb-5">
+            <Users class="w-7 h-7 text-secondary-dark" aria-hidden="true" />
           </div>
-          <p class="text-text-body/80 mb-6 leading-relaxed">
-            Junte-se ao nosso time! Precisamos de profissionais e pessoas com vontade de ajudar em eventos e rotinas da ONG.
-          </p>
-          <a href="/como-ajudar" class="inline-block text-primary font-bold hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm p-1 -ml-1">
-            Quero ser voluntário &rarr;
+          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-3">Voluntariado</h3>
+          <p class="text-text-body/70 mb-6 leading-relaxed">Junte-se ao nosso time! Precisamos de profissionais e pessoas com vontade de ajudar em eventos e rotinas da ONG.</p>
+          <a href="/como-ajudar" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+            Quero ser voluntário <ArrowRight class="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
           </a>
         </div>
-        
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-          <div class="flex items-center gap-4 mb-4">
-            <Brush class="w-8 h-8 text-accent" aria-hidden="true" />
-            <h3 class="font-serif text-2xl font-bold text-primary-dark">Doação de Itens</h3>
+
+        <div class="group bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 bg-accent/15 rounded-2xl flex items-center justify-center mb-5">
+            <Brush class="w-7 h-7 text-accent-hover" aria-hidden="true" />
           </div>
-          <p class="text-text-body/80 mb-6 leading-relaxed">
-            Aceitamos roupas, alimentos não perecíveis, brinquedos, móveis e material escolar. Entregue na nossa sede.
-          </p>
-          <a href="/como-ajudar" class="inline-block text-primary-dark font-bold hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm p-1 -ml-1">
-            Ver detalhes de doação &rarr;
+          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-3">Doação de Itens</h3>
+          <p class="text-text-body/70 mb-6 leading-relaxed">Aceitamos roupas, alimentos não perecíveis, brinquedos, móveis e material escolar. Entregue na nossa sede.</p>
+          <a href="/como-ajudar" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+            Ver detalhes <ArrowRight class="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- ───── CTA ───── -->
   <CTASection />
+
 </BaseLayout>
 
 <script>
-  // Script para o carrossel de ações realizadas
   document.addEventListener('DOMContentLoaded', () => {
     const actionsCarousel = document.getElementById('actions-carousel');
     const prevBtn = document.getElementById('prev-action');
     const nextBtn = document.getElementById('next-action');
 
     if (actionsCarousel && prevBtn && nextBtn) {
-      // Avança a largura de aproximadamente 1 card
-      const scrollAmount = 350; 
-      
-      prevBtn.addEventListener('click', () => {
-        actionsCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        actionsCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
+      const scrollAmount = 380;
+      prevBtn.addEventListener('click', () => { actionsCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
+      nextBtn.addEventListener('click', () => { actionsCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
     }
   });
 </script>

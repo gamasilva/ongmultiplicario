@@ -1,6 +1,5 @@
 ---
 import { Quote } from 'lucide-astro';
-import { Image } from 'astro:assets';
 
 interface Props {
   quote: string;
@@ -12,24 +11,27 @@ interface Props {
 const { quote, author, role, imagePath } = Astro.props;
 ---
 
-<div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative">
-  <Quote class="absolute top-6 left-6 w-10 h-10 text-bg-lightgreen opacity-50" aria-hidden="true" />
-  <div class="relative z-10">
-    <p class="text-text-body/80 italic mb-6 text-lg leading-relaxed pt-4">"{quote}"</p>
-    <div class="flex items-center gap-4">
-      <div class="w-14 h-14 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
-        {imagePath ? (
-           <img src={imagePath} alt={`Foto de ${author}`} width="56" height="56" class="w-full h-full object-cover" loading="lazy" decoding="async" />
-        ) : (
-          <div class="w-full h-full bg-bg-lightgreen flex items-center justify-center text-primary font-bold text-xl">
-            {author.charAt(0)}
-          </div>
-        )}
-      </div>
-      <div>
-        <p class="font-bold text-primary-dark">{author}</p>
-        <span class="text-sm text-gray-500">{role}</span>
-      </div>
+<div class="bg-white/10 backdrop-blur-sm border border-white/15 p-8 rounded-3xl relative overflow-hidden">
+  <!-- Decoração de fundo -->
+  <div class="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-primary opacity-10"></div>
+  <Quote class="absolute top-6 right-7 w-9 h-9 text-secondary opacity-40" aria-hidden="true" />
+
+  <!-- Autor no topo (padrão moderno) -->
+  <div class="flex items-center gap-4 mb-6">
+    <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-secondary/40 shadow-md">
+      {imagePath ? (
+        <img src={imagePath} alt={`Foto de ${author}`} width="56" height="56" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+      ) : (
+        <div class="w-full h-full bg-primary flex items-center justify-center text-primary-dark font-bold text-xl">
+          {author.charAt(0)}
+        </div>
+      )}
+    </div>
+    <div>
+      <p class="font-bold text-bg-offwhite text-base">{author}</p>
+      <span class="text-sm text-secondary/80 font-medium">{role}</span>
     </div>
   </div>
+
+  <p class="text-white/85 text-base leading-relaxed relative">"{quote}"</p>
 </div>

@@ -1,40 +1,125 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1B998B;
-  --color-primary-dark: #0E5C54;
-  --color-secondary: #FFC857;
-  --color-secondary-dark: #7A5800;
-  --color-accent: #F08A4B;
-  --color-accent-hover: #D97435;
-  --color-bg-offwhite: #FAF9F6;
-  --color-text-body: #2E2E2E;
-  --color-bg-lightgreen: #E8F3F1;
+  --color-primary: #ABE188;
+  --color-primary-dark: #5D675B;
+  --color-secondary: #F7EF99;
+  --color-secondary-dark: #5a5200;
+  --color-accent: #F78E69;
+  --color-accent-hover: #e07050;
+  --color-rose: #E8607A;
+  --color-rose-dark: #C44562;
+  --color-bg-offwhite: #FEFEFE;
+  --color-text-body: #2E2A1E;
+  --color-bg-lightgreen: #F7EF99;
 
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Fraunces', serif;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Âncoras (#quem-somos etc.) não ficam atrás do header sticky */
+    scroll-padding-top: 5.5rem;
+    /* Evita que o iOS aumente fontes ao girar a tela */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-bg-offwhite text-text-body font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Sem scroll horizontal acidental no mobile */
+    overflow-x: hidden;
+    /* Remove o flash cinza/azul ao tocar em links e botões */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Feedback tátil: leve afundar ao tocar/clicar em itens interativos */
+  a, button, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Respeita quem prefere menos animação (acessibilidade + conforto) */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-primary-dark;
+    @apply font-serif;
+    color: #2E2A1E;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
   }
 
-  /* Focus visible accessibility */
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-primary transition-all;
   }
 
-  /* Hide scrollbar for carousels */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+@layer utilities {
+  /* Pill label acima de títulos de seção */
+  .section-label {
+    @apply inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase
+           text-primary-dark bg-primary/20 px-4 py-1.5 rounded-full border border-primary/30;
+  }
+
+  .section-label-accent {
+    @apply inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase
+           text-accent-hover bg-accent/15 px-4 py-1.5 rounded-full border border-accent/30;
+  }
+
+  /* Padrão de pontos para seções */
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(91, 103, 91, 0.12) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+  }
+
+  /* Hover de card com elevação */
+  .card-lift {
+    @apply transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/20;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-fade-up-delay-1 { animation-delay: 0.1s; }
+  .animate-fade-up-delay-2 { animation-delay: 0.2s; }
+  .animate-fade-up-delay-3 { animation-delay: 0.35s; }
+
+  /* Divisor ondulado */
+  .wave-top::before {
+    content: '';
+    display: block;
+    height: 60px;
+    background: inherit;
+    clip-path: ellipse(55% 100% at 50% 0%);
+    margin-top: -59px;
   }
 }

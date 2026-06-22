@@ -8,13 +8,14 @@ interface Props {
 const { iconName, title, description } = Astro.props;
 ---
 
-<div class="group bg-bg-offwhite rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-primary/20 transition-all duration-300 transform hover:-translate-y-1">
-  <div class="w-12 h-12 bg-bg-lightgreen text-primary rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-bg-offwhite transition-colors duration-300">
-    <!-- Slot for icon -->
+<div class="group bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary/30 transition-all duration-300 hover:-translate-y-1.5 flex flex-col">
+  <div class="w-14 h-14 bg-primary/15 text-primary-dark rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-md flex-shrink-0">
     <slot name="icon" />
   </div>
-  <h3 class="font-serif text-xl font-bold text-primary-dark mb-2">{title}</h3>
-  <p class="text-text-body/80 text-sm leading-relaxed">
-    {description}
-  </p>
+  <h3 class="font-serif text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-dark transition-colors">{title}</h3>
+  <p class="text-text-body/70 text-sm leading-relaxed flex-grow">{description}</p>
+  <div class="flex items-center gap-1.5 text-primary-dark text-sm font-bold mt-5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
+    <span>Saiba mais</span>
+    <span class="text-base leading-none">→</span>
+  </div>
 </div>

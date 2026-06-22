@@ -19,12 +19,12 @@ interface Props {
 const {
   title,
   fullTitle,
-  description = "Instituto MultiplicaRio — ONG sem fins lucrativos que atua em educação, saúde, cultura e assistência social na Penha, Rio de Janeiro.",
+  description = "MultiplicaRio — ONG sem fins lucrativos que atua em educação, saúde, cultura e assistência social na Penha, Rio de Janeiro.",
   image = "/images/og-image.webp",
   heroImage
 } = Astro.props;
 
-const pageTitle = fullTitle ?? `${title} | Instituto MultiplicaRio`;
+const pageTitle = fullTitle ?? `${title} | MultiplicaRio`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://institutomultiplica.rio');
 
 const jsonLd = {
@@ -33,9 +33,9 @@ const jsonLd = {
     {
       "@type": "NGO",
       "@id": "https://institutomultiplica.rio/#organization",
-      "name": "Instituto MultiplicaRio",
+      "name": "MultiplicaRio",
       "legalName": "Instituto de Desenvolvimento Social Cultural de Esporte e Lazer MultiplicaRio",
-      "alternateName": ["MultiplicaRio", "Instituto MultiplicaRio ONG"],
+      "alternateName": ["MultiplicaRio ONG", "MultiplicaRio Penha"],
       "url": "https://institutomultiplica.rio",
       "logo": {
         "@type": "ImageObject",
@@ -75,7 +75,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://institutomultiplica.rio/#website",
       "url": "https://institutomultiplica.rio",
-      "name": "Instituto MultiplicaRio",
+      "name": "MultiplicaRio",
       "description": description,
       "publisher": { "@id": "https://institutomultiplica.rio/#organization" },
       "inLanguage": "pt-BR"
@@ -90,13 +90,16 @@ const jsonLd = {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="alternate icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="mask-icon" href="/favicon.svg" color="#5D675B" />
+		<meta name="theme-color" content="#5D675B" />
 		<meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
 		<title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="author" content="Instituto MultiplicaRio" />
+    <meta name="author" content="MultiplicaRio" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- GEO / Local SEO -->
@@ -112,7 +115,7 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.url)} />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Instituto MultiplicaRio" />
+    <meta property="og:site_name" content="MultiplicaRio" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -128,6 +131,8 @@ const jsonLd = {
     <slot name="head" />
 
     <!-- Preconnect para imagens externas -->
+    <link rel="preconnect" href="https://i.ibb.co" crossorigin />
+    <link rel="dns-prefetch" href="https://i.ibb.co" />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
