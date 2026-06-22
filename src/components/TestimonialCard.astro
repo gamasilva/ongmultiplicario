@@ -11,14 +11,14 @@ interface Props {
 const { quote, author, role, imagePath } = Astro.props;
 ---
 
-<div class="bg-white/10 backdrop-blur-sm border border-white/15 p-8 rounded-3xl relative overflow-hidden">
+<div class="bg-white border border-gray-100 shadow-sm p-8 rounded-3xl relative overflow-hidden">
   <!-- Decoração de fundo -->
-  <div class="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-primary opacity-10"></div>
-  <Quote class="absolute top-6 right-7 w-9 h-9 text-secondary opacity-40" aria-hidden="true" />
+  <div class="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-primary/10"></div>
+  <Quote class="absolute top-6 right-7 w-9 h-9 text-primary/40" aria-hidden="true" />
 
   <!-- Autor no topo (padrão moderno) -->
   <div class="flex items-center gap-4 mb-6">
-    <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-secondary/40 shadow-md">
+    <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-primary/30 shadow-md">
       {imagePath ? (
         <img src={imagePath} alt={`Foto de ${author}`} width="56" height="56" class="w-full h-full object-cover" loading="lazy" decoding="async" />
       ) : (
@@ -28,10 +28,10 @@ const { quote, author, role, imagePath } = Astro.props;
       )}
     </div>
     <div>
-      <p class="font-bold text-bg-offwhite text-base">{author}</p>
-      <span class="text-sm text-secondary/80 font-medium">{role}</span>
+      <p class="font-bold text-gray-900 text-base">{author}</p>
+      <span class="text-sm text-primary-dark/80 font-medium">{role}</span>
     </div>
   </div>
 
-  <p class="text-white/85 text-base leading-relaxed relative">"{quote}"</p>
+  <p class="text-text-body/80 text-base leading-relaxed relative">"{quote}"</p>
 </div>

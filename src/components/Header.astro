@@ -1,19 +1,20 @@
 ---
 import DonateButton from './DonateButton.astro';
 import Logo from './Logo.astro';
-import { Menu, X } from 'lucide-astro';
+import { Menu, X, Home, Info, Sprout, HeartHandshake, ShieldCheck, HelpCircle, Mail, ChevronRight, Phone, MessageCircle, Instagram } from 'lucide-astro';
 
 const navItems = [
-  { href: '/', label: 'Início' },
-  { href: '/sobre', label: 'Sobre Nós' },
-  { href: '/areas-de-atuacao', label: 'Áreas de Atuação' },
-  { href: '/como-ajudar', label: 'Como Ajudar' },
-  { href: '/transparencia', label: 'Transparência' },
-  { href: '/duvidas-frequentes', label: 'Dúvidas Frequentes' },
-  { href: '/contato', label: 'Contato' },
+  { href: '/', label: 'Início', icon: Home },
+  { href: '/sobre', label: 'Sobre Nós', icon: Info },
+  { href: '/areas-de-atuacao', label: 'Áreas de Atuação', icon: Sprout },
+  { href: '/como-ajudar', label: 'Como Ajudar', icon: HeartHandshake },
+  { href: '/transparencia', label: 'Transparência', icon: ShieldCheck },
+  { href: '/duvidas-frequentes', label: 'Dúvidas Frequentes', icon: HelpCircle },
+  { href: '/contato', label: 'Contato', icon: Mail },
 ];
 
 const currentPath = Astro.url.pathname;
+const isActivePath = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
 
 <header class="sticky top-0 z-40 w-full bg-bg-offwhite/96 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -28,7 +29,7 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex space-x-1 xl:space-x-1.5 items-center" aria-label="Navegação Principal">
         {navItems.map((item) => {
-          const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+          const isActive = isActivePath(item.href);
           return (
             <a
               href={item.href}
@@ -52,7 +53,7 @@ const currentPath = Astro.url.pathname;
       <button
         id="mobile-menu-button"
         type="button"
-        class="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl text-text-body hover:text-primary-dark hover:bg-primary/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        class="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl text-primary-dark bg-primary/10 hover:bg-primary/20 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label="Abrir menu"
@@ -64,56 +65,100 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
+<!-- Overlay -->
 <div
   id="mobile-menu-overlay"
-  class="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm hidden"
+  class="lg:hidden fixed inset-0 z-40 bg-primary-dark/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
   aria-hidden="true"
 ></div>
 
+<!-- Drawer -->
 <div
   id="mobile-menu"
-  class="lg:hidden fixed inset-y-0 left-0 z-50 w-full max-w-xs bg-bg-offwhite shadow-2xl flex flex-col -translate-x-full transition-transform duration-300 ease-in-out"
+  class="lg:hidden fixed inset-y-0 right-0 z-50 w-[86%] max-w-sm bg-bg-offwhite shadow-2xl flex flex-col translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
   role="dialog"
   aria-modal="true"
   aria-label="Menu de navegação"
 >
-  <div class="flex items-center justify-between px-5 h-16 border-b border-gray-100 flex-shrink-0">
+  <!-- Cabeçalho do drawer -->
+  <div class="flex items-center justify-between px-5 h-16 sm:h-[72px] border-b border-gray-100 flex-shrink-0">
     <a href="/" class="mobile-nav-link rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="MultiplicaRio — Ir para o início">
       <Logo size="sm" />
     </a>
     <button
       id="close-mobile-menu"
       type="button"
-      class="flex items-center justify-center w-10 h-10 rounded-xl text-text-body hover:text-primary-dark hover:bg-primary/15 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      class="flex items-center justify-center w-10 h-10 rounded-xl text-text-body bg-gray-100 hover:bg-gray-200 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       aria-label="Fechar menu"
     >
       <X class="h-5 w-5" aria-hidden="true" />
     </button>
   </div>
 
-  <nav class="flex-grow overflow-y-auto px-3 py-4" aria-label="Menu mobile">
+  <!-- Navegação -->
+  <nav class="flex-grow overflow-y-auto px-3 py-5" aria-label="Menu mobile">
+    <p class="px-3 mb-2 text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gray-400 nav-anim">Navegação</p>
     {navItems.map((item) => {
-      const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+      const isActive = isActivePath(item.href);
+      const Icon = item.icon;
       return (
         <a
           href={item.href}
-          class={`mobile-nav-link flex items-center px-4 py-3.5 rounded-xl mb-1 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-            isActive
-              ? 'bg-primary/20 text-primary-dark'
-              : 'text-gray-900 hover:bg-primary/10 hover:text-primary-dark'
+          class={`mobile-nav-link nav-anim group relative flex items-center gap-3.5 pl-3 pr-2.5 py-2.5 rounded-2xl mb-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+            isActive ? 'bg-primary/10' : 'hover:bg-gray-50 active:bg-gray-100'
           }`}
           aria-current={isActive ? 'page' : undefined}
         >
-          {item.label}
+          {isActive && <span class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-7 bg-primary rounded-r-full" aria-hidden="true"></span>}
+          <span class={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
+            isActive ? 'bg-primary text-white shadow-sm' : 'bg-gray-100 text-gray-500 group-hover:bg-primary/15 group-hover:text-primary-dark'
+          }`}>
+            <Icon class="w-5 h-5" aria-hidden="true" />
+          </span>
+          <span class={`flex-grow text-[0.95rem] font-semibold ${isActive ? 'text-primary-dark' : 'text-gray-800'}`}>{item.label}</span>
+          <ChevronRight class={`w-4 h-4 flex-shrink-0 transition-all ${isActive ? 'text-primary-dark' : 'text-gray-300 group-hover:text-gray-400 group-hover:translate-x-0.5'}`} aria-hidden="true" />
         </a>
       );
     })}
   </nav>
 
-  <div class="flex-shrink-0 p-4 border-t border-gray-100">
-    <DonateButton class="w-full justify-center py-4 text-base shadow-lg" />
+  <!-- Rodapé do drawer -->
+  <div class="flex-shrink-0 px-4 pt-4 pb-5 border-t border-gray-100 space-y-4 bg-white">
+    <DonateButton class="w-full justify-center py-3.5 text-base shadow-lg" />
+    <div class="flex items-center justify-center gap-2.5">
+      <a href="tel:+552164594790" class="flex items-center justify-center w-11 h-11 rounded-xl bg-gray-100 text-gray-500 hover:bg-primary hover:text-white active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Ligar para o MultiplicaRio">
+        <Phone class="w-5 h-5" aria-hidden="true" />
+      </a>
+      <a href="https://wa.me/552164594790" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-11 h-11 rounded-xl bg-gray-100 text-gray-500 hover:bg-primary hover:text-white active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="WhatsApp do MultiplicaRio">
+        <MessageCircle class="w-5 h-5" aria-hidden="true" />
+      </a>
+      <a href="https://www.instagram.com/institutomultiplicario" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-11 h-11 rounded-xl bg-gray-100 text-gray-500 hover:bg-primary hover:text-white active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Instagram do MultiplicaRio">
+        <Instagram class="w-5 h-5" aria-hidden="true" />
+      </a>
+    </div>
   </div>
 </div>
+
+<style is:global>
+  @keyframes navItemIn {
+    from { opacity: 0; transform: translateX(16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  #mobile-menu.is-open .nav-anim {
+    animation: navItemIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  #mobile-menu.is-open .nav-anim:nth-child(1) { animation-delay: 0.04s; }
+  #mobile-menu.is-open .nav-anim:nth-child(2) { animation-delay: 0.08s; }
+  #mobile-menu.is-open .nav-anim:nth-child(3) { animation-delay: 0.12s; }
+  #mobile-menu.is-open .nav-anim:nth-child(4) { animation-delay: 0.16s; }
+  #mobile-menu.is-open .nav-anim:nth-child(5) { animation-delay: 0.20s; }
+  #mobile-menu.is-open .nav-anim:nth-child(6) { animation-delay: 0.24s; }
+  #mobile-menu.is-open .nav-anim:nth-child(7) { animation-delay: 0.28s; }
+  #mobile-menu.is-open .nav-anim:nth-child(8) { animation-delay: 0.32s; }
+  @media (prefers-reduced-motion: reduce) {
+    #mobile-menu.is-open .nav-anim { animation: none; }
+  }
+</style>
 
 <script>
   function initMobileMenu() {
@@ -126,16 +171,18 @@ const currentPath = Astro.url.pathname;
     if (!menuBtn || !closeBtn || !menu || !overlay) return;
 
     function openMenu() {
-      menu.classList.remove('-translate-x-full');
-      overlay.classList.remove('hidden');
+      menu.classList.remove('translate-x-full');
+      menu.classList.add('is-open');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
       menuBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
       setTimeout(() => closeBtn.focus(), 50);
     }
 
     function closeMenu() {
-      menu.classList.add('-translate-x-full');
-      overlay.classList.add('hidden');
+      menu.classList.add('translate-x-full');
+      menu.classList.remove('is-open');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
       menuBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       menuBtn.focus();

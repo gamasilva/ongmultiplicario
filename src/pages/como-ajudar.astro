@@ -10,7 +10,7 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
 <BaseLayout title={title} description={description}>
 
   <!-- ───── HERO COM IMAGEM ───── -->
-  <section class="relative bg-primary-dark overflow-hidden py-28 md:py-36 text-center">
+  <section class="relative bg-primary/15 overflow-hidden py-28 md:py-36 text-center">
     <div class="absolute inset-0 z-0">
       <img
         src="https://i.ibb.co/XZHsd9ys/Whats-App-Image-2026-06-22-at-07-27-59-3.jpg"
@@ -19,17 +19,17 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
         class="w-full h-full object-cover opacity-20"
         fetchpriority="high" decoding="async"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/60 via-primary-dark/80 to-primary-dark"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-offwhite/90 via-bg-offwhite/75 to-bg-offwhite/20"></div>
       <div class="absolute inset-0 dot-pattern opacity-20 pointer-events-none"></div>
     </div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
-      <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary bg-secondary/15 px-4 py-1.5 rounded-full border border-secondary/30 mb-6">
+      <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary-dark bg-secondary/40 px-4 py-1.5 rounded-full border border-secondary/60 mb-6">
         ✦ Faça a diferença
       </span>
-      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-bg-offwhite mb-6" style="letter-spacing: -0.03em;">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6" style="letter-spacing: -0.03em;">
         Como Ajudar
       </h1>
-      <p class="text-xl text-white/75 leading-relaxed max-w-2xl mx-auto">
+      <p class="text-xl text-text-body/75 leading-relaxed max-w-2xl mx-auto">
         Sua doação é segura e transparente. Existem várias formas de multiplicar a esperança — escolha a que melhor se adapta a você.
       </p>
     </div>
@@ -125,23 +125,23 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
   </section>
 
   <!-- ───── OUTRAS FORMAS ───── -->
-  <section class="py-24 bg-primary-dark relative overflow-hidden">
+  <section class="py-24 bg-primary/10 relative overflow-hidden">
     <div class="absolute inset-0 dot-pattern opacity-20 pointer-events-none"></div>
-    <div class="absolute top-0 right-0 w-72 h-72 rounded-full bg-primary/10 -mt-20 -mr-20 blur-3xl pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-72 h-72 rounded-full bg-secondary/20 -mt-20 -mr-20 blur-3xl pointer-events-none"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
       <div class="text-center mb-14">
-        <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary bg-secondary/15 px-4 py-1.5 rounded-full border border-secondary/30 mb-5">
+        <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary-dark bg-secondary/40 px-4 py-1.5 rounded-full border border-secondary/60 mb-5">
           Mais formas de ajudar
         </span>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-bg-offwhite mb-4">Outras Formas de Multiplicar</h2>
-        <p class="text-lg text-white/65">O seu tempo e os seus bens também são muito valiosos para nós.</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Outras Formas de Multiplicar</h2>
+        <p class="text-lg text-text-body/65">O seu tempo e os seus bens também são muito valiosos para nós.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
         <!-- Voluntariado -->
-        <div class="group rounded-3xl overflow-hidden shadow-lg border border-white/10 flex flex-col">
+        <div class="group rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col bg-white">
           <div class="h-48 overflow-hidden relative">
             <img
               src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=700&auto=format&fit=crop&q=80"
@@ -149,14 +149,14 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy" decoding="async"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             <div class="absolute top-4 left-4 w-10 h-10 bg-secondary rounded-xl flex items-center justify-center shadow-md">
               <Users class="w-5 h-5 text-secondary-dark" aria-hidden="true" />
             </div>
           </div>
-          <div class="bg-white/8 backdrop-blur-sm p-7 flex flex-col flex-grow border-t border-white/10">
-            <h3 class="font-serif text-xl font-bold text-bg-offwhite mb-3">Voluntariado</h3>
-            <p class="text-white/70 text-sm leading-relaxed mb-5 flex-grow">
+          <div class="p-7 flex flex-col flex-grow border-t border-gray-100">
+            <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">Voluntariado</h3>
+            <p class="text-text-body/70 text-sm leading-relaxed mb-5 flex-grow">
               Junte-se ao nosso time! Precisamos de profissionais de saúde, professores, advogados e pessoas com vontade de ajudar em eventos e rotinas da ONG.
             </p>
             <a href="/contato" class="inline-flex items-center gap-2 bg-secondary text-secondary-dark font-bold px-5 py-2.5 rounded-full text-sm hover:bg-secondary/90 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
@@ -166,7 +166,7 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
         </div>
 
         <!-- Parcerias Corporativas -->
-        <div class="group rounded-3xl overflow-hidden shadow-lg border border-white/10 flex flex-col">
+        <div class="group rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col bg-white">
           <div class="h-48 overflow-hidden relative">
             <img
               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&auto=format&fit=crop&q=80"
@@ -174,24 +174,24 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy" decoding="async"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            <div class="absolute top-4 left-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute top-4 left-4 w-10 h-10 bg-primary/80 rounded-xl flex items-center justify-center shadow-md">
               <Building2 class="w-5 h-5 text-white" aria-hidden="true" />
             </div>
           </div>
-          <div class="bg-white/8 backdrop-blur-sm p-7 flex flex-col flex-grow border-t border-white/10">
-            <h3 class="font-serif text-xl font-bold text-bg-offwhite mb-3">Parcerias Corporativas</h3>
-            <p class="text-white/70 text-sm leading-relaxed mb-5 flex-grow">
+          <div class="p-7 flex flex-col flex-grow border-t border-gray-100">
+            <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">Parcerias Corporativas</h3>
+            <p class="text-text-body/70 text-sm leading-relaxed mb-5 flex-grow">
               Sua empresa pode multiplicar impacto! Oferecemos opções de patrocínio a projetos, voluntariado corporativo e doações via dedução fiscal.
             </p>
-            <a href="/contato" class="inline-flex items-center gap-2 border-2 border-white/30 text-bg-offwhite font-bold px-5 py-2.5 rounded-full text-sm hover:bg-white/10 hover:border-white/50 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <a href="/contato" class="inline-flex items-center gap-2 border-2 border-primary-dark/30 text-primary-dark font-bold px-5 py-2.5 rounded-full text-sm hover:bg-primary/10 hover:border-primary-dark/50 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
               Ser empresa parceira <ArrowRight class="w-4 h-4" aria-hidden="true" />
             </a>
           </div>
         </div>
 
         <!-- Doação de Itens -->
-        <div class="group rounded-3xl overflow-hidden shadow-lg border border-white/10 flex flex-col">
+        <div class="group rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col bg-white">
           <div class="h-48 overflow-hidden relative">
             <img
               src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=700&auto=format&fit=crop&q=80"
@@ -199,17 +199,17 @@ const description = "Faça sua doação via PIX, torne-se um voluntário ou doe 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy" decoding="async"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             <div class="absolute top-4 left-4 w-10 h-10 bg-accent/80 rounded-xl flex items-center justify-center shadow-md">
               <Gift class="w-5 h-5 text-white" aria-hidden="true" />
             </div>
           </div>
-          <div class="bg-white/8 backdrop-blur-sm p-7 flex flex-col flex-grow border-t border-white/10">
-            <h3 class="font-serif text-xl font-bold text-bg-offwhite mb-3">Doação de Itens</h3>
-            <p class="text-white/70 text-sm leading-relaxed mb-5 flex-grow">
+          <div class="p-7 flex flex-col flex-grow border-t border-gray-100">
+            <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">Doação de Itens</h3>
+            <p class="text-text-body/70 text-sm leading-relaxed mb-5 flex-grow">
               Aceitamos roupas em bom estado, alimentos não perecíveis, brinquedos, móveis e material escolar. Entregue diretamente em nossa sede na Penha.
             </p>
-            <a href="/contato" class="inline-flex items-center gap-2 border-2 border-white/30 text-bg-offwhite font-bold px-5 py-2.5 rounded-full text-sm hover:bg-white/10 hover:border-white/50 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <a href="/contato" class="inline-flex items-center gap-2 border-2 border-primary-dark/30 text-primary-dark font-bold px-5 py-2.5 rounded-full text-sm hover:bg-primary/10 hover:border-primary-dark/50 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
               Ver endereço <ArrowRight class="w-4 h-4" aria-hidden="true" />
             </a>
           </div>
