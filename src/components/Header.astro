@@ -17,26 +17,53 @@ const currentPath = Astro.url.pathname;
 const isActivePath = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
 ---
 
-<header class="sticky top-0 z-40 w-full bg-bg-offwhite/96 backdrop-blur-md border-b border-gray-100 shadow-sm">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 sm:h-[72px]">
+<header class="sticky top-0 z-40 w-full pt-3 pb-3 bg-transparent">
 
-      <!-- Logo -->
-      <a href="/" class="flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1" aria-label="MultiplicaRio — Início">
+  <!-- ── Mobile: pill flutuante ── -->
+  <div class="lg:hidden px-4">
+    <div class="flex items-center justify-between h-[3.5rem] px-4
+      bg-white/55 backdrop-blur-2xl rounded-2xl
+      shadow-[0_8px_32px_rgba(0,0,0,0.10)]
+      border border-white/60 ring-1 ring-inset ring-white/30">
+
+      <a href="/" class="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1" aria-label="Instituto MultiplicaRio — Início">
+        <Logo size="sm" />
+      </a>
+
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="flex items-center justify-center w-10 h-10 rounded-xl text-primary-dark bg-primary/10 hover:bg-primary/20 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Abrir menu"
+      >
+        <Menu class="h-5 w-5" aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Desktop: pill flutuante ── -->
+  <div class="hidden lg:flex px-6 xl:px-10 max-w-[1400px] mx-auto">
+    <div class="flex items-center justify-between w-full h-[60px] px-6
+      bg-white/55 backdrop-blur-2xl rounded-2xl
+      shadow-[0_8px_32px_rgba(0,0,0,0.10)]
+      border border-white/60 ring-1 ring-inset ring-white/30">
+
+      <a href="/" class="flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1" aria-label="Instituto MultiplicaRio — Início">
         <Logo class="group-hover:[&>span:first-child]:scale-105" />
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex space-x-1 xl:space-x-1.5 items-center" aria-label="Navegação Principal">
+      <nav class="flex space-x-0.5 xl:space-x-1 items-center" aria-label="Navegação Principal">
         {navItems.map((item) => {
           const isActive = isActivePath(item.href);
           return (
             <a
               href={item.href}
-              class={`font-medium text-sm transition-all px-3 py-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+              class={`font-medium text-sm transition-all px-3 py-2 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                 isActive
-                  ? 'text-primary-dark font-bold bg-primary/15'
-                  : 'text-text-body hover:text-primary-dark hover:bg-primary/10'
+                  ? 'text-primary-dark font-bold bg-primary/20'
+                  : 'text-text-body hover:text-primary-dark hover:bg-white/60'
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -44,22 +71,10 @@ const isActivePath = (href: string) => href === '/' ? currentPath === '/' : curr
             </a>
           );
         })}
-        <div class="ml-2">
+        <div class="ml-3">
           <DonateButton />
         </div>
       </nav>
-
-      <!-- Botão hambúrguer (mobile) -->
-      <button
-        id="mobile-menu-button"
-        type="button"
-        class="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl text-primary-dark bg-primary/10 hover:bg-primary/20 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-        aria-label="Abrir menu"
-      >
-        <Menu class="h-5 w-5" aria-hidden="true" />
-      </button>
 
     </div>
   </div>
