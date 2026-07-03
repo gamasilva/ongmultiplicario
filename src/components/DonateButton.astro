@@ -1,0 +1,26 @@
+---
+import { Heart } from 'lucide-astro';
+
+interface Props {
+  class?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+}
+
+const { class: className = '', variant = 'primary' } = Astro.props;
+
+const baseStyles = "inline-flex items-center gap-2 font-bold rounded-full transition-all active:scale-[0.97] select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+
+const variants = {
+  primary: "bg-rose hover:bg-rose-dark text-white px-6 py-3 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus-visible:ring-rose",
+  secondary: "bg-white border-2 border-rose text-rose hover:bg-rose hover:text-white px-6 py-3 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 focus-visible:ring-rose",
+  outline: "border-2 border-white text-white hover:bg-white hover:text-rose px-6 py-3 focus-visible:ring-white"
+};
+---
+
+<a
+  href="/como-ajudar"
+  class={`${baseStyles} ${variants[variant]} ${className}`}
+>
+  <Heart class="w-5 h-5" aria-hidden="true" />
+  Doe Agora
+</a>

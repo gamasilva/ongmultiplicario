@@ -1,0 +1,22 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  delay?: number;
+}
+
+const { value, label, delay = 0 } = Astro.props;
+---
+
+<div
+  class="flex-1 flex flex-col items-center justify-center p-8 md:p-10 text-center relative overflow-hidden"
+  style={`animation-delay: ${delay}ms;`}
+>
+  <!-- Decorative circle -->
+  <div class="absolute -top-6 -right-6 w-20 h-20 rounded-full opacity-10 bg-primary-dark"></div>
+  <div class="relative text-primary-dark">
+    <span class="font-serif text-5xl md:text-6xl font-bold drop-shadow-sm block" style="letter-spacing: -0.03em;">{value}</span>
+    <div class="w-10 h-0.5 mx-auto my-3 rounded-full opacity-20 bg-primary-dark"></div>
+    <span class="text-xs md:text-sm font-bold tracking-[0.15em] uppercase opacity-75">{label}</span>
+  </div>
+</div>

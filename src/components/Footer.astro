@@ -1,0 +1,129 @@
+---
+import Logo from './Logo.astro';
+import { Facebook, Instagram, MessageCircle, Mail, MapPin, Phone, ArrowRight } from 'lucide-astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-bg-lightgreen border-t border-primary-dark/10 relative overflow-hidden">
+  <!-- Decoração sutil -->
+  <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary-dark/5 -mb-32 -mr-32 pointer-events-none"></div>
+
+  <!-- Conteúdo principal do rodapé -->
+  <div class="relative z-10 pt-14 pb-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+        <!-- Mini Sobre -->
+        <div class="space-y-5 lg:col-span-1">
+          <Logo />
+          <p class="text-primary-dark/85 text-sm leading-relaxed">
+            Ajudando a cuidar de vidas e multiplicar esperança. Promovemos o bem-estar e o desenvolvimento social na Penha e região.
+          </p>
+          <!-- Redes Sociais -->
+          <div class="flex space-x-3 pt-2">
+            <a href="https://www.instagram.com/institutomultiplicario" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-primary-dark/10 rounded-xl flex items-center justify-center text-primary-dark hover:bg-primary-dark hover:text-white active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark" aria-label="Instagram do MultiplicaRio">
+              <Instagram class="w-5 h-5" aria-hidden="true" />
+            </a>
+            <a href="https://www.facebook.com/institutomultiplicario" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-primary-dark/10 rounded-xl flex items-center justify-center text-primary-dark hover:bg-primary-dark hover:text-white active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark" aria-label="Facebook do MultiplicaRio">
+              <Facebook class="w-5 h-5" aria-hidden="true" />
+            </a>
+            <a href="https://wa.me/552164594790" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-primary-dark/10 rounded-xl flex items-center justify-center text-primary-dark hover:bg-primary-dark hover:text-white active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark" aria-label="WhatsApp do MultiplicaRio">
+              <MessageCircle class="w-5 h-5" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Rápidos -->
+        <div class="space-y-5">
+          <h3 class="text-xs font-bold tracking-[0.15em] uppercase text-primary-dark/90">Links Rápidos</h3>
+          <nav class="flex flex-col space-y-2.5" aria-label="Navegação do Rodapé">
+            {[
+              { href: '/sobre', label: 'Quem Somos' },
+              { href: '/areas-de-atuacao', label: 'O que fazemos' },
+              { href: '/como-ajudar', label: 'Como Ajudar' },
+              { href: '/transparencia', label: 'Transparência' },
+              { href: '/noticias', label: 'Notícias' },
+              { href: '/duvidas-frequentes', label: 'Dúvidas Frequentes' },
+              { href: '/contato', label: 'Contato' },
+            ].map(item => (
+              <a href={item.href} class="text-primary-dark/85 hover:text-primary-dark transition-colors text-sm w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm font-medium">
+                {item.label}
+              </a>
+            ))}
+            <a href="/privacidade" class="text-primary-dark/80 hover:text-primary-dark transition-colors text-xs w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm mt-2 pt-3 border-t border-primary-dark/25 block">
+              Política de Privacidade
+            </a>
+          </nav>
+        </div>
+
+        <!-- Contato -->
+        <div class="space-y-5">
+          <h3 class="text-xs font-bold tracking-[0.15em] uppercase text-primary-dark/90">Contato</h3>
+          <address class="not-italic flex flex-col space-y-4 text-sm text-primary-dark/85">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-primary-dark/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin class="w-4 h-4 text-primary-dark" aria-hidden="true" />
+              </div>
+              <span class="leading-relaxed text-primary-dark/95">
+                <strong class="text-xs text-primary-dark block font-bold">Polo de Atividades:</strong>
+                Rua Ingaí, 21 — Penha, RJ<br/>
+                <span class="text-primary-dark/80 text-xs">(Próximo à Casa do Marinheiro / Av. Brasil)</span>
+              </span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-primary-dark/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin class="w-4 h-4 text-primary-dark/80" aria-hidden="true" />
+              </div>
+              <span class="leading-relaxed text-xs text-primary-dark/85">
+                <strong class="text-primary-dark/95 block font-bold">Sede Administrativa:</strong>
+                Rua Montevideo, 824 - Loja F, Penha
+              </span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-primary-dark/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Phone class="w-4 h-4 text-primary-dark" aria-hidden="true" />
+              </div>
+              <a href="tel:+552164594790" class="hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm font-medium">(21) 6459-4790</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-primary-dark/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Mail class="w-4 h-4 text-primary-dark" aria-hidden="true" />
+              </div>
+              <a href="mailto:imultiplicar@gmail.com" class="hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm break-all font-medium">imultiplicar@gmail.com</a>
+            </div>
+          </address>
+        </div>
+
+        <!-- Horário / Dados legais -->
+        <div class="space-y-5">
+          <h3 class="text-xs font-bold tracking-[0.15em] uppercase text-primary-dark/90">Institucional</h3>
+          <div class="space-y-3 text-sm text-primary-dark/85">
+            <p class="leading-relaxed">Segunda a Sexta<br/><span class="text-primary-dark/80 text-xs font-medium">09h às 18h</span></p>
+            <div class="pt-3 border-t border-primary-dark/25">
+              <p class="text-primary-dark/80 text-xs mb-1">CNPJ</p>
+              <p class="font-mono text-primary-dark/95 select-all text-xs font-bold">62.559.044/0001-03</p>
+            </div>
+            <div>
+              <p class="text-primary-dark/80 text-xs mb-1">Organização</p>
+              <p class="text-xs leading-relaxed">Sem fins lucrativos · OSCIP</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Linha final -->
+      <div class="pt-8 border-t border-primary-dark/25 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-primary-dark/80">
+        <p>&copy; {currentYear} Instituto MultiplicaRio. Todos os direitos reservados.</p>
+        <p class="font-medium">Feito com ♥ para a comunidade da Penha, RJ</p>
+        <p>Desenvolvido por <a
+          href="https://www.autosocialflow.com.br/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-bold bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 rounded-sm"
+        >Auto Social Flow</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

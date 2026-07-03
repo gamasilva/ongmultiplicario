@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTASection from '../components/CTASection.astro';
+import { ArrowRight, Calendar, HeartHandshake, CheckCircle } from 'lucide-astro';
+
+const title = "Últimas Notícias & Ações";
+const description = "Acompanhe os projetos, mutirões de saúde, palestras de empregabilidade e ações sociais realizadas pelo Instituto MultiplicaRio na Penha.";
+---
+
+<BaseLayout title={title} description={description}>
+
+  <!-- ───── HERO COM IMAGEM ───── -->
+  <section class="relative bg-primary/15 overflow-hidden py-24 md:py-32">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&auto=format&fit=crop&q=80"
+        alt="Crianças sorrindo em projeto social"
+        width="1400" height="800"
+        class="w-full h-full object-cover opacity-15"
+        fetchpriority="high" decoding="async"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-bg-offwhite/95 via-bg-offwhite/80 to-bg-offwhite/20"></div>
+      <div class="absolute inset-0 dot-pattern opacity-20 pointer-events-none"></div>
+    </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10">
+      <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.14em] uppercase text-secondary-dark bg-secondary/40 px-4 py-1.5 rounded-full border border-secondary/60 mb-6">
+        Notícias & Atividades
+      </span>
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6" style="letter-spacing: -0.03em;">
+        Últimas Ações & Novidades
+      </h1>
+      <p class="text-xl text-text-body/75 leading-relaxed max-w-2xl mx-auto">
+        Acompanhe o impacto diário, projetos recentes e o andamento das ações do MultiplicaRio diretamente na comunidade.
+      </p>
+    </div>
+  </section>
+
+  <!-- ───── CONTEÚDO PRINCIPAL (FILTROS + GRID) ───── -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      
+      <!-- Filtros por Categoria -->
+      <div class="flex flex-wrap justify-center items-center gap-2 mb-14" id="filters-container">
+        {[
+          { id: "all", label: "Todas" },
+          { id: "saude", label: "Saúde" },
+          { id: "capacitacao", label: "Capacitação" },
+          { id: "cidadania", label: "Cidadania" },
+          { id: "cultura", label: "Cultura" },
+          { id: "educacao", label: "Educação" }
+        ].map((filter, index) => (
+          <button
+            type="button"
+            data-filter={filter.id}
+            class={`filter-btn px-6 py-2.5 rounded-full font-bold text-sm border transition-all duration-200 cursor-pointer ${
+              index === 0 
+                ? 'bg-primary-dark text-white border-primary-dark shadow-md' 
+                : 'bg-bg-offwhite text-text-body border-gray-200 hover:bg-gray-50'
+            }`}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- Grid de Artigos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-grid">
+        {[
+          {
+            img: "https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg",
+            tag: "Saúde",
+            catId: "saude",
+            date: "28 Jun, 2026",
+            title: "Mutirão de Saúde Comunitária na Penha",
+            desc: "Oferecemos aferição de pressão arterial, testes de glicemia e sessões de reflexologia gratuitas para mais de 100 moradores locais no último sábado.",
+            alt: "Atendimento de saúde na comunidade"
+          },
+          {
+            img: "https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg",
+            tag: "Capacitação",
+            catId: "capacitacao",
+            date: "15 Jun, 2026",
+            title: "Palestra de Jovens Aprendizes Lotada",
+            desc: "Em parceria com o Instituto do Trabalhador, reunimos dezenas de jovens de 14 a 23 anos para orientação vocacional e inserção no mercado de trabalho.",
+            alt: "Palestra de capacitação para jovens"
+          },
+          {
+            img: "https://i.ibb.co/zVpZxwMh/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg",
+            tag: "Cidadania",
+            catId: "cidadania",
+            date: "05 Jun, 2026",
+            title: "Dia de Aconselhamento Jurídico e Previdenciário",
+            desc: "Advogados voluntários deram orientações gratuitas sobre aposentadoria do INSS, LOAS, BPC e outros benefícios de assistência social.",
+            alt: "Orientação jurídica na sede administrativa"
+          },
+          {
+            img: "https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg",
+            tag: "Saúde",
+            catId: "saude",
+            date: "22 Mai, 2026",
+            title: "Atendimento Terapêutico para Mulheres",
+            desc: "Iniciamos o novo grupo de acolhimento emocional e escuta qualificada para mulheres da Penha, focado em saúde mental e bem-estar integral.",
+            alt: "Grupo terapêutico para mulheres"
+          },
+          {
+            img: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=800&auto=format&fit=crop&q=80",
+            tag: "Cultura",
+            catId: "cultura",
+            date: "10 Mai, 2026",
+            title: "Aulas Populares de Pandeiro e Cavaco",
+            desc: "O Polo de Atividades da Penha recebeu os primeiros alunos da oficina de instrumentos regionais, estimulando inclusão e resgate de nossa cultura local.",
+            alt: "Aulas de música popular e regional"
+          },
+          {
+            img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&auto=format&fit=crop&q=80",
+            tag: "Educação",
+            catId: "educacao",
+            date: "18 Abr, 2026",
+            title: "Entrega de Kits Escolares Completos",
+            desc: "Graças a doações de parceiros, entregamos mais de 80 kits escolares completos com mochilas e cadernos para crianças de escolas públicas.",
+            alt: "Kits escolares para estudantes da comunidade"
+          }
+        ].map((news) => (
+          <article class="news-card group bg-bg-offwhite rounded-3xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full" data-category={news.catId}>
+            <div class="h-56 overflow-hidden relative flex-shrink-0">
+              <img src={news.img} alt={news.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 flex gap-2">
+                <span class="bg-primary-dark/95 text-white text-[0.7rem] font-bold tracking-wider uppercase px-3 py-1 rounded-full backdrop-blur-sm">
+                  {news.tag}
+                </span>
+              </div>
+            </div>
+            <div class="p-7 flex flex-col flex-grow">
+              <time class="text-xs font-semibold text-primary-dark/85 mb-2 block">{news.date}</time>
+              <h3 class="font-serif text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-primary-dark transition-colors">
+                {news.title}
+              </h3>
+              <p class="text-text-body/70 text-sm leading-relaxed mb-6 flex-grow">{news.desc}</p>
+              <a href="/contato" class="inline-flex items-center gap-1.5 text-primary-dark font-bold text-sm group-hover:gap-2.5 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+                Saber mais e participar <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── SEÇÃO DE CONTRIBUIÇÃO / SIDEBAR DE IMPACTO ───── -->
+  <section class="py-16 md:py-24 bg-bg-offwhite border-t border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center space-y-6">
+      <HeartHandshake class="w-12 h-12 text-accent mx-auto" aria-hidden="true" />
+      <h2 class="font-serif text-2xl md:text-3xl font-bold text-gray-900">Tem alguma pauta ou quer sugerir um mutirão?</h2>
+      <p class="text-lg text-text-body/75 max-w-2xl mx-auto">
+        Toda ação de sucesso nasce da nossa comunidade. Se você vê uma necessidade de saúde, cidadania ou educação em seu bairro, entre em contato e faça parte da equipe voluntária.
+      </p>
+      <div class="pt-4">
+        <a href="/contato" class="inline-flex items-center justify-center bg-primary text-white hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/30 px-8 py-3.5 rounded-full font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary text-base">
+          Entrar em Contato
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── CTA FINAL ───── -->
+  <CTASection />
+
+</BaseLayout>
+
+<script>
+  function initFilters() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.news-card');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Remove classes ativas de todos
+        buttons.forEach((b) => {
+          b.classList.remove('bg-primary-dark', 'text-white', 'border-primary-dark', 'shadow-md');
+          b.classList.add('bg-bg-offwhite', 'text-text-body', 'border-gray-200');
+        });
+
+        // Adiciona classe ativa no botão clicado
+        btn.classList.remove('bg-bg-offwhite', 'text-text-body', 'border-gray-200');
+        btn.classList.add('bg-primary-dark', 'text-white', 'border-primary-dark', 'shadow-md');
+
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach((card: any) => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  // Rodar no carregamento inicial e no carregamento de novas rotas (Astro view-transitions)
+  document.addEventListener('DOMContentLoaded', initFilters);
+  document.addEventListener('astro:page-load', initFilters);
+</script>

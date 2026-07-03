@@ -1,0 +1,39 @@
+---
+import { Quote } from 'lucide-astro';
+
+interface Props {
+  quote: string;
+  author: string;
+  role: string;
+  imagePath?: string;
+}
+
+const { quote, author, role, imagePath } = Astro.props;
+---
+
+<div class="bg-gradient-to-tr from-white to-primary/5 border border-gray-100/80 shadow-sm p-8 rounded-[2rem] relative overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary/20 group">
+  <!-- Decoração de fundo com animação suave de pulsação -->
+  <div class="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-primary/10 group-hover:scale-110 transition-transform duration-500"></div>
+  <Quote class="absolute top-6 right-7 w-10 h-10 text-primary/30 group-hover:text-primary-dark/20 group-hover:scale-105 transition-all duration-300" aria-hidden="true" />
+
+  <!-- Autor no topo -->
+  <div class="flex items-center gap-4 mb-6 relative z-10">
+    <div class="w-14 h-14 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-white shadow-md group-hover:ring-primary/20 transition-all duration-300">
+      {imagePath ? (
+        <img src={imagePath} alt={`Foto de ${author}`} width="56" height="56" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+      ) : (
+        <div class="w-full h-full bg-primary flex items-center justify-center text-primary-dark font-bold text-xl">
+          {author.charAt(0)}
+        </div>
+      )}
+    </div>
+    <div>
+      <p class="font-bold text-gray-900 text-base leading-none mb-1.5">{author}</p>
+      <span class="text-xs text-primary-dark/85 font-extrabold uppercase tracking-wider bg-primary/15 px-2.5 py-0.5 rounded-full">{role}</span>
+    </div>
+  </div>
+
+  <p class="text-text-body/75 text-[0.98rem] leading-relaxed relative z-10 italic">
+    “{quote}”
+  </p>
+</div>
