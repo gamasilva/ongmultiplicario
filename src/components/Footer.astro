@@ -1,135 +1,127 @@
 ---
-import Logo from './Logo.astro';
-import { Facebook, Instagram, MessageCircle, Mail, MapPin, Phone, ArrowRight } from 'lucide-astro';
+import { Facebook, Instagram, MessageCircle } from 'lucide-astro';
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-white border-t border-gray-100 relative overflow-hidden">
-  <!-- Decoração sutil -->
-  <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary/5 -mb-32 -mr-32 pointer-events-none"></div>
-
-  <!-- CTA de doação no topo do rodapé -->
-  <div class="relative z-10 border-b border-gray-100 py-10 bg-bg-offwhite">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div>
-          <p class="font-serif text-2xl font-bold text-gray-900 mb-1">Pronto para fazer a diferença?</p>
-          <p class="text-gray-500 text-sm">Cada doação transforma vidas na Penha e região.</p>
-        </div>
-        <a
-          href="/como-ajudar"
-          class="flex-shrink-0 inline-flex items-center gap-2 font-bold px-7 py-3.5 rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose shadow-md hover:shadow-lg group hover:-translate-y-0.5"
-          style="background-color: #E8607A; color: #ffffff;"
-        >
-          Doe agora
-          <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-        </a>
-      </div>
-    </div>
+<footer class="bg-primary-dark relative overflow-visible mt-24 pt-20 pb-10 text-white border-t-4 border-secondary/20">
+  
+  <!-- Imagem Sobreposta Estilizada (Estilo Cutout Vini Jr) -->
+  <div class="hidden lg:block absolute bottom-0 right-16 w-60 h-[120%] z-20 pointer-events-none transform translate-y-10">
+    <img
+      src="/criancas_sorrindo.png"
+      width="240"
+      height="288"
+      class="w-full h-full object-cover rounded-t-[3rem] border-t-8 border-x-8 border-white shadow-[0_-20px_50px_rgba(0,0,0,0.3)] bg-white"
+      alt="Instituto MultiplicaRio Crianças Sorrindo"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
 
-  <!-- Conteúdo principal do rodapé -->
-  <div class="relative z-10 pt-14 pb-10">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
-        <!-- Mini Sobre -->
-        <div class="space-y-5 lg:col-span-1">
-          <Logo />
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Ajudando a cuidar de vidas e multiplicar esperança. Promovemos o bem-estar e o desenvolvimento social na Penha e região.
-          </p>
-          <!-- Redes Sociais -->
-          <div class="flex space-x-3 pt-2">
-            <a href="https://www.instagram.com/institutomultiplicario" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Instagram do MultiplicaRio">
-              <Instagram class="w-5 h-5" aria-hidden="true" />
-            </a>
-            <a href="https://www.facebook.com/institutomultiplicario" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="Facebook do MultiplicaRio">
-              <Facebook class="w-5 h-5" aria-hidden="true" />
-            </a>
-            <a href="https://wa.me/552164594790" target="_blank" rel="noopener noreferrer" class="w-11 h-11 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="WhatsApp do MultiplicaRio">
-              <MessageCircle class="w-5 h-5" aria-hidden="true" />
-            </a>
-          </div>
+  <!-- Container de Conteúdo -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-center">
+      
+      <!-- Coluna 1: Nome do Instituto -->
+      <div class="flex flex-col items-center md:items-start space-y-3 text-center md:text-left">
+        <div class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-white whitespace-nowrap">
+          Instituto <span class="text-primary">MultiplicaRio</span>
         </div>
-
-        <!-- Links Rápidos -->
-        <div class="space-y-5">
-          <h3 class="text-xs font-bold tracking-[0.15em] uppercase text-gray-400">Links Rápidos</h3>
-          <nav class="flex flex-col space-y-2.5" aria-label="Navegação do Rodapé">
-            {[
-              { href: '/sobre', label: 'Sobre Nós' },
-              { href: '/areas-de-atuacao', label: 'Áreas de Atuação' },
-              { href: '/como-ajudar', label: 'Como Ajudar' },
-              { href: '/transparencia', label: 'Transparência' },
-              { href: '/duvidas-frequentes', label: 'Dúvidas Frequentes' },
-              { href: '/contato', label: 'Contato' },
-            ].map(item => (
-              <a href={item.href} class="text-gray-500 hover:text-primary-dark transition-colors text-sm w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
-                {item.label}
-              </a>
-            ))}
-            <a href="/privacidade" class="text-gray-400 hover:text-gray-600 transition-colors text-xs w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm mt-2 pt-3 border-t border-gray-200 block">
-              Política de Privacidade
-            </a>
-          </nav>
-        </div>
-
-        <!-- Contato -->
-        <div class="space-y-5">
-          <h3 class="text-xs font-bold tracking-[0.15em] uppercase text-gray-400">Contato</h3>
-          <address class="not-italic flex flex-col space-y-4 text-sm text-gray-500">
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                <MapPin class="w-4 h-4 text-primary-dark" aria-hidden="true" />
-              </div>
-              <span class="leading-relaxed">Rua Montevideo, 824 - Loja F<br/>Penha, Rio de Janeiro — RJ<br/><span class="text-gray-400">CEP: 21020-290</span></span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Phone class="w-4 h-4 text-primary-dark" aria-hidden="true" />
-              </div>
-              <a href="tel:+552164594790" class="hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">(21) 6459-4790</a>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Mail class="w-4 h-4 text-primary-dark" aria-hidden="true" />
-              </div>
-              <a href="mailto:imultiplicar@gmail.com" class="hover:text-primary-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm break-all">imultiplicar@gmail.com</a>
-            </div>
-          </address>
-        </div>
-
-        <!-- Horário / Dados legais -->
-        <div class="space-y-5">
-          <h3 class="text-xs font-bold tracking-[0.15em] uppercase text-gray-400">Institucional</h3>
-          <div class="space-y-3 text-sm text-gray-500">
-            <p class="leading-relaxed">Segunda a Sexta<br/><span class="text-gray-400 text-xs">09h às 18h</span></p>
-            <div class="pt-3 border-t border-gray-200">
-              <p class="text-gray-400 text-xs mb-1">CNPJ</p>
-              <p class="font-mono text-gray-600 select-all text-xs">62.559.044/0001-03</p>
-            </div>
-            <div>
-              <p class="text-gray-400 text-xs mb-1">Organização</p>
-              <p class="text-xs leading-relaxed">Sem fins lucrativos · OSCIP</p>
-            </div>
-          </div>
-        </div>
-
+        <p class="text-xs tracking-widest uppercase font-sans font-bold text-white/80 max-w-[240px] leading-relaxed">
+          UM TRABALHO DE LONGO PRAZO, TRANSFORMADOR.
+        </p>
       </div>
 
-      <!-- Linha final -->
-      <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-400">
-        <p>&copy; {currentYear} Instituto MultiplicaRio. Todos os direitos reservados.</p>
-        <p class="font-medium">Feito com ♥ para a comunidade da Penha, RJ</p>
-        <p>Desenvolvido por <a
-          href="https://www.autosocialflow.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-bold bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 rounded-sm"
-        >Auto Social Flow</a></p>
+      <!-- Coluna 2: Links Institucionais e LGPD -->
+      <div class="flex flex-col space-y-4 font-sans font-bold text-xs tracking-widest text-white uppercase text-center md:text-left">
+        <a href="/#sobre" class="hover:underline underline-offset-4 decoration-secondary transition-all">
+          Quem Somos
+        </a>
+        <a href="/#o-que-fazemos" class="hover:underline underline-offset-4 decoration-secondary transition-all">
+          Nossas Frentes
+        </a>
+        <a href="/#transparencia" class="hover:underline underline-offset-4 decoration-secondary transition-all">
+          Transparência & Relatórios
+        </a>
+        <a href="/#contato" class="hover:underline underline-offset-4 decoration-secondary transition-all">
+          Fale Conosco
+        </a>
+      </div>
+
+      <!-- Coluna 3: Redes Sociais + Voltar ao topo -->
+      <div class="flex flex-col items-center md:items-start space-y-5 lg:pr-24">
+        <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-white/80">Siga nossas redes</span>
+        
+        <div class="flex items-center gap-3">
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/institutomultiplicario"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-white/10 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-md"
+            aria-label="Instagram"
+          >
+            <Instagram class="w-5 h-5" aria-hidden="true" />
+          </a>
+          
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/institutomultiplicario"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-white/10 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-md"
+            aria-label="Facebook"
+          >
+            <Facebook class="w-5 h-5" aria-hidden="true" />
+          </a>
+          
+          <!-- WhatsApp -->
+          <a
+            href="https://wa.me/552164594790"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-white/10 hover:bg-white/20 hover:scale-105 active:scale-95 rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-md"
+            aria-label="WhatsApp"
+          >
+            <MessageCircle class="w-5 h-5" aria-hidden="true" />
+          </a>
+        </div>
+
+        <button
+          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+          class="border-2 border-white/30 text-white font-sans font-bold text-[9px] tracking-widest uppercase py-2.5 px-6 rounded-full hover:bg-white hover:text-primary-dark transition-all duration-300 active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-sm"
+        >
+          Voltar ao topo ↑
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Linha de Direitos Autorais e CNPJ -->
+    <div class="pt-8 mt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] tracking-widest text-white/80 uppercase font-sans">
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+        <p>&copy; {currentYear} INSTITUTO MULTIPLICARIO. TODOS OS DIREITOS RESERVADOS.</p>
+        <span class="hidden sm:inline text-white/20">·</span>
+        <p class="font-mono">CNPJ: 62.559.044/0001-03</p>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+        <p>Feito para a Penha, RJ</p>
+        <span class="hidden sm:inline text-white/20">·</span>
+        <p>
+          Desenvolvido por 
+          <a
+            href="https://www.autosocialflow.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold text-white hover:text-secondary transition-colors"
+          >
+            Auto Social Flow
+          </a>
+        </p>
       </div>
     </div>
+
   </div>
 </footer>

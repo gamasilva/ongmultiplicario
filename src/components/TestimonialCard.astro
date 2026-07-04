@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { quote, author, role, imagePath } = Astro.props;
+const initials = author.split(' ').slice(0, 2).map((n: string) => n.charAt(0)).join('');
 ---
 
 <div class="bg-white border border-gray-100 shadow-sm p-8 rounded-3xl relative overflow-hidden">
@@ -22,8 +23,8 @@ const { quote, author, role, imagePath } = Astro.props;
       {imagePath ? (
         <img src={imagePath} alt={`Foto de ${author}`} width="56" height="56" class="w-full h-full object-cover" loading="lazy" decoding="async" />
       ) : (
-        <div class="w-full h-full bg-primary flex items-center justify-center text-primary-dark font-bold text-xl">
-          {author.charAt(0)}
+        <div class="w-full h-full bg-primary-dark flex items-center justify-center text-primary font-bold text-base tracking-tight">
+          {initials}
         </div>
       )}
     </div>

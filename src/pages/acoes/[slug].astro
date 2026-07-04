@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Calendar, Users, HeartPulse, ArrowLeft, ShieldCheck, CheckCircle } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const actionsData = [
+    {
+      slug: 'afericao-pressao',
+      title: 'Aferição de Pressão e Teste Glicêmico',
+      tag: 'Saúde',
+      date: '22 de Junho de 2026',
+      image: 'https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg',
+      alt: 'Atendimento de saúde preventiva na comunidade',
+      description: 'Mutirão de saúde preventiva com foco no controle de hipertensão, diabetes e bem-estar geral dos moradores da Penha.',
+      longDesc: 'O mutirão de saúde preventiva reuniu dezenas de voluntários para oferecer atendimento médico preventivo básico e acolhimento direto. Foram realizadas mais de 350 aferições de pressão arterial, testes de glicemia rápidos e orientações personalizadas sobre hipertensão e diabetes. Além dos testes clínicos, os moradores contaram com sessões gratuitas de reflexologia podal e acolhimento terapêutico com psicólogos, focando na saúde física e mental de forma integral. A ação reafirma nosso compromisso de que a saúde é a base para o desenvolvimento pleno da comunidade.',
+      stats: [
+        { label: 'Pessoas Atendidas', value: '120+' },
+        { label: 'Exames Realizados', value: '350+' },
+        { label: 'Voluntários de Saúde', value: '15' }
+      ]
+    },
+    {
+      slug: 'apoio-escolar',
+      title: 'Apoio em Questões Escolares',
+      tag: 'Educação',
+      date: '18 de Junho de 2026',
+      image: 'https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg',
+      alt: 'Crianças e educadores em atividade pedagógica',
+      description: 'Orientação de direitos escolares para pais, plantão de dúvidas pedagógicas e atividades lúdicas para as crianças.',
+      longDesc: 'Nosso plantão educacional focou em aproximar a escola, a família e a comunidade da Penha. Educadores e pedagogos voluntários realizaram sessões individuais de apoio escolar para ajudar alunos da rede pública com dificuldades em disciplinas fundamentais como Língua Portuguesa e Matemática. Paralelamente, realizamos uma palestra para pais e responsáveis, orientando sobre vagas na rede pública, direitos escolares e formas de estimular o aprendizado em casa. O dia encerrou-se com distribuição de materiais didáticos e atividades lúdicas de incentivo à leitura.',
+      stats: [
+        { label: 'Alunos Apoiados', value: '45+' },
+        { label: 'Materiais Distribuídos', value: '60+' },
+        { label: 'Professores Voluntários', value: '8' }
+      ]
+    },
+    {
+      slug: 'orientacao-juridica',
+      title: 'Orientação Jurídica Gratuita',
+      tag: 'Assistência Social',
+      date: '12 de Junho de 2026',
+      image: 'https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg',
+      alt: 'Atendimento jurídico gratuito individual',
+      description: 'Suporte legal individualizado sobre previdência social, INSS, LOAS, BPC e orientação de direitos civis.',
+      longDesc: 'Com o objetivo de desmistificar o acesso à justiça e garantir direitos básicos, organizamos um plantão de assessoria jurídica comunitária. Advogados voluntários prestaram orientação individual gratuita em dezenas de casos, auxiliando principalmente em processos administrativos e dúvidas sobre benefícios como aposentadorias por idade ou invalidez, auxílio-doença, BPC (Benefício de Prestação Continuada) e LOAS. O evento também realizou o cadastro de famílias em situação de extrema vulnerabilidade para acompanhamento e direcionamento socioassistencial contínuo pelo Instituto.',
+      stats: [
+        { label: 'Casos Atendidos', value: '60+' },
+        { label: 'Advogados Voluntários', value: '5' },
+        { label: 'Famílias Cadastradas', value: '30+' }
+      ]
+    },
+    {
+      slug: 'atendimento-terapeutico',
+      title: 'Atendimento Terapêutico para Mulheres',
+      tag: 'Mulheres',
+      date: '05 de Junho de 2026',
+      image: 'https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg',
+      alt: 'Roda de conversa de saúde mental e empoderamento feminino',
+      description: 'Espaço seguro de escuta qualificada, psicoterapia individual e rodas de conversa sobre saúde mental feminina.',
+      longDesc: 'O projeto dedicado ao bem-estar e empoderamento feminino promoveu uma tarde voltada exclusivamente para a saúde mental das mulheres da Penha e região. Psicólogas voluntárias realizaram atendimentos individuais de escuta qualificada, orientando mulheres sobre inteligência emocional, prevenção da violência doméstica e canais de amparo social. Além disso, organizamos uma roda de conversa acolhedora com partilha de experiências cotidianas, incentivando o apoio mútuo e a solidariedade de gênero, promovendo autoestima e dignidade.',
+      stats: [
+        { label: 'Mulheres Acolhidas', value: '40+' },
+        { label: 'Psicólogas Parceiras', value: '4' },
+        { label: 'Rodas de Conversa', value: '1' }
+      ]
+    }
+  ];
+
+  return actionsData.map(action => ({
+    params: { slug: action.slug },
+    props: { action }
+  }));
+}
+
+const { action } = Astro.props;
+---
+
+<BaseLayout title={action.title} description={action.description}>
+  
+  <!-- Hero da Ação -->
+  <section class="relative bg-primary-dark pt-32 pb-20 overflow-hidden text-white">
+    <!-- Fundo de vídeo ou imagem abstrato -->
+    <div class="absolute inset-0 z-0">
+      <img src={action.image} alt="" class="w-full h-full object-cover opacity-15 blur-sm" />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/95 via-primary-dark/80 to-primary-dark/95"></div>
+      <div class="absolute inset-0 dot-pattern opacity-10 pointer-events-none"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10 text-center">
+      <a href="/#acoes" class="inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest hover:text-white transition-colors mb-6 group">
+        <ArrowLeft class="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+        Voltar para ações
+      </a>
+      
+      <div class="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase bg-primary/20 text-primary px-4 py-1.5 rounded-full border border-primary/30 mb-4">
+        ✦ {action.tag}
+      </div>
+
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto" style="letter-spacing: -0.02em;">
+        {action.title}
+      </h1>
+      
+      <p class="text-white/60 text-sm mt-4 flex items-center justify-center gap-2">
+        <Calendar class="w-4 h-4 text-primary" /> {action.date}
+      </p>
+    </div>
+  </section>
+
+  <!-- Corpo de Detalhes da Ação -->
+  <section class="py-20 bg-bg-offwhite relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+      
+      <!-- Imagem de Destaque -->
+      <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-200 ring-4 ring-white mb-12">
+        <img src={action.image} alt={action.alt} class="w-full h-full object-cover" />
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Texto de Detalhe -->
+        <div class="lg:col-span-8 space-y-6">
+          <h2 class="font-serif text-2xl font-bold text-gray-900">Sobre a Atividade</h2>
+          <p class="text-text-body/80 leading-relaxed text-base sm:text-lg">
+            {action.longDesc}
+          </p>
+          
+          <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-3">
+            <CheckCircle class="w-6 h-6 text-primary-dark" />
+            <span class="text-sm font-medium text-text-body/80">Todos os atendimentos prestados pelo Instituto são inteiramente gratuitos e abertos à comunidade.</span>
+          </div>
+        </div>
+
+        <!-- Coluna de Impacto / Estatísticas -->
+        <div class="lg:col-span-4 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+          <h3 class="font-serif text-xl font-bold text-gray-900 border-b pb-3 flex items-center gap-2">
+            <Users class="w-5 h-5 text-primary-dark" /> Impacto Gerado
+          </h3>
+          
+          <div class="space-y-6">
+            {action.stats.map(stat => (
+              <div class="flex flex-col">
+                <span class="text-4xl font-serif font-black text-primary-dark tracking-tight">{stat.value}</span>
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA de Apoiador -->
+      <div class="mt-16 text-center border-t pt-10">
+        <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">Quer fazer parte da próxima ação?</h3>
+        <p class="text-sm text-text-body/70 max-w-md mx-auto mb-6">Você pode doar materiais, apoiar como voluntário ou financiar novos mutirões com uma contribuição rápida.</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/#doacoes" class="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-full bg-accent text-white hover:bg-accent-hover transition-colors shadow-sm text-sm">
+            Fazer uma Doação
+          </a>
+          <a href="/#contato" class="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-full border-2 border-primary-dark/30 text-primary-dark hover:bg-primary-dark hover:text-white transition-all text-sm">
+            Ser Voluntário
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

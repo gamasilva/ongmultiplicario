@@ -1,9 +1,7 @@
 ---
 import '../styles/global.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/fraunces/400.css';
-import '@fontsource/fraunces/700.css';
+import '@fontsource-variable/rubik';
+import '@fontsource-variable/bricolage-grotesque';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -43,10 +41,10 @@ const jsonLd = {
         "width": 512,
         "height": 512
       },
-      "description": "Instituto sem fins lucrativos que promove o bem-estar e o desenvolvimento social em educação, saúde, cultura, meio ambiente e assistência social na Penha e região, Rio de Janeiro.",
+      "description": "Instituto sem fins lucrativos que promove o bem-estar e o desenvolvimento social em educação, saúde, cultura, esportes, lazer e assistência social na Penha e região, Rio de Janeiro.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Rua Montevideo, 824, Loja F",
+        "streetAddress": "Rua Ingai, nº 21",
         "addressLocality": "Penha",
         "addressRegion": "Rio de Janeiro",
         "postalCode": "21020-290",
@@ -64,7 +62,7 @@ const jsonLd = {
         { "@type": "City", "name": "Rio de Janeiro" },
         { "@type": "Neighborhood", "name": "Penha" }
       ],
-      "knowsAbout": ["educação social", "saúde comunitária", "assistência social", "preservação ambiental", "cultura popular"],
+      "knowsAbout": ["educação social", "saúde comunitária", "assistência social", "esporte e lazer", "cultura popular"],
       "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 1 },
       "sameAs": [
         "https://www.facebook.com/institutomultiplicario",

@@ -1,23 +1,36 @@
 ---
 import DonateButton from './DonateButton.astro';
 import Logo from './Logo.astro';
-import { Menu, X, Home, Info, Sprout, HeartHandshake, ShieldCheck, HelpCircle, Mail, ChevronRight, Phone, MessageCircle, Instagram } from 'lucide-astro';
+import { Menu, X, Home, Info, Sprout, HeartHandshake, ShieldCheck, Mail, MapPin, Calendar, ChevronRight, Phone, MessageCircle, Instagram } from 'lucide-astro';
 
 const navItems = [
   { href: '/', label: 'Início', icon: Home },
-  { href: '/sobre', label: 'Sobre Nós', icon: Info },
-  { href: '/areas-de-atuacao', label: 'Áreas de Atuação', icon: Sprout },
-  { href: '/como-ajudar', label: 'Como Ajudar', icon: HeartHandshake },
-  { href: '/transparencia', label: 'Transparência', icon: ShieldCheck },
-  { href: '/duvidas-frequentes', label: 'Dúvidas Frequentes', icon: HelpCircle },
-  { href: '/contato', label: 'Contato', icon: Mail },
+  { href: '/#sobre', label: 'Quem Somos', icon: Info },
+  { href: '/#o-que-fazemos', label: 'Nossas Frentes', icon: Sprout },
+  { href: '/#doacoes', label: 'Doações', icon: HeartHandshake },
+  { href: '/#transparencia', label: 'Transparência', icon: ShieldCheck },
+  { href: '/#atuacao', label: 'Atuação', icon: MapPin },
+  { href: '/#acoes', label: 'Ações', icon: Calendar },
+  { href: '/#contato', label: 'Contato', icon: Mail },
 ];
 
 const currentPath = Astro.url.pathname;
-const isActivePath = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+const isActivePath = (href: string) => {
+  if (href.includes('#')) return false;
+  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+};
 ---
 
-<header class="sticky top-0 z-40 w-full pt-3 pb-3 bg-transparent">
+<header id="main-header" class="fixed top-0 z-40 w-full pt-3 pb-3 bg-transparent transition-all duration-300 transform translate-y-0 opacity-100 pointer-events-auto">
+<noscript>
+  <style>
+    #main-header {
+      transform: none !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+  </style>
+</noscript>
 
   <!-- ── Mobile: pill flutuante ── -->
   <div class="lg:hidden px-4">
@@ -27,7 +40,10 @@ const isActivePath = (href: string) => href === '/' ? currentPath === '/' : curr
       border border-white/60 ring-1 ring-inset ring-white/30">
 
       <a href="/" class="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1" aria-label="Instituto MultiplicaRio — Início">
-        <Logo size="sm" />
+        <div class="flex flex-col leading-none">
+          <span class="text-[9px] uppercase tracking-[0.25em] text-primary-dark/60 font-bold font-sans">Instituto</span>
+          <span class="text-lg font-bold font-serif text-primary-dark tracking-tight">MultiplicaRio</span>
+        </div>
       </a>
 
       <button
@@ -51,7 +67,10 @@ const isActivePath = (href: string) => href === '/' ? currentPath === '/' : curr
       border border-white/60 ring-1 ring-inset ring-white/30">
 
       <a href="/" class="flex-shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1" aria-label="Instituto MultiplicaRio — Início">
-        <Logo class="group-hover:[&>span:first-child]:scale-105" />
+        <div class="flex flex-col leading-none">
+          <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-primary-dark/60 font-bold font-sans">Instituto</span>
+          <span class="text-lg sm:text-xl font-bold font-serif text-primary-dark tracking-tight transition-transform duration-200 group-hover:scale-105 origin-left">MultiplicaRio</span>
+        </div>
       </a>
 
       <nav class="flex space-x-0.5 xl:space-x-1 items-center" aria-label="Navegação Principal">
@@ -98,7 +117,10 @@ const isActivePath = (href: string) => href === '/' ? currentPath === '/' : curr
   <!-- Cabeçalho do drawer -->
   <div class="flex items-center justify-between px-5 h-16 sm:h-[72px] border-b border-gray-100 flex-shrink-0">
     <a href="/" class="mobile-nav-link rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label="MultiplicaRio — Ir para o início">
-      <Logo size="sm" />
+      <div class="flex flex-col leading-none">
+        <span class="text-[9px] uppercase tracking-[0.25em] text-primary-dark/60 font-bold font-sans">Instituto</span>
+        <span class="text-lg font-bold font-serif text-primary-dark tracking-tight">MultiplicaRio</span>
+      </div>
     </a>
     <button
       id="close-mobile-menu"
@@ -212,6 +234,17 @@ const isActivePath = (href: string) => href === '/' ? currentPath === '/' : curr
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initMobileMenu);
-  document.addEventListener('astro:page-load', initMobileMenu);
+  function initHeaderScroll() {
+    const header = document.getElementById('main-header');
+    if (!header) return;
+    header.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+  }
+
+  function initAll() {
+    initMobileMenu();
+    initHeaderScroll();
+  }
+
+  document.addEventListener('DOMContentLoaded', initAll);
+  document.addEventListener('astro:page-load', initAll);
 </script>

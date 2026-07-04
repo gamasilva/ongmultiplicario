@@ -5,16 +5,17 @@
   --color-primary-dark: #2F4A3A;
   --color-secondary: #F7EF99;
   --color-secondary-dark: #5a5200;
-  --color-accent: #F78E69;
-  --color-accent-hover: #e07050;
+  --color-accent: #D45D3B;
+  --color-accent-hover: #B04325;
   --color-rose: #E8607A;
+  --color-rose-dark: #C44562;
   --color-rose-dark: #C44562;
   --color-bg-offwhite: #FEFEFE;
   --color-text-body: #2E2A1E;
   --color-bg-lightgreen: #F7EF99;
 
-  --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Fraunces', serif;
+  --font-sans: 'Rubik Variable', 'Rubik', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -32,10 +33,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    font-optical-sizing: auto;
     /* Sem scroll horizontal acidental no mobile */
     overflow-x: hidden;
     /* Remove o flash cinza/azul ao tocar em links e botões */
     -webkit-tap-highlight-color: transparent;
+  }
+
+  p, li {
+    text-wrap: pretty;
   }
 
   /* Feedback tátil: leve afundar ao tocar/clicar em itens interativos */
@@ -60,8 +67,20 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
     color: #2E2A1E;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    text-wrap: balance;
+    font-weight: 700;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+    line-height: 1.07;
+  }
+
+  h2 {
     letter-spacing: -0.025em;
-    line-height: 1.15;
+    line-height: 1.1;
   }
 
   *:focus-visible {
@@ -103,6 +122,15 @@
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.5; }
+    50%       { transform: translateX(-50%) translateY(7px); opacity: 0.3; }
+  }
+
+  .animate-scroll-hint {
+    animation: scroll-hint 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   }
 
   .animate-fade-up {

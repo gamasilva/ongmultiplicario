@@ -1,311 +1,660 @@
-﻿---
+---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AreaCard from '../components/AreaCard.astro';
-import StatCard from '../components/StatCard.astro';
 import DonationTierCard from '../components/DonationTierCard.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
-import CTASection from '../components/CTASection.astro';
 import DonateButton from '../components/DonateButton.astro';
-import { HeartPulse, BookOpen, Brush, TreePine, Users, ChevronLeft, ChevronRight, Calendar, ArrowRight } from 'lucide-astro';
+import { HeartPulse, BookOpen, Brush, TreePine, Users, ChevronLeft, ChevronRight, Calendar, ArrowRight, Copy, QrCode, CreditCard, Gift, Building2, FileText, Download, ShieldCheck, MapPin, Phone, Mail, Clock } from 'lucide-astro';
 
 const title = "Início";
 const fullTitle = "Instituto MultiplicaRio | Educação e Saúde na Penha, Rio de Janeiro";
-const description = "Instituto MultiplicaRio atua há mais de 10 anos na Penha (RJ) em saúde, educação, cultura, meio ambiente e assistência social. Conheça e doe.";
+const description = "Instituto MultiplicaRio atua na Penha (RJ) e arredores promovendo acolhimento, saúde, educação, cultura e assistência social.";
 const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27-57.jpg";
 ---
 
 <BaseLayout title={title} fullTitle={fullTitle} description={description} heroImage={heroImage}>
 
   <!-- ───── HERO ───── -->
-  <section class="relative bg-primary/15 overflow-hidden min-h-[92vh] flex items-center">
-    <!-- Imagem de fundo -->
-    <div class="absolute inset-0 z-0">
-      <img
-        src="https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27-57.jpg"
-        alt="Comunidade unida"
-        width="1920" height="1080"
-        class="w-full h-full object-cover object-top opacity-55"
-        fetchpriority="high" decoding="async"
-      />
-      <!-- Gradiente claro direcional -->
-      <div class="absolute inset-0 bg-gradient-to-r from-bg-offwhite/90 via-bg-offwhite/60 to-bg-offwhite/10"></div>
+  <section class="relative bg-primary/15 min-h-[100vh] flex flex-col justify-between pt-12 sm:pt-16 lg:pt-20 pb-12 lg:pb-0">
+    <!-- Imagens de fundo (Slideshow com zoom-out / Ken Burns) -->
+    <div class="absolute inset-0 z-0 overflow-hidden" id="hero-slideshow">
+      <div class="absolute inset-0 slideshow-slide opacity-100 active">
+        <img
+          src="https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg"
+          alt="Atendimento de saúde na comunidade"
+          class="w-full h-full object-cover object-top slideshow-image"
+          fetchpriority="high" decoding="async"
+        />
+      </div>
+      <div class="absolute inset-0 slideshow-slide opacity-0">
+        <img
+          src="https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg"
+          alt="Crianças estudando"
+          class="w-full h-full object-cover object-top slideshow-image"
+          loading="lazy" decoding="async"
+        />
+      </div>
+      <div class="absolute inset-0 slideshow-slide opacity-0">
+        <img
+          src="https://i.ibb.co/JPpm3ZD/Whats-App-Image-2026-06-22-at-07-28-01.jpg"
+          alt="Ação cultural"
+          class="w-full h-full object-cover object-top slideshow-image"
+          loading="lazy" decoding="async"
+        />
+      </div>
+      <div class="absolute inset-0 slideshow-slide opacity-0">
+        <img
+          src="https://i.ibb.co/Fbg433Kj/Whats-App-Image-2026-06-22-at-07-28-01-1.jpg"
+          alt="Voluntários e comunidade reunida"
+          class="w-full h-full object-cover object-top slideshow-image"
+          loading="lazy" decoding="async"
+        />
+      </div>
+
+      <!-- Gradiente claro direcional (sobreposto a todos os slides) -->
+      <div class="absolute inset-0 bg-gradient-to-r from-bg-offwhite/90 via-bg-offwhite/60 to-bg-offwhite/10 z-10"></div>
       <!-- Gradiente vertical inferior -->
-      <div class="absolute inset-0 bg-gradient-to-t from-bg-offwhite/60 via-transparent to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-offwhite/60 via-transparent to-transparent z-10"></div>
     </div>
 
-    <!-- Decorações -->
-    <div class="absolute top-16 right-10 w-80 h-80 rounded-full bg-secondary/30 blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-20 right-32 w-56 h-56 rounded-full bg-accent/15 blur-3xl pointer-events-none"></div>
-    <!-- Padrão de pontos -->
-    <div class="absolute top-0 right-0 w-1/2 h-full dot-pattern opacity-40 pointer-events-none"></div>
+    <!-- Textura -->
+    <div class="absolute top-0 right-0 w-1/2 h-full dot-pattern opacity-40 pointer-events-none z-10"></div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-28">
-      <div class="max-w-3xl space-y-7 md:space-y-9">
-        <!-- Badge -->
-        <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-primary/25 text-primary-dark border border-primary-dark/15 font-bold text-xs tracking-[0.14em] uppercase animate-fade-up">
-          ✦ MultiplicaRio
-        </span>
+    <div class="flex-grow flex items-center w-full">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-12 md:py-20">
+        <div class="max-w-3xl space-y-5 sm:space-y-7 md:space-y-9">
+          <!-- Heading -->
+          <h1 class="font-serif text-[1.85rem] xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-gray-900 leading-tight animate-fade-up animate-fade-up-delay-1">
+            Multiplicando esperança,<br/>
+            <span class="inline-block bg-accent text-white px-3 sm:px-6 py-1 sm:py-2 rounded-xl sm:rounded-2xl transform -rotate-1 shadow-lg mt-3 text-[1.45rem] xs:text-2xl sm:text-4xl lg:text-[3.8rem] leading-none select-none">transformando vidas</span>
+          </h1>
 
-        <!-- Heading -->
-        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-gray-900 animate-fade-up animate-fade-up-delay-1" style="letter-spacing: -0.03em; line-height: 1.08;">
-          Multiplicando esperança,<br/>
-          <span class="text-accent-hover">transformando vidas</span>
-        </h1>
+          <!-- Botões -->
+          <div class="hidden md:flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 animate-fade-up animate-fade-up-delay-3">
+            <a
+              href="#sobre"
+              class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-primary-dark text-white hover:bg-primary-dark/90 px-8 py-4 rounded-full font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-dark focus-visible:ring-offset-bg-offwhite text-base sm:text-lg shadow-md"
+            >
+              Conheça nosso trabalho
+            </a>
+          </div>
 
-        <!-- Subtítulo -->
-        <p class="text-lg sm:text-xl md:text-2xl text-text-body/75 leading-relaxed max-w-xl font-light animate-fade-up animate-fade-up-delay-2">
-          Ajudando a cuidar de vidas e promover o bem-estar social na Penha e região há mais de 10 anos.
-        </p>
-
-        <!-- Botões -->
-        <div class="flex flex-col sm:flex-row gap-4 pt-2 animate-fade-up animate-fade-up-delay-3">
-          <DonateButton variant="primary" class="w-full sm:w-auto justify-center text-lg px-8 py-4" />
-          <a
-            href="#quem-somos"
-            class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent border-2 border-primary-dark/30 text-primary-dark hover:bg-primary-dark/5 hover:border-primary-dark/50 px-8 py-4 rounded-full font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-dark focus-visible:ring-offset-bg-offwhite text-lg"
-          >
-            Conheça nosso trabalho
-          </a>
+          
         </div>
       </div>
     </div>
 
-    <!-- Indicador de scroll -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-50 pointer-events-none animate-bounce">
-      <div class="w-5 h-8 rounded-full border-2 border-primary-dark/50 flex items-start justify-center pt-1.5">
-        <div class="w-1 h-2 rounded-full bg-primary-dark/70"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── STATS ───── -->
-  <section class="relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto lg:max-w-5xl">
-    <div class="bg-accent rounded-3xl shadow-2xl overflow-hidden ring-1 ring-accent-hover/20">
-      <div class="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/20">
-        <StatCard value="+500" label="Vidas impactadas" delay={0} />
-        <StatCard value="10 anos" label="De atuação" delay={150} />
-        <StatCard value="5" label="Áreas de atuação" delay={300} />
+    <!-- Overlapping Cards at the bottom -->
+    <div class="relative z-20 w-full translate-y-[20%] sm:translate-y-1/2 lg:translate-y-1/2 mt-auto">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+        <div class="grid grid-cols-2 lg:grid-cols-4 rounded-3xl overflow-hidden shadow-2xl border border-primary-dark/10">
+          {[
+            { value: "Desde 2014", label: "na Penha, Rio de Janeiro" },
+            { value: "+500 famílias", label: "atendidas até hoje" },
+            { value: "100% gratuito", label: "todos os nossos serviços" },
+            { value: "OSCIP", label: "credenciada pelo MJ" },
+          ].map((item, index) => {
+            const isDark = index % 2 !== 0;
+            return (
+              <div class={`relative overflow-hidden flex flex-col justify-center p-3 sm:p-8 min-h-[85px] sm:min-h-[130px] md:min-h-[170px] ${
+                isDark ? 'bg-primary-dark text-white' : 'bg-white text-primary-dark'
+              }`}>
+                <div class={`absolute right-2 bottom-1 text-4xl sm:text-7xl md:text-8xl font-sans font-bold select-none pointer-events-none ${
+                  isDark ? 'opacity-20 text-primary' : 'opacity-[0.08] text-primary-dark'
+                }`}>
+                  +
+                </div>
+                <div class="font-sans font-black italic text-sm sm:text-3xl lg:text-[2.2rem] xl:text-[2.6rem] leading-none tracking-tight">
+                  {item.value}
+                </div>
+                <div class="text-[9px] sm:text-sm mt-1 font-medium leading-snug opacity-80">
+                  {item.label}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ───── QUEM SOMOS ───── -->
-  <section id="quem-somos" class="py-20 md:py-32 bg-bg-offwhite">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-24">
+  <section id="sobre" class="py-24 md:py-32 bg-bg-offwhite relative overflow-hidden">
+    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
+    <div class="decor-chevron-left top-16 -left-12"></div>
+    <div class="decor-slanted-stripe top-1/4 left-0"></div>
 
-        <!-- Texto -->
-        <div class="lg:w-1/2 space-y-6">
-          <span class="section-label">Nossa história</span>
-          <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900">
-            Quem Somos
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      
+      <!-- Linha 1: História + Missão -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
+        
+        <!-- Esquerda: Sobre o Instituto -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="section-label">Quem Somos</span>
+          <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
+            Sobre o Instituto
           </h2>
-          <p class="text-lg text-text-body/75 leading-relaxed">
-            O intuito principal do MultiplicaRio é promover o bem-estar e o desenvolvimento social de indivíduos e comunidades, atuando sem fins lucrativos.
+          <p class="text-base sm:text-lg text-text-body/75 leading-relaxed">
+            O Instituto MultiplicaRio é a realização do sonho de voluntários e parceiros da comunidade da Penha de contribuir com a transformação social, da saúde e da educação comunitária na região do Rio de Janeiro. A atuação acontece diretamente na comunidade, utilizando serviços essenciais como base, e a solidariedade humana como ferramenta de aprendizado e desenvolvimento.
           </p>
-          <p class="text-lg text-text-body/75 leading-relaxed">
-            Trabalhamos incansavelmente nas áreas de educação, saúde, meio ambiente, cultura e direitos humanos, visando à construção de uma sociedade mais justa e solidária.
+          <p class="text-base sm:text-lg text-text-body/75 leading-relaxed">
+            A partir dessa combinação, o Instituto desenvolve ações de atendimento em saúde e bem-estar, apoio jurídico comunitário, natação infantil e hidroginástica, reforço escolar, cultura carioca e capacitação profissional.
           </p>
+          
           <div class="pt-2">
-            <a href="/sobre" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
-              Saiba mais sobre nossa história
-              <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-            </a>
+            <div class="inline-flex items-center gap-3 p-4 bg-primary/15 rounded-3xl border border-primary/25">
+              <div class="w-12 h-12 bg-primary-dark text-primary rounded-2xl flex items-center justify-center font-serif font-black text-xl">
+                MR
+              </div>
+              <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-wider text-text-body/85 font-bold block mb-1">BALANÇO</span>
+                <span class="text-sm font-serif font-bold text-primary-dark">MultiplicaRio</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Imagem -->
-        <div class="lg:w-1/2 relative">
-          <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-200">
+        <!-- Direita: Imagem Grande + Missão -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="aspect-[16/10] rounded-3xl overflow-hidden shadow-xl ring-1 ring-gray-200">
             <img
-              src="https://i.ibb.co/JPpm3ZD/Whats-App-Image-2026-06-22-at-07-28-01.jpg"
-              alt="Voluntários trabalhando"
-              width="800" height="800"
+              src="https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg"
+              alt="Voluntários e comunidade em ação"
+              width="800" height="500"
               class="w-full h-full object-cover"
               loading="lazy" decoding="async"
             />
           </div>
-          <!-- Quote card flutuante -->
-          <div class="absolute -bottom-6 -left-6 bg-secondary p-7 rounded-3xl shadow-xl hidden md:block max-w-[240px] ring-1 ring-secondary-dark/10">
-            <div class="text-4xl text-secondary-dark/30 font-serif leading-none mb-2">"</div>
-            <p class="font-serif font-bold text-lg text-secondary-dark leading-snug">
-              Ajudando a cuidar de vidas.
+          
+          <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-3">
+            <h3 class="font-serif text-2xl font-bold text-primary-dark uppercase tracking-tight">Missão</h3>
+            <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+              Atuar nas áreas de educação, saúde, esportes, lazer, cultura, capacitação profissional e assistência social, promovendo ações gratuitas e integradas para acolher famílias e construir uma sociedade mais justa e digna.
             </p>
-            <p class="text-secondary-dark/60 text-sm mt-2 font-medium">Nossa missão</p>
           </div>
-          <!-- Dot decorativo -->
-          <div class="absolute -top-4 -right-4 w-24 h-24 dot-pattern rounded-2xl opacity-40 pointer-events-none"></div>
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <!-- ───── ÁREAS DE ATUAÇÃO ───── -->
-  <section class="py-20 md:py-28 bg-bg-lightgreen relative overflow-hidden">
-    <!-- Decoração sutil -->
-    <div class="absolute top-0 right-0 w-1/3 h-full dot-pattern opacity-20 pointer-events-none"></div>
-
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-14 md:mb-18">
-        <span class="section-label mb-4 block text-center mx-auto w-fit">O que fazemos</span>
-        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-5">Nossas Áreas de Atuação</h2>
-        <p class="text-base sm:text-lg text-text-body/75">Atuamos de forma integrada para garantir o desenvolvimento pleno das comunidades que apoiamos.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-        <AreaCard title="Saúde" description="Promoção da saúde, assistência médica preventiva e formação de profissionais comunitários.">
-          <HeartPulse slot="icon" class="w-6 h-6" aria-hidden="true" />
-        </AreaCard>
-        <AreaCard title="Educação" description="Gratuidade educacional, métodos inovadores e integração total entre escola e comunidade.">
-          <BookOpen slot="icon" class="w-6 h-6" aria-hidden="true" />
-        </AreaCard>
-        <AreaCard title="Cultura" description="Preservação do patrimônio histórico e fomento ativo de atividades artístico-culturais locais.">
-          <Brush slot="icon" class="w-6 h-6" aria-hidden="true" />
-        </AreaCard>
-        <AreaCard title="Meio Ambiente" description="Defesa, preservação e conservação ambiental com foco em desenvolvimento sustentável.">
-          <TreePine slot="icon" class="w-6 h-6" aria-hidden="true" />
-        </AreaCard>
-        <AreaCard title="Assistência Social" description="Serviços socioassistenciais e garantia incondicional dos direitos humanos fundamentais.">
-          <Users slot="icon" class="w-6 h-6" aria-hidden="true" />
-        </AreaCard>
-        <!-- Card CTA -->
-        <a href="/areas-de-atuacao" class="group bg-primary-dark rounded-2xl p-7 border border-primary-dark/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between min-h-[180px]">
-          <p class="font-serif text-xl font-bold text-bg-offwhite leading-snug">Ver todas as nossas áreas de atuação</p>
-          <div class="flex items-center gap-2 text-secondary font-bold text-sm mt-4 group-hover:gap-3 transition-all duration-200">
-            <span>Explorar</span>
-            <ArrowRight class="w-4 h-4" aria-hidden="true" />
+      <!-- Linha 2: Visão + Crenças (Grid de 2 Colunas) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
+        
+        <!-- Coluna Visão -->
+        <div class="space-y-6">
+          <div class="aspect-[16/10] rounded-3xl overflow-hidden shadow-lg ring-1 ring-gray-200">
+            <img
+              src="https://i.ibb.co/FbBTGmbF/Whats-App-Image-2026-06-22-at-07-28-02-1.jpg"
+              alt="Crianças estudando"
+              width="600" height="375"
+              class="w-full h-full object-cover"
+              loading="lazy" decoding="async"
+            />
           </div>
-        </a>
+          <div class="space-y-2">
+            <h3 class="font-serif text-2xl font-bold text-primary-dark uppercase tracking-tight">Visão</h3>
+            <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+              Ser referência na transformação social da Penha e do Rio de Janeiro, sendo reconhecida pela transparência de suas atividades, pelo impacto real direto na vida das pessoas e pelo acolhimento humano.
+            </p>
+          </div>
+        </div>
+
+        <!-- Coluna Crenças -->
+        <div class="space-y-6">
+          <div class="aspect-[16/10] rounded-3xl overflow-hidden shadow-lg ring-1 ring-gray-200">
+            <img
+              src="https://i.ibb.co/7Jh8fYQj/Whats-App-Image-2026-06-22-at-07-28-02.jpg"
+              alt="Saúde comunitária"
+              width="600" height="375"
+              class="w-full h-full object-cover"
+              loading="lazy" decoding="async"
+            />
+          </div>
+          <div class="space-y-2">
+            <h3 class="font-serif text-2xl font-bold text-primary-dark uppercase tracking-tight">Crenças & Valores</h3>
+            <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+              Pautamos nossas ações pela solidariedade, empatia ativa, transparência absoluta em todos os recursos recebidos, respeito incondicional à dignidade humana e compromisso sincero com o desenvolvimento social e comunitário.
+            </p>
+          </div>
+        </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- ───── SERVIÇOS OFERECIDOS ───── -->
-  <section class="py-20 md:py-28 bg-white relative overflow-hidden">
+  <!-- ───── NOSSAS FRENTES (O QUE FAZEMOS) ───── -->
+  <section id="o-que-fazemos" class="pt-24 sm:pt-32 md:pt-40 pb-16 md:pb-24 bg-white relative overflow-hidden">
+    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
+    <div class="decor-chevron-right bottom-24 -right-16"></div>
+    <div class="decor-slanted-stripe-accent bottom-1/3 left-0"></div>
+
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="section-label mb-4 block w-fit mx-auto">Atendimento à comunidade</span>
-        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-5">O que oferecemos</h2>
-        <p class="text-lg text-text-body/75">Oferecemos uma ampla gama de serviços gratuitos para apoiar a saúde, os direitos e o bem-estar das famílias da nossa comunidade.</p>
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="section-label mb-4 block w-fit mx-auto">Nossas Frentes</span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900">O que fazemos</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-        <!-- Saúde & Bem-estar -->
-        <div class="bg-bg-offwhite rounded-3xl p-8 border border-gray-100 shadow-sm">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-12 h-12 bg-primary/15 rounded-2xl flex items-center justify-center flex-shrink-0">
-              <HeartPulse class="w-6 h-6 text-primary-dark" aria-hidden="true" />
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <!-- Coluna Esquerda -->
+        <div class="space-y-8">
+          
+          <!-- Card 1: Saúde (Vertical Grande) -->
+          <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
+            <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
+              <img src="https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg" class="w-full h-full object-cover" alt="Saúde e Bem-estar" />
+              <!-- Diagonal Corner Ribbon -->
+              <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-primary transform -rotate-45 opacity-75"></div>
+              <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-primary transform -rotate-45 opacity-75"></div>
             </div>
-            <h3 class="font-serif text-xl font-bold text-gray-900">Saúde & Bem-estar</h3>
+            <div class="space-y-3">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-dark bg-primary/20 px-3 py-1 rounded-full border border-primary/30">Saúde</span>
+              <h3 class="font-serif text-2xl font-bold text-gray-900">Saúde & Bem-estar</h3>
+              <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+                Acreditamos que a saúde é a base para o desenvolvimento humano. Promovemos assistência médica preventiva, facilitando o acesso da comunidade a profissionais qualificados. Investimos na formação de agentes comunitários de saúde, multiplicando o cuidado.
+              </p>
+            </div>
           </div>
-          <ul class="space-y-3">
-            {[
-              "Aferição de pressão arterial",
-              "Teste glicêmico",
-              "Reflexologia",
-              "Apoio emocional e escuta qualificada",
-              "Saúde mental e bem-estar",
-            ].map(item => (
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="text-text-body/80 text-sm leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+
+          <!-- Card 2: Esportes e Lazer (Vertical) -->
+          <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
+            <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
+              <img src="https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg" class="w-full h-full object-cover" alt="Esporte e Lazer" />
+              <!-- Diagonal Corner Ribbon -->
+              <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
+              <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-dark bg-secondary/30 px-3 py-1 rounded-full border border-secondary/50">ESPORTES</span>
+              <h3 class="font-serif text-2xl font-bold text-gray-900">Esporte & Lazer</h3>
+              <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+                Promovemos atividades físicas e recreativas integradas para toda a comunidade. Nossos focos principais de lazer incluem turmas de natação infantil e hidroginástica dedicada ao cuidado da saúde de idosos da região.
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Assistência Social & Jurídica -->
-        <div class="bg-bg-offwhite rounded-3xl p-8 border border-gray-100 shadow-sm">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-12 h-12 bg-accent/15 rounded-2xl flex items-center justify-center flex-shrink-0">
-              <Users class="w-6 h-6 text-accent-hover" aria-hidden="true" />
+        <!-- Coluna Direita -->
+        <div class="space-y-8">
+          
+          <!-- Card 3: Educação (Horizontal) -->
+          <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col sm:flex-row gap-6 items-center relative overflow-hidden">
+            <div class="w-full sm:w-1/3 aspect-[4/3] rounded-2xl overflow-hidden flex-shrink-0 relative">
+              <img src="https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg" class="w-full h-full object-cover" alt="Educação" />
+              <!-- Diagonal Corner Ribbon -->
+              <div class="absolute -bottom-1.5 -right-6 w-16 h-4 bg-accent transform -rotate-45 opacity-75"></div>
             </div>
-            <h3 class="font-serif text-xl font-bold text-gray-900">Assistência Social & Jurídica</h3>
+            <div class="flex-grow space-y-3">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-dark bg-accent/15 px-3 py-1 rounded-full border border-accent/30">Educação</span>
+              <h3 class="font-serif text-xl font-bold text-gray-900">Reforço Escolar & Apoio</h3>
+              <p class="text-text-body/75 text-sm leading-relaxed">
+                Apoiamos os alunos com aulas pedagógicas de reforço escolar, acesso gratuito à biblioteca comunitária equipada e palestras motivacionais e comportamentais para o desenvolvimento de jovens.
+              </p>
+            </div>
           </div>
-          <ul class="space-y-3">
-            {[
-              "Orientação jurídica (INSS, LOAS, BPC)",
-              "Cadastro para famílias em situação de vulnerabilidade",
-              "Apoio em questões escolares",
-              "Empoderamento feminino",
-              "Atendimento terapêutico para mulheres",
-            ].map(item => (
-              <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 8 8"><path d="M1 4l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="text-text-body/80 text-sm leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
+
+          <!-- Card 4: Cultura (Horizontal) -->
+          <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col sm:flex-row gap-6 items-center relative overflow-hidden">
+            <div class="w-full sm:w-1/3 aspect-[4/3] rounded-2xl overflow-hidden flex-shrink-0 relative">
+              <img src="https://i.ibb.co/JPpm3ZD/Whats-App-Image-2026-06-22-at-07-28-01.jpg" class="w-full h-full object-cover" alt="Cultura" />
+              <!-- Diagonal Corner Ribbon -->
+              <div class="absolute -bottom-1.5 -right-6 w-16 h-4 bg-primary transform -rotate-45 opacity-75"></div>
+            </div>
+            <div class="flex-grow space-y-3">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-dark bg-primary/20 px-3 py-1 rounded-full border border-primary/30">Cultura</span>
+              <h3 class="font-serif text-xl font-bold text-gray-900">Música & Oficinas</h3>
+              <p class="text-text-body/75 text-sm leading-relaxed">
+                Fomentamos a cultura carioca e a criatividade local através de aulas e inscrições abertas para oficinas de música, como pandeiro e cavaco, promovendo a inclusão através da arte.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5: Assistência Social & Empregabilidade (Vertical) -->
+          <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
+            <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
+              <img src="/criancas_sorrindo.png" class="w-full h-full object-cover" alt="Assistência Social e Empregabilidade" />
+              <!-- Diagonal Corner Ribbon -->
+              <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
+              <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-dark bg-secondary/30 px-3 py-1 rounded-full border border-secondary/50">Social</span>
+              <h3 class="font-serif text-2xl font-bold text-gray-900">Assistência & Empregabilidade</h3>
+              <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+                Amparamos os moradores com isenção para segunda via de documentos, orientação jurídica para benefícios (INSS, Aposentadorias e LOAS), cadastro de PCD, e suporte com análise de currículos e encaminhamento profissional.
+              </p>
+            </div>
+          </div>
+
         </div>
-
-      </div>
-
-      <!-- CTA -->
-      <div class="mt-10 text-center">
-        <a href="/contato" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md p-1">
-          Agendar atendimento ou saber mais
-          <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- ───── VÍDEO ───── -->
-  <section class="py-20 md:py-28 bg-primary/15 relative overflow-hidden">
-    <div class="absolute inset-0 dot-pattern opacity-30 pointer-events-none"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-secondary/25 blur-3xl pointer-events-none"></div>
+  <!-- ───── DOAÇÕES ───── -->
+  <section id="doacoes" class="py-24 bg-bg-offwhite border-t border-gray-100 relative overflow-hidden">
+    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
+    <div class="decor-chevron-left top-20 -left-12"></div>
+    <div class="decor-slanted-stripe bottom-10 right-0"></div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
-
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
+      
       <!-- Cabeçalho -->
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="section-label-accent mb-6 block w-fit mx-auto">
-          Em ação
-        </span>
-        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-5" style="letter-spacing:-0.02em;">
-          Conheça um pouco do nosso trabalho
-        </h2>
-        <p class="text-lg text-text-body/75 leading-relaxed">
-          Realizamos palestras, oficinas e eventos de capacitação gratuitos para jovens e adultos da comunidade. Veja como a transformação acontece na prática.
-        </p>
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="section-label mb-4 block w-fit mx-auto">Apoie</span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">Como sua doação ajuda</h2>
+        <p class="text-base sm:text-lg text-text-body/75">Sua contribuição é o combustível que nos permite continuar acolhendo vidas e multiplicando esperança na Penha e região.</p>
       </div>
 
-      <!-- Player de Vídeo -->
-      <div class="flex justify-center">
-        <div class="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 bg-black" style="aspect-ratio: 9/16;">
-          <video
-            controls
-            preload="none"
-            poster="https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg"
-            class="w-full h-full object-cover"
-            aria-label="Vídeo da Palestra de Capacitação Profissional do MultiplicaRio"
-          >
-            <source src="/V%C3%ADdeo%20Palestra.mp4" type="video/mp4" />
-            Seu navegador não suporta reprodução de vídeo.
-          </video>
+      <!-- Tiers de Doação -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+        <DonationTierCard amount="30" impact="Garante material escolar completo para uma criança durante um mês." />
+        <DonationTierCard amount="80" impact="Custeia uma cesta básica nutritiva para uma família em situação de vulnerabilidade." isPopular={true} />
+        <DonationTierCard amount="150" impact="Financia atendimento médico e de reflexologia preventiva para três idosos." />
+      </div>
+
+      <!-- Métodos de Pagamento (PIX + Transferência) -->
+      <div class="flex items-center justify-center gap-2 mb-10 bg-primary/10 text-primary-dark max-w-xl mx-auto px-5 py-2.5 rounded-full border border-primary/20 text-center">
+        <ShieldCheck class="w-5 h-5 text-primary-dark flex-shrink-0" aria-hidden="true" />
+        <span class="text-xs sm:text-sm font-bold leading-snug">Ambiente 100% transparente. Todas as doações são registradas.</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
+        
+        <!-- Doação PIX (Col-span-7) -->
+        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden flex flex-col justify-between" id="pix-area">
+          <div class="absolute top-0 right-0 p-4 bg-primary/20 text-primary-dark rounded-bl-3xl">
+            <QrCode class="w-6 h-6" aria-hidden="true" />
+          </div>
+          
+          <div>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-2">Doação via PIX</h3>
+            <p class="text-text-body/70 text-xs sm:text-sm mb-6 leading-relaxed">
+              Ajude imediatamente de forma segura. A chave é o CNPJ do Instituto:
+            </p>
+            
+            <div class="bg-bg-lightgreen/20 p-2.5 rounded-xl border border-primary-dark/10 flex items-center gap-2 mb-3">
+              <span class="text-[9px] uppercase tracking-wider text-primary-dark/95 font-bold">CHAVE CNPJ</span>
+            </div>
+            <div class="flex items-center justify-between gap-3 bg-bg-offwhite border border-primary-dark/15 p-3 rounded-2xl shadow-sm">
+              <span id="cnpj-key" class="font-mono text-sm sm:text-base font-bold text-primary-dark select-all tracking-tight">62.559.044/0001-03</span>
+              <button
+                id="copy-cnpj-btn"
+                class="bg-primary hover:bg-primary-dark hover:text-white text-primary-dark px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm active:scale-95 cursor-pointer"
+                aria-label="Copiar chave CNPJ"
+              >
+                Copiar CNPJ
+              </button>
+            </div>
+            <p class="text-xs text-text-body text-center font-medium">Banco Cooperativo Sicoob · Instituto MultiplicaRio</p>
+          </div>
+        </div>
+
+        <!-- Transferência Bancária (Col-span-5) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex gap-4 items-start">
+            <div class="w-10 h-10 bg-secondary/30 rounded-xl flex items-center justify-center flex-shrink-0 text-secondary-dark mt-0.5">
+              <CreditCard class="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-serif text-lg font-bold text-gray-900 mb-2">Transferência Bancária</h3>
+              <ul class="text-xs space-y-2 text-text-body font-mono">
+                <li><span class="text-text-body/75 font-sans font-bold">Banco:</span> 756 - Sicoob</li>
+                <li><span class="text-text-body/75 font-sans font-bold">Agência:</span> 4338</li>
+                <li><span class="text-text-body/75 font-sans font-bold">Conta:</span> 83.242-1</li>
+                <li><span class="text-text-body/75 font-sans font-bold">CNPJ:</span> 62.559.044/0001-03</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex gap-4 items-start">
+            <div class="w-10 h-10 bg-accent/15 rounded-xl flex items-center justify-center flex-shrink-0 text-accent-hover mt-0.5">
+              <HeartPulse class="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-serif text-lg font-bold text-gray-900 mb-2">Doação Recorrente</h3>
+              <p class="text-text-body/70 text-xs leading-relaxed">
+                Quer se tornar um mantenedor e nos ajudar a planejar ações futuras com estabilidade? Fale conosco para configurar uma doação mensal.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── TRANSPARÊNCIA ───── -->
+  <section id="transparencia" class="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
+    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
+    <div class="decor-chevron-right top-16 -right-16"></div>
+    <div class="decor-slanted-stripe-accent top-1/4 left-0"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center mb-16">
+        <span class="section-label mb-4 block w-fit mx-auto">Confiança</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Transparência Financeira</h2>
+        <p class="text-base sm:text-lg text-text-body/75 max-w-2xl mx-auto">Prestamos contas de cada recurso recebido. Abaixo você confere nosso balanço e pode baixar os documentos oficiais.</p>
+      </div>
+
+      <!-- Gráfico Pizza CSS + Detalhamento -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-bg-offwhite p-6 sm:p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm mb-12">
+        <!-- Pizza Grafico -->
+        <div class="flex justify-center">
+          <div class="w-52 h-52 sm:w-60 sm:h-60 rounded-full border-[14px] border-primary relative flex items-center justify-center shadow-md">
+            <div class="absolute inset-[-14px] rounded-full border-[14px] border-secondary" style="clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);"></div>
+            <div class="text-center z-10 bg-white w-32 h-32 sm:w-36 sm:h-36 rounded-full flex flex-col items-center justify-center shadow-sm">
+              <span class="text-2xl font-bold text-primary-dark">2023</span>
+              <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Balanço</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detalhes do Balanço -->
+        <div class="space-y-6">
+          <div class="flex items-start gap-3">
+            <div class="w-4 h-4 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
+            <div>
+              <h3 class="font-bold text-base sm:text-lg text-gray-900">85% - Projetos e Ações Comunitárias</h3>
+              <p class="text-text-body/75 text-sm mt-1 leading-relaxed">Destinado diretamente à compra de suprimentos para mutirões de saúde, materiais pedagógicos, exames, óculos e amparo social na Penha.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-3">
+            <div class="w-4 h-4 rounded-full bg-secondary mt-1.5 flex-shrink-0"></div>
+            <div>
+              <h3 class="font-bold text-base sm:text-lg text-gray-900">15% - Despesas Administrativas e Operacionais</h3>
+              <p class="text-text-body/75 text-sm mt-1 leading-relaxed">Taxas financeiras, contabilidade legal, manutenção da sede comunitária e gestão.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Legenda -->
-      <p class="text-center text-text-body/45 text-sm mt-5 tracking-wide">
-        Palestra de Capacitação Profissional · Jovens Aprendiz (14–23 anos) · Penha, Rio de Janeiro
-      </p>
+      <!-- Links de Downloads -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="flex items-center justify-between p-5 rounded-2xl border border-gray-100 hover:border-primary/40 hover:shadow-md transition-all group bg-bg-offwhite">
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-primary-dark shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+              <FileText class="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 text-sm">Relatório Anual 2023</h4>
+              <p class="text-xs text-gray-500">PDF • 2.4 MB</p>
+            </div>
+          </div>
+          <a href="#" class="p-2.5 text-gray-400 hover:text-primary-dark transition-colors" aria-label="Baixar Relatório 2023">
+            <Download class="w-5 h-5" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div class="flex items-center justify-between p-5 rounded-2xl border border-gray-100 hover:border-secondary/50 hover:shadow-md transition-all group bg-bg-offwhite">
+          <div class="flex items-center gap-4">
+            <div class="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-secondary-dark shadow-sm group-hover:bg-secondary group-hover:text-white transition-colors">
+              <FileText class="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 text-sm">Estatuto Social</h4>
+              <p class="text-xs text-gray-500">PDF • 1.2 MB</p>
+            </div>
+          </div>
+          <a href="#" class="p-2.5 text-gray-400 hover:text-secondary-dark transition-colors" aria-label="Baixar Estatuto Social">
+            <Download class="w-5 h-5" aria-hidden="true" />
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── VÍDEO E PILARES ───── -->
+  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-24 md:py-32 bg-zinc-950">
+    <!-- Vídeo de Fundo com Overlays -->
+    <div class="absolute inset-0 z-0">
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg"
+        class="w-full h-full object-cover opacity-50"
+        preload="auto"
+      >
+        <source src="/V%C3%ADdeo%20Palestra.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60"></div>
+      <div class="absolute inset-0 dot-pattern opacity-10 pointer-events-none"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10 text-center flex flex-col items-center">
+      
+      <!-- Cabeçalho / Texto em Caixa Alta Itálico -->
+      <h2 class="font-serif text-xl sm:text-2xl lg:text-3xl font-black italic tracking-wide text-white uppercase max-w-3xl leading-snug mb-5 animate-fade-up">
+        O INSTITUTO MULTIPLICARIO CONTRIBUI COM A PENHA E REGIÃO, PROPONDO NOVAS FORMAS DE
+      </h2>
+      
+      <!-- Caixa de Destaque Colorida -->
+      <div class="inline-block bg-accent hover:bg-accent-hover text-white font-serif font-black italic text-lg sm:text-2xl lg:text-[2.2rem] px-8 py-4 rounded-2xl uppercase tracking-wide shadow-2xl max-w-4xl leading-tight mb-12 transform hover:scale-[1.01] transition-all duration-300">
+        Acolhimento, Saúde e Desenvolvimento baseado em três pilares:
+      </div>
+
+      <!-- Grid dos 3 Pilares -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
+        
+        <!-- Pilar 1 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xl flex items-center justify-center gap-3.5 border border-white/20 select-none hover:scale-[1.03] transition-transform duration-200">
+          <div class="w-10 h-10 bg-primary/20 text-primary-dark rounded-xl flex items-center justify-center flex-shrink-0">
+            <HeartPulse class="w-5 h-5" aria-hidden="true" />
+          </div>
+          <span class="font-sans font-bold text-primary-dark tracking-wider text-sm sm:text-base uppercase">Saúde Comunitária</span>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xl flex items-center justify-center gap-3.5 border border-white/20 select-none hover:scale-[1.03] transition-transform duration-200">
+          <div class="w-10 h-10 bg-accent/20 text-accent-hover rounded-xl flex items-center justify-center flex-shrink-0">
+            <BookOpen class="w-5 h-5" aria-hidden="true" />
+          </div>
+          <span class="font-sans font-bold text-primary-dark tracking-wider text-sm sm:text-base uppercase">Educação & Cultura</span>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="bg-white rounded-2xl p-6 shadow-xl flex items-center justify-center gap-3.5 border border-white/20 select-none hover:scale-[1.03] transition-transform duration-200">
+          <div class="w-10 h-10 bg-primary/20 text-primary-dark rounded-xl flex items-center justify-center flex-shrink-0">
+            <TreePine class="w-5 h-5" aria-hidden="true" />
+          </div>
+          <span class="font-sans font-bold text-primary-dark tracking-wider text-sm sm:text-base uppercase">Lazer & Empregabilidade</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── ÁREA DE ATUAÇÃO ───── -->
+  <section id="atuacao" class="py-24 bg-bg-offwhite border-t border-gray-100 relative overflow-hidden">
+    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
+    <div class="decor-chevron-left bottom-24 -left-12"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Esquerda: Grid Interativo de Bairros -->
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          {[
+            { name: "Penha", role: "Sede & Atendimentos", focus: "Central", color: "bg-primary-dark text-white border-primary-dark" },
+            { name: "Olaria", role: "Atendimento de Saúde", focus: "Saúde", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+            { name: "Ramos", role: "Assessoria Jurídica", focus: "Direitos", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+            { name: "Bonsucesso", role: "Projetos de Cultura", focus: "Cultura", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+            { name: "Vila da Penha", role: "Apoio Escolar", focus: "Educação", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+            { name: "Brás de Pina", role: "Distribuição Cestas", focus: "Social", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+            { name: "Vicente de Carvalho", role: "Acolhimento Mulheres", focus: "Bem-estar", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+            { name: "Cordovil", role: "Isenções & Documentos", focus: "Social", color: "bg-white text-gray-900 border-gray-100 hover:border-primary/50" },
+          ].map(bairro => (
+            <div class={`p-5 rounded-2xl border shadow-sm transition-all duration-300 group hover:-translate-y-1 hover:shadow-md flex flex-col justify-between min-h-[110px] relative overflow-hidden ${bairro.color}`}>
+              <!-- Diagonal chevron that scales on hover -->
+              <div class="absolute -bottom-4 -right-4 w-12 h-12 border-t border-l border-gray-200/20 transform rotate-45 group-hover:scale-110 transition-transform duration-300"></div>
+              
+              <div class="flex items-center justify-between gap-2 z-10">
+                <span class="text-xs font-bold uppercase tracking-wider opacity-85">{bairro.focus}</span>
+                <MapPin class="w-4 h-4 text-accent" />
+              </div>
+              
+              <div class="mt-4 z-10">
+                <h3 class="font-serif text-lg font-bold leading-tight tracking-tight">{bairro.name}</h3>
+                <p class="text-[10px] font-bold mt-1 opacity-90 tracking-wide uppercase">{bairro.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Direita: Informações de Atuação -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="section-label">Locais</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            Nossa atuação é nestes espaços:
+          </h2>
+          <p class="text-base sm:text-lg text-text-body/75 leading-relaxed">
+            Estamos presentes em escolas, creches comunitárias e praças públicas na Penha e nos bairros vizinhos que compõem o ecossistema Leopoldina, Zona Norte do Rio de Janeiro.
+          </p>
+
+          <!-- Card de Bairros -->
+          <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-sm space-y-5">
+            <h3 class="font-serif text-xl font-bold text-primary-dark">Rio de Janeiro</h3>
+            
+            <div class="space-y-4">
+              <div>
+                <span class="inline-block bg-accent text-white text-xs font-bold px-3 py-1 rounded-full border border-accent mb-1.5">Penha (Sede)</span>
+                <p class="text-xs sm:text-sm text-text-body/75">Sede administrativa do Instituto, coordenação geral das ações e atendimentos principais.</p>
+              </div>
+              
+              <div class="border-t pt-3">
+                <span class="inline-block bg-primary/20 text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-primary/30 mb-1.5">Olaria, Ramos & Bonsucesso</span>
+                <p class="text-xs sm:text-sm text-text-body/75">Oficinas itinerantes, assessoria jurídica para mulheres e plantões de exames básicos.</p>
+              </div>
+
+              <div class="border-t pt-3">
+                <span class="inline-block bg-primary/20 text-primary-dark text-xs font-bold px-3 py-1 rounded-full border border-primary/30 mb-1.5">Vila da Penha, Brás de Pina & Vicente de Carvalho</span>
+                <p class="text-xs sm:text-sm text-text-body/75">Projetos de apoio pedagógico escolar, distribuição de cestas básicas e material educativo.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </section>
 
   <!-- ───── AÇÕES REALIZADAS ───── -->
-  <section class="py-20 md:py-28 bg-white relative overflow-hidden border-t border-gray-100">
+  <section id="acoes" class="py-20 md:py-28 bg-white relative overflow-hidden border-t border-gray-100">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-6">
         <div class="max-w-2xl">
-          <span class="section-label mb-4 block w-fit">Nosso trabalho</span>
           <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Ações Realizadas</h2>
           <p class="text-base sm:text-lg text-text-body/75">Acompanhe os projetos recentes e o impacto direto que nossas ações têm na comunidade.</p>
         </div>
@@ -322,12 +671,12 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
       <div id="actions-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 no-scrollbar scroll-smooth">
 
         {[
-          { img: "https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg", tag: "Saúde", title: "Aferição de Pressão e Teste Glicêmico", desc: "Oferecemos aferição de pressão arterial, teste glicêmico e reflexologia para a comunidade, promovendo prevenção e cuidado com a saúde de forma gratuita.", alt: "Atendimento de saúde na comunidade" },
-          { img: "https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg", tag: "Educação", title: "Apoio em Questões Escolares", desc: "Auxiliamos famílias com dúvidas e dificuldades escolares, orientando pais e responsáveis sobre direitos educacionais e apoio pedagógico.", alt: "Apoio educacional para a comunidade" },
-          { img: "https://i.ibb.co/zVpZxwMh/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg", tag: "Assistência Social", title: "Orientação Jurídica Gratuita", desc: "Disponibilizamos advogados para orientação em processos de INSS, LOAS e BPC, além do cadastro de famílias em situação de vulnerabilidade.", alt: "Orientação jurídica para a comunidade" },
-          { img: "https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg", tag: "Mulheres", title: "Atendimento Terapêutico para Mulheres", desc: "Programa de apoio emocional, escuta qualificada, empoderamento feminino e saúde mental para mulheres da comunidade da Penha e região.", alt: "Atendimento terapêutico para mulheres" },
-        ].map((card) => (
-          <div class="flex-none w-[85vw] sm:w-80 md:w-[22rem] snap-start bg-bg-offwhite rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
+          { slug: "afericao-pressao", tag: "Saúde", title: "Aferição de Pressão e Teste Glicêmico", desc: "Oferecemos aferição de pressão arterial, teste glicêmico e reflexologia para a comunidade, promovendo prevenção e cuidado com a saúde de forma gratuita.", img: "https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg", alt: "Atendimento de saúde na comunidade" },
+          { slug: "apoio-escolar", tag: "Educação", title: "Apoio em Questões Escolares", desc: "Auxiliamos famílias com dúvidas e dificuldades escolares, orientando pais e responsáveis sobre direitos educacionais e apoio pedagógico.", img: "https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg", alt: "Apoio educacional para a comunidade" },
+          { slug: "orientacao-juridica", tag: "Assistência Social", title: "Orientação Jurídica Gratuita", desc: "Disponibilizamos advogados para orientação em processos de INSS, LOAS e BPC, além do cadastro de famílias em situação de vulnerabilidade.", img: "https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg", alt: "Orientação jurídica para a comunidade" },
+          { slug: "atendimento-terapeutico", tag: "Mulheres", title: "Atendimento Terapêutico para Mulheres", desc: "Programa de apoio emocional, escuta qualificada, empoderamento feminino e saúde mental para mulheres da comunidade da Penha e região.", img: "https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg", alt: "Atendimento terapêutico para mulheres" },
+        ].map((card, i) => (
+          <div data-card-index={i} class="flex-none w-[85vw] sm:w-80 md:w-[22rem] snap-start bg-bg-offwhite rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
             <div class="h-52 overflow-hidden relative">
               <img src={card.img} alt={card.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -338,7 +687,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
             <div class="p-6 flex flex-col flex-grow">
               <h3 class="font-serif text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-primary-dark transition-colors">{card.title}</h3>
               <p class="text-text-body/70 text-sm leading-relaxed mb-5 flex-grow">{card.desc}</p>
-              <a href="/contato" class="inline-flex items-center gap-2 text-primary-dark font-bold text-sm hover:gap-3 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+              <a href={`/acoes/${card.slug}`} aria-label={`Saber mais sobre: ${card.title}`} class="inline-flex items-center gap-2 text-primary-dark font-bold text-sm hover:gap-3 transition-all duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
                 Saber mais <ArrowRight class="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
@@ -346,109 +695,403 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
         ))}
 
       </div>
+
+      <!-- Dots de paginação (mobile) -->
+      <div id="carousel-dots" class="flex sm:hidden justify-center gap-2 mt-2" aria-hidden="true">
+        {[0,1,2,3].map(i => (
+          <button data-dot={i} class="w-2 h-2 rounded-full bg-primary/30 transition-all duration-200 focus-visible:outline-none" aria-label={`Ir para item ${i + 1}`}></button>
+        ))}
+      </div>
+
     </div>
   </section>
 
-  <!-- ───── DEPOIMENTOS ───── -->
-  <section class="py-24 md:py-32 bg-primary/15 relative overflow-hidden">
-    <!-- Decorações -->
-    <div class="absolute top-0 right-0 w-80 h-80 rounded-full bg-secondary/30 -mt-20 -mr-20 blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-accent/15 -mb-16 -ml-16 blur-3xl pointer-events-none"></div>
-    <div class="absolute inset-0 dot-pattern opacity-30 pointer-events-none"></div>
+  <!-- ───── COLABORE ───── -->
+  <section id="colabore" class="py-24 md:py-32 bg-bg-lightgreen relative overflow-hidden">
+    <!-- Decorações em BG -->
+    <div class="absolute -top-12 -left-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="section-label-accent mb-5 block w-fit mx-auto">
-          Histórias reais
-        </span>
-        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">Histórias de Impacto</h2>
-        <p class="text-lg text-text-body/75">Conheça as pessoas que tiveram suas vidas transformadas pelo MultiplicaRio.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-        <TestimonialCard
-          quote="O apoio do MultiplicaRio foi fundamental quando mais precisei. Hoje meus filhos têm acesso à educação de qualidade e eu consegui um trabalho."
-          author="Maria Silva"
-          role="Moradora da Penha"
-          imagePath="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop"
-        />
-        <TestimonialCard
-          quote="Ser voluntário aqui me mostrou o verdadeiro significado de comunidade. A transformação que vemos todos os dias é emocionante."
-          author="João Ferreira"
-          role="Voluntário — Área de Saúde"
-          imagePath="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── COMO SUA DOAÇÃO AJUDA ───── -->
-  <section class="py-20 md:py-28 bg-bg-offwhite">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="section-label mb-4 block w-fit mx-auto">Transparência</span>
-        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">Como sua doação ajuda</h2>
-        <p class="text-lg text-text-body/75">Cada contribuição é transformada diretamente em ações que mudam a realidade da nossa região.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <DonationTierCard amount="30" impact="Garante material escolar completo para uma criança durante um mês." />
-        <DonationTierCard amount="80" impact="Custeia uma cesta básica nutritiva para uma família em situação de vulnerabilidade." isPopular={true} />
-        <DonationTierCard amount="150" impact="Financia atendimento médico e psicológico preventivo para três idosos." />
-      </div>
-    </div>
-  </section>
-
-  <!-- ───── OUTRAS FORMAS ───── -->
-  <section class="py-20 md:py-28 bg-bg-lightgreen relative overflow-hidden">
-    <div class="absolute bottom-0 right-0 w-1/3 h-full dot-pattern opacity-20 pointer-events-none"></div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl relative z-10">
-      <div class="text-center mb-12">
-        <span class="section-label mb-4 block w-fit mx-auto">Participe</span>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Outras Formas de se Envolver</h2>
-        <p class="text-lg text-text-body/75">O seu tempo e os seus bens também são muito valiosos para nós.</p>
+      
+      <div class="text-center mb-16 max-w-3xl mx-auto">
+        <span class="section-label mb-4 block w-fit mx-auto">Colabore</span>
+        <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">Outras Formas de se Envolver</h2>
+        <p class="text-base sm:text-lg text-text-body/75">Seu tempo, seus talentos ou seus bens têm o poder de multiplicar esperança na vida de quem mais precisa.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-        <div class="group bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-          <div class="w-14 h-14 bg-secondary/30 rounded-2xl flex items-center justify-center mb-5">
-            <Users class="w-7 h-7 text-secondary-dark" aria-hidden="true" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Card 1: Voluntariado -->
+        <div class="group bg-white border border-gray-100 rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col justify-between hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute top-4 right-4 bg-primary/20 text-primary-dark font-sans font-bold text-[10px] tracking-wider uppercase px-3 py-1 rounded-full border border-primary/30">
+            ✦ Seja a mudança
           </div>
-          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-3">Voluntariado</h3>
-          <p class="text-text-body/70 mb-6 leading-relaxed">Junte-se ao nosso time! Precisamos de profissionais e pessoas com vontade de ajudar em eventos e rotinas do Instituto.</p>
-          <a href="/como-ajudar" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
-            Quero ser voluntário <ArrowRight class="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
+          <div>
+            <div class="w-14 h-14 bg-primary/15 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
+              <Users class="w-7 h-7 text-primary-dark" aria-hidden="true" />
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Voluntariado</h3>
+            <p class="text-text-body/70 text-sm leading-relaxed mb-6">
+              Doe um pouco do seu tempo e conhecimento para apoiar o Instituto nas ações diárias e mutirões especiais.
+            </p>
+            <ul class="space-y-2.5 text-xs text-text-body/75">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Apoiar em mutirões de saúde preventiva
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Colaborar em atividades pedagógicas ou culturais
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Auxiliar na organização de eventos locais
+              </li>
+            </ul>
+          </div>
+          <a
+            href="#contato"
+            class="mt-8 w-full py-3.5 px-6 rounded-2xl font-bold text-center bg-primary text-primary-dark group-hover:bg-primary-dark group-hover:text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            Quero ser voluntário
+            <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </a>
         </div>
 
-        <div class="group bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-          <div class="w-14 h-14 bg-accent/15 rounded-2xl flex items-center justify-center mb-5">
-            <Brush class="w-7 h-7 text-accent-hover" aria-hidden="true" />
+        <!-- Card 2: Doação de Itens -->
+        <div class="group bg-white border border-gray-100 rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col justify-between hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute top-4 right-4 bg-accent text-white font-sans font-bold text-[10px] tracking-wider uppercase px-3 py-1 rounded-full border border-accent">
+            ✦ MULTIPLIQUE O BEM
           </div>
-          <h3 class="font-serif text-2xl font-bold text-gray-900 mb-3">Doação de Itens</h3>
-          <p class="text-text-body/70 mb-6 leading-relaxed">Aceitamos roupas, alimentos não perecíveis, brinquedos, móveis e material escolar. Entregue na nossa sede.</p>
-          <a href="/como-ajudar" class="inline-flex items-center gap-2 text-primary-dark font-bold hover:gap-3 transition-all duration-200 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
-            Ver detalhes <ArrowRight class="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
+          <div>
+            <div class="w-14 h-14 bg-accent/15 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
+              <Brush class="w-7 h-7 text-accent-hover" aria-hidden="true" />
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Doação de Itens</h3>
+            <p class="text-text-body/70 text-sm leading-relaxed mb-6">
+              Arrecadamos donativos que são triados e destinados diretamente às famílias atendidas pelos nossos projetos sociais.
+            </p>
+            <ul class="space-y-2.5 text-xs text-text-body/75">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                Alimentos não perecíveis para cestas básicas
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                Roupas, calçados e brinquedos em bom estado
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                Materiais escolares para apoio ao aprendizado
+              </li>
+            </ul>
+          </div>
+          <a
+            href="#contato"
+            class="mt-8 w-full py-3.5 px-6 rounded-2xl font-bold text-center bg-accent text-white hover:bg-accent-hover transition-all duration-300 flex items-center justify-center gap-2 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            Como doar itens
+            <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── CONTATO ───── -->
+  <section id="contato" class="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
+    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
+    <div class="decor-chevron-right top-24 -right-16"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      
+      <div class="flex flex-col lg:flex-row gap-16">
+        
+        <!-- Informações de Contato -->
+        <div class="lg:w-1/3 space-y-8">
+          <div>
+            <span class="section-label mb-3 block w-fit">Contato</span>
+            <h2 class="font-serif text-3xl font-bold text-gray-900 mb-4">Fale Conosco</h2>
+            <p class="text-text-body/80 text-sm">Dúvidas, parcerias ou vontade de ser voluntário? Nossa equipe responderá o mais breve possível.</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-bg-offwhite rounded-xl flex items-center justify-center text-primary-dark flex-shrink-0 shadow-sm border border-gray-100">
+                <MapPin class="w-5 h-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">Endereço</h3>
+                  <p class="text-xs sm:text-sm text-text-body/75 mt-1">Rua Ingai, nº 21<br/>Penha, Rio de Janeiro - RJ<br/><span class="text-text-body/80 font-medium text-xs">Perto da Casa do Marinheiro, Av. Brasil</span></p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-bg-offwhite rounded-xl flex items-center justify-center text-primary-dark flex-shrink-0 shadow-sm border border-gray-100">
+                <Phone class="w-5 h-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">Telefone / WhatsApp</h3>
+                <p class="text-xs sm:text-sm text-text-body/75 mt-1">(21) 6459-4790</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-bg-offwhite rounded-xl flex items-center justify-center text-primary-dark flex-shrink-0 shadow-sm border border-gray-100">
+                <Mail class="w-5 h-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">E-mail</h3>
+                <p class="text-xs sm:text-sm text-text-body/75 mt-1">imultiplicar@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-bg-offwhite rounded-xl flex items-center justify-center text-primary-dark flex-shrink-0 shadow-sm border border-gray-100">
+                <Clock class="w-5 h-5" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">Horário de Atendimento</h3>
+                <p class="text-xs sm:text-sm text-text-body/75 mt-1">Segunda a Sexta: 09h às 18h</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário e Mapa -->
+        <div class="lg:w-2/3 space-y-12">
+          
+          <!-- Formulário -->
+          <div class="bg-bg-offwhite p-6 sm:p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden">
+            <!-- Diagonal decoration in card -->
+            <div class="absolute -bottom-10 -right-10 w-24 h-24 border-[12px] border-primary/20 transform rotate-45 pointer-events-none"></div>
+            <h3 class="font-serif text-xl font-bold text-gray-900 mb-6">Envie uma mensagem</h3>
+            
+            <form action="https://formspree.io/f/placeholder" method="POST" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nome Completo</label>
+                  <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm" placeholder="Seu nome" />
+                </div>
+                <div>
+                  <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">E-mail</label>
+                  <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm" placeholder="seu@email.com" />
+                </div>
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Assunto</label>
+                <select name="subject" id="subject" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm text-gray-700">
+                  <option value="Dúvida Geral">Dúvida Geral</option>
+                  <option value="Quero ser Voluntário">Quero ser Voluntário</option>
+                  <option value="Parceria Institucional">Parceria Institucional</option>
+                  <option value="Doações">Doações</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Mensagem</label>
+                <textarea name="message" id="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm resize-y" placeholder="Como podemos ajudar?"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-primary-dark hover:text-white font-bold py-4 rounded-xl transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">
+                Enviar Mensagem
+              </button>
+            </form>
+          </div>
+
+          <!-- Mapa Google Maps -->
+          <div class="rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-80 bg-gray-200 relative">
+             <iframe 
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14704.9189498212!2d-43.2849419!3d-22.8465492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997b8fbb52cdd7%3A0x6b10d32fba64069f!2sPenha%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr" 
+               width="100%" 
+               height="100%" 
+               style="border:0;" 
+               allowfullscreen="" 
+               loading="lazy" 
+               referrerpolicy="no-referrer-when-downgrade"
+               class="absolute inset-0"
+               title="Mapa da Localização do MultiplicaRio na Penha"
+             ></iframe>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ───── CTA ───── -->
-  <CTASection />
 
 </BaseLayout>
 
+<style>
+  .slideshow-slide {
+    transition: opacity 1.5s ease-in-out;
+  }
+  .slideshow-image {
+    transition: transform 6s ease-out;
+    transform: scale(1.15);
+  }
+  .slideshow-slide.active .slideshow-image {
+    transform: scale(1);
+  }
+
+  /* Linhas e Formas Diagonais / Chevrons (Estilo Vini Jr) */
+  .decor-chevron-left {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-bottom: 24px solid var(--color-primary);
+    border-left: 24px solid var(--color-primary);
+    transform: rotate(45deg);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .decor-chevron-right {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-top: 32px solid var(--color-accent);
+    border-right: 32px solid var(--color-accent);
+    transform: rotate(45deg);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .decor-slanted-stripe {
+    position: absolute;
+    width: 150%;
+    height: 80px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, transparent 100%);
+    transform: rotate(-12deg) translateX(-10%);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .decor-slanted-stripe-accent {
+    position: absolute;
+    width: 150%;
+    height: 100px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
+    transform: rotate(12deg) translateX(-10%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+
+<script>
+  function initHeroSlideshow() {
+    const slideshow = document.getElementById('hero-slideshow');
+    if (!slideshow) return;
+
+    const slides = slideshow.querySelectorAll('.slideshow-slide');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+
+    function nextSlide() {
+      const currentSlide = slides[currentIndex];
+      
+      currentIndex = (currentIndex + 1) % slides.length;
+      const nextSlide = slides[currentIndex];
+
+      // Remove classes
+      currentSlide.classList.remove('active', 'opacity-100');
+      currentSlide.classList.add('opacity-0');
+
+      // Adiciona classes
+      nextSlide.classList.remove('opacity-0');
+      nextSlide.classList.add('active', 'opacity-100');
+    }
+
+    setInterval(nextSlide, 5000);
+  }
+
+  document.addEventListener('DOMContentLoaded', initHeroSlideshow);
+  document.addEventListener('astro:page-load', initHeroSlideshow);
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const actionsCarousel = document.getElementById('actions-carousel');
+    const carousel = document.getElementById('actions-carousel');
     const prevBtn = document.getElementById('prev-action');
     const nextBtn = document.getElementById('next-action');
+    const dots = document.querySelectorAll<HTMLButtonElement>('#carousel-dots [data-dot]');
 
-    if (actionsCarousel && prevBtn && nextBtn) {
-      const scrollAmount = 380;
-      prevBtn.addEventListener('click', () => { actionsCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
-      nextBtn.addEventListener('click', () => { actionsCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
+    if (!carousel) return;
+
+    const cards = carousel.querySelectorAll<HTMLElement>('[data-card-index]');
+    const cardCount = cards.length;
+
+    function getActiveIndex(): number {
+      const mid = carousel.scrollLeft + carousel.clientWidth / 2;
+      let closest = 0;
+      let minDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.offsetLeft + card.offsetWidth / 2 - mid);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      return closest;
     }
+
+    function updateDots(active: number) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-primary-dark', i === active);
+        dot.classList.toggle('w-4', i === active);
+        dot.classList.toggle('bg-primary/30', i !== active);
+        dot.classList.toggle('w-2', i !== active);
+      });
+    }
+
+    carousel.addEventListener('scroll', () => { updateDots(getActiveIndex()); }, { passive: true });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        cards[i]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      });
+    });
+
+    if (prevBtn && nextBtn) {
+      const scrollAmount = 380;
+      prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
+      nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
+    }
+
+    updateDots(0);
   });
+</script>
+
+<script>
+  function initPixKeyCopier() {
+    const copyBtn = document.getElementById('copy-btn');
+    const pixKey = document.getElementById('pix-key');
+
+    if (copyBtn && pixKey) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(pixKey.textContent || '');
+          const span = copyBtn.querySelector('span');
+          if (span) {
+            const originalText = span.textContent;
+            span.textContent = 'Copiado! ✓';
+            copyBtn.classList.add('bg-green-600', 'text-white');
+            copyBtn.classList.remove('bg-primary', 'text-primary-dark');
+            setTimeout(() => {
+              span.textContent = originalText;
+              copyBtn.classList.remove('bg-green-600', 'text-white');
+              copyBtn.classList.add('bg-primary', 'text-primary-dark');
+            }, 2000);
+          }
+        } catch (err) {
+          console.error('Falha ao copiar chave PIX:', err);
+        }
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initPixKeyCopier);
+  document.addEventListener('astro:page-load', initPixKeyCopier);
 </script>
