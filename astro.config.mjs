@@ -11,5 +11,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
+  image: {
+    domains: ['i.ibb.co'],
+  },
+
   integrations: [sitemap()]
 });
