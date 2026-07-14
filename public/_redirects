@@ -1,0 +1,3 @@
+# Redireciona o domínio raiz para o www (evita conteúdo duplicado e garante
+# que o og:image/canonical batam com a URL real acessada).
+https://imultiplicario.com.br/* https://www.imultiplicario.com.br/:splat 301
