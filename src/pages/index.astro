@@ -1,15 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DonateButton from '../components/DonateButton.astro';
-import { HeartPulse, Heart, BookOpen, Brush, TreePine, Users, ChevronLeft, ChevronRight, Calendar, ArrowRight, Copy, QrCode, CreditCard, Gift, Building2, FileText, Download, ShieldCheck, MapPin, Phone, Mail, Clock } from 'lucide-astro';
+import { HeartPulse, Heart, BookOpen, Brush, TreePine, Users, ChevronLeft, ChevronRight, Calendar, ArrowRight, Copy, QrCode, CreditCard, Gift, Building2, FileText, Download, ShieldCheck, MapPin, Phone, Mail } from 'lucide-astro';
 
 const title = "Início";
 const fullTitle = "Instituto MultiplicaRio | Educação e Saúde na Penha, Rio de Janeiro";
-const description = "Instituto MultiplicaRio atua na Penha (RJ) e arredores promovendo acolhimento, saúde, educação, cultura e assistência social.";
+const description = "Instituto MultiplicaRio: saúde, educação e assistência social gratuitas na Penha, Rio de Janeiro. OSCIP credenciada.";
+const keywords = "MultiplicaRio, ONG Penha, saúde gratuita Penha, assistência social Rio de Janeiro, OSCIP Rio de Janeiro, educação comunitária, voluntariado Penha, orientação INSS LOAS BPC Penha, Instituto MultiplicaRio";
 const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27-57.jpg";
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.imultiplicario.com.br/#webpage",
+  "url": "https://www.imultiplicario.com.br/",
+  "name": fullTitle,
+  "description": description,
+  "isPartOf": { "@id": "https://www.imultiplicario.com.br/#website" },
+  "about": { "@id": "https://www.imultiplicario.com.br/#organization" },
+  "inLanguage": "pt-BR",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.imultiplicario.com.br/" }
+    ]
+  }
+};
 ---
 
-<BaseLayout title={title} fullTitle={fullTitle} description={description} heroImage={heroImage}>
+<BaseLayout title={title} fullTitle={fullTitle} description={description} keywords={keywords} heroImage={heroImage}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  </Fragment>
 
   <!-- ───── HERO ───── -->
   <section class="relative bg-primary/15 min-h-[100vh] flex flex-col justify-between pt-12 sm:pt-16 lg:pt-20 pb-12 lg:pb-0">
@@ -167,7 +189,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
           <div class="bg-primary-dark p-8 rounded-3xl shadow-lg border border-primary-dark/15 space-y-3 text-white">
             <h3 class="font-serif text-2xl font-bold text-primary uppercase tracking-tight">Missão</h3>
             <p class="text-white/85 text-sm sm:text-base leading-relaxed">
-              Atuar nas áreas de educação, saúde, esportes, lazer, cultura, capacitação profissional e assistência social, promovendo ações gratuitas e integradas para acolher famílias e construir uma sociedade mais justa e digna.
+              Atuar nas áreas de educação, saúde, esportes, lazer, cultura, meio ambiente, capacitação profissional e assistência social, promovendo ações gratuitas e integradas para acolher famílias e construir uma sociedade mais justa e digna.
             </p>
           </div>
         </div>
@@ -270,6 +292,23 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
             </div>
           </div>
 
+          <!-- Card 6: Meio Ambiente (Vertical) -->
+          <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
+            <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
+              <img src="https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg" class="w-full h-full object-cover" alt="Meio Ambiente" />
+              <!-- Diagonal Corner Ribbon -->
+              <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-primary transform -rotate-45 opacity-75"></div>
+              <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-primary transform -rotate-45 opacity-75"></div>
+            </div>
+            <div class="space-y-3">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-dark bg-primary/20 px-3 py-1 rounded-full border border-primary/30">Meio Ambiente</span>
+              <h3 class="font-serif text-2xl font-bold text-gray-900">Consciência & Sustentabilidade</h3>
+              <p class="text-text-body/75 text-sm sm:text-base leading-relaxed">
+                Integramos a educação ambiental ao nosso trabalho social, incentivando o reaproveitamento de materiais, hábitos sustentáveis e o cuidado com os espaços verdes da comunidade da Penha e região.
+              </p>
+            </div>
+          </div>
+
         </div>
 
         <!-- Coluna Direita -->
@@ -310,7 +349,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
           <!-- Card 5: Assistência Social & Empregabilidade (Vertical) -->
           <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
             <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
-              <img src="/criancas_sorrindo.png" class="w-full h-full object-cover" alt="Assistência Social e Empregabilidade" />
+              <img src="/criancas_sorrindo.jpg" class="w-full h-full object-cover" alt="Assistência Social e Empregabilidade" />
               <!-- Diagonal Corner Ribbon -->
               <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
               <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
@@ -454,7 +493,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
             <div class="absolute inset-[-14px] rounded-full border-[14px] border-secondary" style="clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);"></div>
             <div class="text-center z-10 bg-white w-32 h-32 sm:w-36 sm:h-36 rounded-full flex flex-col items-center justify-center shadow-sm">
               <span class="text-2xl font-bold text-primary-dark">2025</span>
-              <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Balanço</span>
+              <span class="text-[10px] font-bold text-gray-600 uppercase tracking-widest">Balanço</span>
             </div>
           </div>
         </div>
@@ -489,7 +528,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
             </div>
             <div>
               <h4 class="font-bold text-primary-dark text-sm">Relatório Anual 2025</h4>
-              <p class="text-xs text-primary-dark/70">PDF • 2.4 MB</p>
+              <p class="text-xs text-primary-dark/85">PDF • 2.4 MB</p>
             </div>
           </div>
           <a href="#" class="p-2.5 text-primary-dark/60 hover:text-primary-dark transition-colors" aria-label="Baixar Relatório 2025">
@@ -528,7 +567,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
         playsinline
         poster="https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg"
         class="w-full h-full object-cover opacity-50"
-        preload="auto"
+        preload="metadata"
       >
         <source src="/video-palestra.mp4" type="video/mp4" />
       </video>
@@ -544,7 +583,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
       </h2>
       
       <!-- Caixa de Destaque Colorida -->
-      <div class="inline-block bg-accent hover:bg-accent-hover text-white font-serif font-black italic text-lg sm:text-2xl lg:text-[2.2rem] px-8 py-4 rounded-2xl uppercase tracking-wide shadow-2xl max-w-4xl leading-tight mb-12 transform hover:scale-[1.01] transition-all duration-300">
+      <div class="inline-block bg-accent-hover hover:bg-accent text-white font-serif font-black italic text-lg sm:text-2xl lg:text-[2.2rem] px-8 py-4 rounded-2xl uppercase tracking-wide shadow-2xl max-w-4xl leading-tight mb-12 transform hover:scale-[1.01] transition-all duration-300">
         Acolhimento, Saúde e Desenvolvimento baseado em três pilares:
       </div>
 
@@ -586,9 +625,13 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
     <div class="decor-chevron-left bottom-24 -left-12"></div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-      
+
+      <h2 class="font-serif text-3xl md:text-4xl font-bold leading-tight mb-12 max-w-2xl">
+        Nossa atuação é nestes espaços:
+      </h2>
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
+
         <!-- Esquerda: Estação de Trem / Linha da Leopoldina -->
         <div class="lg:col-span-6">
           <div class="relative pl-6 sm:pl-10 py-6">
@@ -601,14 +644,14 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
             <!-- Estações (Bairros) -->
             <div class="space-y-6">
               {[
-                { name: "Penha", role: "Sede & Atendimentos", focus: "Central", color: "text-accent", delay: "0s", cardBg: "bg-primary-dark text-white border-primary-dark/20", titleColor: "text-white", subtitleColor: "text-white/80" },
+                { name: "Penha", role: "Sede & Atendimentos", focus: "Central", color: "text-secondary", delay: "0s", cardBg: "bg-primary-dark text-white border-primary-dark/20", titleColor: "text-white", subtitleColor: "text-white/80" },
                 { name: "Olaria", role: "Atendimento de Saúde", focus: "Saúde", color: "text-primary-dark", delay: "1s", cardBg: "bg-primary/10 text-primary-dark border-primary/25 hover:bg-primary/20", titleColor: "text-primary-dark", subtitleColor: "text-primary-dark/80" },
-                { name: "Ramos", role: "Assessoria Jurídica", focus: "Direitos", color: "text-accent", delay: "2s", cardBg: "bg-accent/10 text-accent border-accent/20 hover:bg-accent/15", titleColor: "text-accent", subtitleColor: "text-accent/80" },
+                { name: "Ramos", role: "Assessoria Jurídica", focus: "Direitos", color: "text-accent-hover", delay: "2s", cardBg: "bg-accent/10 text-accent-hover border-accent/20 hover:bg-accent/15", titleColor: "text-accent-hover", subtitleColor: "text-accent-hover" },
                 { name: "Bonsucesso", role: "Projetos de Cultura", focus: "Cultura", color: "text-secondary-dark", delay: "3s", cardBg: "bg-secondary/25 text-secondary-dark border-secondary/40 hover:bg-secondary/35", titleColor: "text-secondary-dark", subtitleColor: "text-secondary-dark/80" },
                 { name: "Vila da Penha", role: "Apoio Escolar", focus: "Educação", color: "text-primary-dark", delay: "4s", cardBg: "bg-primary/10 text-primary-dark border-primary/25 hover:bg-primary/20", titleColor: "text-primary-dark", subtitleColor: "text-primary-dark/80" },
-                { name: "Brás de Pina", role: "Distribuição Cestas", focus: "Social", color: "text-accent", delay: "5s", cardBg: "bg-accent/10 text-accent border-accent/20 hover:bg-accent/15", titleColor: "text-accent", subtitleColor: "text-accent/80" },
+                { name: "Brás de Pina", role: "Distribuição Cestas", focus: "Social", color: "text-accent-hover", delay: "5s", cardBg: "bg-accent/10 text-accent-hover border-accent/20 hover:bg-accent/15", titleColor: "text-accent-hover", subtitleColor: "text-accent-hover" },
                 { name: "Vicente de Carvalho", role: "Acolhimento Mulheres", focus: "Bem-estar", color: "text-secondary-dark", delay: "6s", cardBg: "bg-secondary/25 text-secondary-dark border-secondary/40 hover:bg-secondary/35", titleColor: "text-secondary-dark", subtitleColor: "text-secondary-dark/80" },
-                { name: "Cordovil", role: "Isenções & Documentos", focus: "Social", color: "text-accent", delay: "7s", cardBg: "bg-accent/10 text-accent border-accent/20 hover:bg-accent/15", titleColor: "text-accent", subtitleColor: "text-accent/80" },
+                { name: "Cordovil", role: "Isenções & Documentos", focus: "Social", color: "text-accent-hover", delay: "7s", cardBg: "bg-accent/10 text-accent-hover border-accent/20 hover:bg-accent/15", titleColor: "text-accent-hover", subtitleColor: "text-accent-hover" },
               ].map((station, index) => (
                 <div class="flex items-center gap-6 group relative">
                   <!-- Círculo da Estação (Acende e pulsa ao passar do trem) -->
@@ -625,7 +668,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
                   <div class={`p-4 rounded-2xl border-2 transition-all duration-300 flex-grow flex items-center justify-between gap-4 shadow-sm hover:shadow-md ${station.cardBg}`}>
                     <div>
                       <div class="flex items-center gap-2">
-                        <h4 class={`font-serif font-bold text-base ${station.titleColor}`}>{station.name}</h4>
+                        <h3 class={`font-serif font-bold text-base ${station.titleColor}`}>{station.name}</h3>
                         <span class={`text-[9px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full bg-primary-dark/5 ${station.color}`}>
                           {station.focus}
                         </span>
@@ -642,9 +685,6 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
 
         <!-- Direita: Informações de Atuação -->
         <div class="lg:col-span-6 space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl font-bold leading-tight">
-            Nossa atuação é nestes espaços:
-          </h2>
           <p class="text-base sm:text-lg text-text-body/75 leading-relaxed">
             Estamos presentes em escolas, creches comunitárias e praças públicas na Penha e nos bairros vizinhos que compõem o ecossistema Leopoldina, Zona Norte do Rio de Janeiro.
           </p>
@@ -657,7 +697,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
                 <div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center shadow-md">
                   <MapPin class="w-5 h-5" />
                 </div>
-                <h4 class="font-serif text-lg font-bold text-accent uppercase tracking-wider">Sede Penha</h4>
+                <h3 class="font-serif text-lg font-bold text-accent-hover uppercase tracking-wider">Sede Penha</h3>
               </div>
               <p class="text-sm text-text-body/80 leading-relaxed">
                 Localizada estrategicamente na <strong>Rua Ingaí, 21</strong>, nossa sede é a central de coordenação. É o ponto de referência onde realizamos os atendimentos gerais diários e cadastramento de famílias assistidas.
@@ -670,7 +710,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
                 <div class="w-10 h-10 bg-primary-dark text-primary rounded-xl flex items-center justify-center shadow-md">
                   <MapPin class="w-5 h-5" />
                 </div>
-                <h4 class="font-serif text-lg font-bold text-primary-dark uppercase tracking-wider">Polos de Atuação</h4>
+                <h3 class="font-serif text-lg font-bold text-primary-dark uppercase tracking-wider">Polos de Atuação</h3>
               </div>
               <p class="text-sm text-text-body/80 leading-relaxed">
                 Nossas oficinas culturais e atendimentos jurídicos e de saúde preventiva acontecem de forma itinerante, ativamente integrados a praças locais, creches comunitárias e escolas públicas parceiras em toda a zona da Leopoldina.
@@ -709,6 +749,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
           { slug: "apoio-escolar", tag: "Educação", title: "Apoio em Questões Escolares", desc: "Auxiliamos famílias com dúvidas e dificuldades escolares, orientando pais e responsáveis sobre direitos educacionais e apoio pedagógico.", img: "https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg", alt: "Apoio educacional para a comunidade" },
           { slug: "orientacao-juridica", tag: "Assistência Social", title: "Orientação Jurídica Gratuita", desc: "Disponibilizamos advogados para orientação em processos de INSS, LOAS e BPC, além do cadastro de famílias em situação de vulnerabilidade.", img: "https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg", alt: "Orientação jurídica para a comunidade" },
           { slug: "atendimento-terapeutico", tag: "Mulheres", title: "Atendimento Terapêutico para Mulheres", desc: "Programa de apoio emocional, escuta qualificada, empoderamento feminino e saúde mental para mulheres da comunidade da Penha e região.", img: "https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg", alt: "Atendimento terapêutico para mulheres" },
+          { slug: "meio-ambiente", tag: "Meio Ambiente", title: "Consciência e Cuidado Ambiental", desc: "Ações de conscientização sobre sustentabilidade, reaproveitamento de materiais e cuidado com os espaços verdes da comunidade da Penha e região.", img: "https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg", alt: "Ação de conscientização ambiental do Instituto MultiplicaRio" },
         ].map((card, i) => (
           <div data-card-index={i} class="flex-none w-[85vw] sm:w-80 md:w-[22rem] snap-start bg-bg-offwhite rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
             <div class="h-52 overflow-hidden relative">
@@ -732,11 +773,62 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
 
       <!-- Dots de paginação (mobile) -->
       <div id="carousel-dots" class="flex sm:hidden justify-center gap-2 mt-2" aria-hidden="true">
-        {[0,1,2,3].map(i => (
+        {[0,1,2,3,4].map(i => (
           <button data-dot={i} class="w-2 h-2 rounded-full bg-primary/30 transition-all duration-200 focus-visible:outline-none" aria-label={`Ir para item ${i + 1}`}></button>
         ))}
       </div>
 
+    </div>
+  </section>
+
+  <!-- ───── AÇÕES EM FOTOS ───── -->
+  <section id="fotos" class="py-20 md:py-28 bg-bg-offwhite relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-6">
+        <div class="max-w-2xl">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold mb-3">Ações em Fotos</h2>
+          <p class="text-base sm:text-lg text-text-body/75">Registros dos nossos mutirões de atendimento e orientação comunitária na Penha e região.</p>
+        </div>
+        <div class="hidden sm:flex gap-3 flex-shrink-0">
+          <button id="prev-photo" class="w-12 h-12 rounded-full border-2 border-primary text-primary-dark flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm" aria-label="Foto anterior">
+            <ChevronLeft class="w-5 h-5" aria-hidden="true" />
+          </button>
+          <button id="next-photo" class="w-12 h-12 rounded-full bg-primary text-primary-dark flex items-center justify-center hover:bg-primary-dark hover:text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm" aria-label="Próxima foto">
+            <ChevronRight class="w-5 h-5" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+
+      <div id="photos-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-6 no-scrollbar scroll-smooth">
+        {[
+          { img: "https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg", alt: "Atendimento individual de orientação comunitária do Instituto MultiplicaRio" },
+          { img: "https://i.ibb.co/ch0tQhMb/Whats-App-Image-2026-07-13-at-18-54-50.jpg", alt: "Mutirão de saúde com aferição de pressão arterial na Penha" },
+          { img: "https://i.ibb.co/5x4TVYbx/Whats-App-Image-2026-07-13-at-18-54-46-1.jpg", alt: "Equipe do Instituto MultiplicaRio durante atendimento comunitário" },
+          { img: "https://i.ibb.co/wNqtqHp7/Whats-App-Image-2026-07-13-at-18-54-46.jpg", alt: "Mutirão de atendimento e orientação à comunidade da Penha" },
+          { img: "https://i.ibb.co/23gfbvR3/Whats-App-Image-2026-07-13-at-18-54-45.jpg", alt: "Voluntários do Instituto MultiplicaRio em ação comunitária" },
+          { img: "https://i.ibb.co/VcH4Q2zF/Whats-App-Image-2026-07-13-at-18-54-44-1.jpg", alt: "Atendimento à comunidade durante mutirão do MultiplicaRio" },
+          { img: "https://i.ibb.co/KjkzMWzq/Whats-App-Image-2026-07-13-at-18-54-44.jpg", alt: "Moradores da Penha sendo atendidos pela equipe do MultiplicaRio" },
+          { img: "https://i.ibb.co/0Vp5PYSm/Whats-App-Image-2026-07-13-at-18-54-40-1.jpg", alt: "Ação comunitária de saúde e orientação do Instituto MultiplicaRio" },
+          { img: "https://i.ibb.co/fW6MGDL/Whats-App-Image-2026-07-13-at-18-54-40.jpg", alt: "Equipe e voluntários durante mutirão de atendimento na Penha" },
+        ].map((photo, i) => (
+          <div data-photo-index={i} class="flex-none w-[78vw] sm:w-64 md:w-72 aspect-[3/4] snap-start rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
+            <img
+              src={photo.img}
+              alt={photo.alt}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Dots de paginação (mobile) -->
+      <div id="photos-dots" class="flex sm:hidden justify-center gap-2 mt-2" aria-hidden="true">
+        {[0,1,2,3,4,5,6,7,8].map(i => (
+          <button data-dot={i} class="w-2 h-2 rounded-full bg-primary/30 transition-all duration-200 focus-visible:outline-none" aria-label={`Ir para foto ${i + 1}`}></button>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -757,16 +849,12 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
         
         <!-- Card 1: Voluntariado -->
         <div class="group bg-white border-2 border-primary-dark/10 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between hover:shadow-2xl hover:border-primary hover:-translate-y-2 transition-all duration-300 relative overflow-hidden text-text-body">
-          <div class="absolute top-4 right-4 bg-primary/20 text-primary-dark font-sans font-bold text-[10px] tracking-wider uppercase px-3 py-1 rounded-full border border-primary/30 z-20">
-            ✦ Seja a mudança
-          </div>
-          
           <div class="relative z-10 flex flex-col h-full">
             <!-- Cover Image -->
             <div class="h-44 rounded-2xl overflow-hidden mb-6 relative z-10 bg-gray-50 shadow-inner">
               <img
-                src="/voluntariado-rio.png"
-                alt="Voluntariado no Rio de Janeiro"
+                src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&auto=format&fit=crop&q=80"
+                alt="Voluntários unidos em círculo, mãos sobrepostas simbolizando trabalho em equipe"
                 class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
@@ -818,16 +906,12 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
 
         <!-- Card 2: Doação de Itens -->
         <div class="group bg-white border-2 border-primary-dark/10 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between hover:shadow-2xl hover:border-accent hover:-translate-y-2 transition-all duration-300 relative overflow-hidden text-text-body">
-          <div class="absolute top-4 right-4 bg-accent/20 text-accent font-sans font-bold text-[10px] tracking-wider uppercase px-3 py-1 rounded-full border border-accent/30 z-10">
-            ✦ Multiplique o bem
-          </div>
-          
           <div class="relative z-10 flex flex-col h-full">
             <!-- Cover Image -->
             <div class="h-44 rounded-2xl overflow-hidden mb-6 relative z-10 bg-white/5 shadow-inner">
               <img
-                src="/doacao-itens-rio.png"
-                alt="Doação de itens para o Instituto MultiplicaRio"
+                src="https://images.unsplash.com/photo-1579208570378-8c970854bc23?w=800&auto=format&fit=crop&q=80"
+                alt="Mãos entregando um coração de papel, simbolizando doação e generosidade"
                 class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
@@ -870,7 +954,7 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
           
           <a
             href="#contato"
-            class="mt-auto w-full py-4 px-6 rounded-2xl font-bold text-center bg-accent text-white hover:bg-accent-hover transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20 z-10 relative text-base"
+            class="mt-auto w-full py-4 px-6 rounded-2xl font-bold text-center bg-accent-hover text-white hover:bg-accent transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-accent/20 z-10 relative text-base"
           >
             Como doar itens
             <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -929,60 +1013,11 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
               </div>
             </div>
 
-            <div class="flex items-start gap-4">
-              <div class="w-11 h-11 bg-bg-offwhite rounded-xl flex items-center justify-center text-primary-dark flex-shrink-0 shadow-sm border border-gray-100">
-                <Clock class="w-5 h-5" aria-hidden="true" />
-              </div>
-              <div>
-                <h3 class="font-bold text-gray-900 text-sm">Horário de Atendimento</h3>
-                <p class="text-xs sm:text-sm text-text-body/75 mt-1">Segunda a Sexta: 09h às 18h</p>
-              </div>
-            </div>
           </div>
         </div>
 
-        <!-- Formulário e Mapa -->
+        <!-- Mapa -->
         <div class="lg:w-2/3 space-y-12">
-          
-          <!-- Formulário -->
-          <div class="bg-bg-offwhite p-6 sm:p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden">
-            <!-- Diagonal decoration in card -->
-            <div class="absolute -bottom-10 -right-10 w-24 h-24 border-[12px] border-primary/20 transform rotate-45 pointer-events-none"></div>
-            <h3 class="font-serif text-xl font-bold text-gray-900 mb-6">Envie uma mensagem</h3>
-            
-            <!-- Substitua o id 'seu-id-formspree' pelo seu ID real do Formspree para ativar o envio de e-mails -->
-            <form action="https://formspree.io/f/seu-id-formspree" method="POST" class="space-y-6">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Nome Completo</label>
-                  <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm" placeholder="Seu nome" />
-                </div>
-                <div>
-                  <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">E-mail</label>
-                  <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm" placeholder="seu@email.com" />
-                </div>
-              </div>
-              
-              <div>
-                <label for="subject" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Assunto</label>
-                <select name="subject" id="subject" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm text-gray-700">
-                  <option value="Dúvida Geral">Dúvida Geral</option>
-                  <option value="Quero ser Voluntário">Quero ser Voluntário</option>
-                  <option value="Parceria Institucional">Parceria Institucional</option>
-                  <option value="Doações">Doações</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Mensagem</label>
-                <textarea name="message" id="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-white text-sm resize-y" placeholder="Como podemos ajudar?"></textarea>
-              </div>
-
-              <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-primary-dark hover:text-white font-bold py-4 rounded-xl transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary">
-                Enviar Mensagem
-              </button>
-            </form>
-          </div>
 
           <!-- Mapa Google Maps -->
           <div class="rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-80 bg-gray-200 relative">
@@ -1011,8 +1046,8 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
     transition: opacity 1.5s ease-in-out;
   }
   .slideshow-image {
-    transition: transform 6s ease-out;
-    transform: scale(1.15);
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1.08);
   }
   .slideshow-slide.active .slideshow-image {
     transform: scale(1);
@@ -1239,19 +1274,18 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
 </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.getElementById('actions-carousel');
-    const prevBtn = document.getElementById('prev-action');
-    const nextBtn = document.getElementById('next-action');
-    const dots = document.querySelectorAll<HTMLButtonElement>('#carousel-dots [data-dot]');
+  function initCarousel(opts: { carouselId: string; prevId: string; nextId: string; dotsId: string; itemAttr: string; scrollAmount: number }) {
+    const carousel = document.getElementById(opts.carouselId);
+    const prevBtn = document.getElementById(opts.prevId);
+    const nextBtn = document.getElementById(opts.nextId);
+    const dots = document.querySelectorAll<HTMLButtonElement>(`#${opts.dotsId} [data-dot]`);
 
     if (!carousel) return;
 
-    const cards = carousel.querySelectorAll<HTMLElement>('[data-card-index]');
-    const cardCount = cards.length;
+    const cards = carousel.querySelectorAll<HTMLElement>(`[${opts.itemAttr}]`);
 
     function getActiveIndex(): number {
-      const mid = carousel.scrollLeft + carousel.clientWidth / 2;
+      const mid = carousel!.scrollLeft + carousel!.clientWidth / 2;
       let closest = 0;
       let minDist = Infinity;
       cards.forEach((card, i) => {
@@ -1279,12 +1313,16 @@ const heroImage = "https://i.ibb.co/YBZ6G0gD/Whats-App-Image-2026-06-22-at-07-27
     });
 
     if (prevBtn && nextBtn) {
-      const scrollAmount = 380;
-      prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
-      nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
+      prevBtn.addEventListener('click', () => { carousel!.scrollBy({ left: -opts.scrollAmount, behavior: 'smooth' }); });
+      nextBtn.addEventListener('click', () => { carousel!.scrollBy({ left: opts.scrollAmount, behavior: 'smooth' }); });
     }
 
     updateDots(0);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel({ carouselId: 'actions-carousel', prevId: 'prev-action', nextId: 'next-action', dotsId: 'carousel-dots', itemAttr: 'data-card-index', scrollAmount: 380 });
+    initCarousel({ carouselId: 'photos-carousel', prevId: 'prev-photo', nextId: 'next-photo', dotsId: 'photos-dots', itemAttr: 'data-photo-index', scrollAmount: 300 });
   });
 </script>
 

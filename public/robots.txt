@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://institutomultiplica.rio/sitemap-index.xml
+Sitemap: https://www.imultiplicario.com.br/sitemap-index.xml
 Disallow: /admin/
 Disallow: /api/
