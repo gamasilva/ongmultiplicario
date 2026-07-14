@@ -205,11 +205,11 @@ const webPageSchema = {
               inferSize
               width={800}
               alt="Voluntários e comunidade em ação"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover object-top"
               loading="lazy" decoding="async"
             />
           </div>
-          
+
           <div class="bg-primary-dark p-8 rounded-3xl shadow-lg border border-primary-dark/15 space-y-3 text-white">
             <h3 class="font-serif text-2xl font-bold text-primary uppercase tracking-tight">Missão</h3>
             <p class="text-white/85 text-sm sm:text-base leading-relaxed">
@@ -251,7 +251,7 @@ const webPageSchema = {
               inferSize
               width={600}
               alt="Saúde comunitária"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover object-top"
               loading="lazy" decoding="async"
             />
           </div>
@@ -304,7 +304,7 @@ const webPageSchema = {
           <!-- Card 2: Esportes e Lazer (Vertical) -->
           <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
             <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
-              <Image src="https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg" inferSize width={700} class="w-full h-full object-cover" alt="Esporte e Lazer" />
+              <Image src="/esporte_lazer.jpg" width={700} height={398} class="w-full h-full object-cover" alt="Esporte e Lazer" />
               <!-- Diagonal Corner Ribbon -->
               <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
               <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-secondary transform -rotate-45 opacity-75"></div>
@@ -321,7 +321,7 @@ const webPageSchema = {
           <!-- Card 6: Meio Ambiente (Vertical) -->
           <div class="bg-bg-offwhite rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm card-lift flex flex-col space-y-6 relative overflow-hidden">
             <div class="aspect-[16/10] rounded-2xl overflow-hidden relative">
-              <Image src="https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg" inferSize width={700} class="w-full h-full object-cover" alt="Meio Ambiente" />
+              <Image src="/sustainability_tree.png" width={700} height={437} class="w-full h-full object-cover" alt="Meio Ambiente" />
               <!-- Diagonal Corner Ribbon -->
               <div class="absolute -bottom-1.5 -right-6 w-20 h-5 bg-primary transform -rotate-45 opacity-75"></div>
               <div class="absolute -top-1.5 -left-6 w-20 h-5 bg-primary transform -rotate-45 opacity-75"></div>
@@ -489,92 +489,6 @@ const webPageSchema = {
               </p>
             </div>
           </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ───── TRANSPARÊNCIA ───── -->
-  <section id="transparencia" class="py-24 bg-white relative overflow-hidden">
-    <!-- Linhas e formas decorativas (Estilo Vini Jr) -->
-    <div class="decor-chevron-right top-16 -right-16"></div>
-    <div class="decor-slanted-stripe-accent top-1/4 left-0"></div>
-
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-      
-      <!-- Cabeçalho -->
-      <div class="text-center mb-16">
-        <span class="section-label mb-4 block w-fit mx-auto">Confiança</span>
-        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Transparência Financeira</h2>
-        <p class="text-base sm:text-lg text-text-body/75 max-w-2xl mx-auto">Prestamos contas de cada recurso recebido. Abaixo você confere nosso balanço e pode baixar os documentos oficiais.</p>
-      </div>
-
-      <!-- Gráfico Pizza CSS + Detalhamento -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-bg-offwhite p-6 sm:p-8 md:p-12 rounded-3xl border border-gray-100 shadow-sm mb-12">
-        <!-- Pizza Grafico -->
-        <div class="flex justify-center">
-          <div class="w-52 h-52 sm:w-60 sm:h-60 rounded-full border-[14px] border-primary relative flex items-center justify-center shadow-md">
-            <div class="absolute inset-[-14px] rounded-full border-[14px] border-secondary" style="clip-path: polygon(50% 50%, 100% 0, 100% 30%, 50% 50%);"></div>
-            <div class="text-center z-10 bg-white w-32 h-32 sm:w-36 sm:h-36 rounded-full flex flex-col items-center justify-center shadow-sm">
-              <span class="text-2xl font-bold text-primary-dark">2025</span>
-              <span class="text-[10px] font-bold text-gray-600 uppercase tracking-widest">Balanço</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Detalhes do Balanço -->
-        <div class="space-y-6">
-          <div class="flex items-start gap-3">
-            <div class="w-4 h-4 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
-            <div>
-              <h3 class="font-bold text-base sm:text-lg text-gray-900">85% - Projetos e Ações Comunitárias</h3>
-              <p class="text-text-body/75 text-sm mt-1 leading-relaxed">Destinado diretamente à compra de suprimentos para mutirões de saúde, materiais pedagógicos, exames, óculos e amparo social na Penha.</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-3">
-            <div class="w-4 h-4 rounded-full bg-secondary mt-1.5 flex-shrink-0"></div>
-            <div>
-              <h3 class="font-bold text-base sm:text-lg text-gray-900">15% - Despesas Administrativas e Operacionais</h3>
-              <p class="text-text-body/75 text-sm mt-1 leading-relaxed">Taxas financeiras, contabilidade legal, manutenção da sede comunitária e gestão.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Links de Downloads -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <div class="flex items-center justify-between p-5 rounded-2xl border border-primary/30 hover:border-primary/60 hover:bg-primary/25 transition-all group bg-primary/20 shadow-sm">
-          <div class="flex items-center gap-4">
-            <div class="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-primary-dark shadow-sm group-hover:bg-primary-dark group-hover:text-white transition-colors">
-              <FileText class="w-5 h-5" aria-hidden="true" />
-            </div>
-            <div>
-              <h4 class="font-bold text-primary-dark text-sm">Relatório Anual 2025</h4>
-              <p class="text-xs text-primary-dark/85">PDF • 2.4 MB</p>
-            </div>
-          </div>
-          <a href="#" class="p-2.5 text-primary-dark/60 hover:text-primary-dark transition-colors" aria-label="Baixar Relatório 2025">
-            <Download class="w-5 h-5" aria-hidden="true" />
-          </a>
-        </div>
-
-        <div class="flex items-center justify-between p-5 rounded-2xl border border-gray-100 hover:border-secondary/50 hover:shadow-md transition-all group bg-bg-offwhite">
-          <div class="flex items-center gap-4">
-            <div class="w-11 h-11 bg-white rounded-xl flex items-center justify-center text-secondary-dark shadow-sm group-hover:bg-secondary group-hover:text-white transition-colors">
-              <FileText class="w-5 h-5" aria-hidden="true" />
-            </div>
-            <div>
-              <h4 class="font-bold text-gray-900 text-sm">Estatuto Social</h4>
-              <p class="text-xs text-gray-500">PDF • 1.2 MB</p>
-            </div>
-          </div>
-          <a href="#" class="p-2.5 text-gray-400 hover:text-secondary-dark transition-colors" aria-label="Baixar Estatuto Social">
-            <Download class="w-5 h-5" aria-hidden="true" />
-          </a>
         </div>
 
       </div>
@@ -773,13 +687,13 @@ const webPageSchema = {
         {[
           { slug: "afericao-pressao", tag: "Saúde", title: "Aferição de Pressão e Teste Glicêmico", desc: "Oferecemos aferição de pressão arterial, teste glicêmico e reflexologia para a comunidade, promovendo prevenção e cuidado com a saúde de forma gratuita.", img: "https://i.ibb.co/QvjF1f6q/Whats-App-Image-2026-06-22-at-07-28-01-2.jpg", alt: "Atendimento de saúde na comunidade" },
           { slug: "apoio-escolar", tag: "Educação", title: "Apoio em Questões Escolares", desc: "Auxiliamos famílias com dúvidas e dificuldades escolares, orientando pais e responsáveis sobre direitos educacionais e apoio pedagógico.", img: "https://i.ibb.co/8gYZqnX7/Whats-App-Image-2026-06-22-at-07-27-58-2.jpg", alt: "Apoio educacional para a comunidade" },
-          { slug: "orientacao-juridica", tag: "Assistência Social", title: "Orientação Jurídica Gratuita", desc: "Disponibilizamos advogados para orientação em processos de INSS, LOAS e BPC, além do cadastro de famílias em situação de vulnerabilidade.", img: "https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg", alt: "Orientação jurídica para a comunidade" },
-          { slug: "atendimento-terapeutico", tag: "Mulheres", title: "Atendimento Terapêutico para Mulheres", desc: "Programa de apoio emocional, escuta qualificada, empoderamento feminino e saúde mental para mulheres da comunidade da Penha e região.", img: "https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg", alt: "Atendimento terapêutico para mulheres" },
-          { slug: "meio-ambiente", tag: "Meio Ambiente", title: "Consciência e Cuidado Ambiental", desc: "Ações de conscientização sobre sustentabilidade, reaproveitamento de materiais e cuidado com os espaços verdes da comunidade da Penha e região.", img: "https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg", alt: "Ação de conscientização ambiental do Instituto MultiplicaRio" },
+          { slug: "orientacao-juridica", tag: "Assistência Social", title: "Orientação Jurídica Gratuita", desc: "Disponibilizamos advogados para orientação em processos de INSS, LOAS e BPC, além do cadastro de famílias em situação de vulnerabilidade.", img: "https://i.ibb.co/SwbBypjX/Whats-App-Image-2026-06-22-at-07-28-02-3.jpg", alt: "Orientação jurídica para a comunidade", pos: "object-[50%_27%]" },
+          { slug: "atendimento-terapeutico", tag: "Mulheres", title: "Atendimento Terapêutico para Mulheres", desc: "Programa de apoio emocional, escuta qualificada, empoderamento feminino e saúde mental para mulheres da comunidade da Penha e região.", img: "/atendimento_mulheres.jpg", alt: "Atendimento terapêutico para mulheres", height: 600 },
+          { slug: "meio-ambiente", tag: "Meio Ambiente", title: "Consciência e Cuidado Ambiental", desc: "Ações de conscientização sobre sustentabilidade, reaproveitamento de materiais e cuidado com os espaços verdes da comunidade da Penha e região.", img: "/sustainability_tree.png", alt: "Ação de conscientização ambiental do Instituto MultiplicaRio", height: 280 },
         ].map((card, i) => (
           <div data-card-index={i} class="flex-none w-[85vw] sm:w-80 md:w-[22rem] snap-start bg-bg-offwhite rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
             <div class="h-52 overflow-hidden relative">
-              <Image src={card.img} inferSize width={450} alt={card.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+              <Image src={card.img} inferSize={!card.height} width={450} height={card.height} alt={card.alt} class={`w-full h-full object-cover ${card.pos ?? 'object-center'} group-hover:scale-105 transition-transform duration-500`} loading="lazy" decoding="async" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               <span class="absolute bottom-4 left-4 bg-primary-dark/80 backdrop-blur-sm text-secondary text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full">
                 {card.tag}
@@ -829,13 +743,9 @@ const webPageSchema = {
         {[
           { img: "https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg", alt: "Atendimento individual de orientação comunitária do Instituto MultiplicaRio" },
           { img: "https://i.ibb.co/ch0tQhMb/Whats-App-Image-2026-07-13-at-18-54-50.jpg", alt: "Mutirão de saúde com aferição de pressão arterial na Penha" },
-          { img: "https://i.ibb.co/5x4TVYbx/Whats-App-Image-2026-07-13-at-18-54-46-1.jpg", alt: "Equipe do Instituto MultiplicaRio durante atendimento comunitário" },
           { img: "https://i.ibb.co/wNqtqHp7/Whats-App-Image-2026-07-13-at-18-54-46.jpg", alt: "Mutirão de atendimento e orientação à comunidade da Penha" },
           { img: "https://i.ibb.co/23gfbvR3/Whats-App-Image-2026-07-13-at-18-54-45.jpg", alt: "Voluntários do Instituto MultiplicaRio em ação comunitária" },
           { img: "https://i.ibb.co/VcH4Q2zF/Whats-App-Image-2026-07-13-at-18-54-44-1.jpg", alt: "Atendimento à comunidade durante mutirão do MultiplicaRio" },
-          { img: "https://i.ibb.co/KjkzMWzq/Whats-App-Image-2026-07-13-at-18-54-44.jpg", alt: "Moradores da Penha sendo atendidos pela equipe do MultiplicaRio" },
-          { img: "https://i.ibb.co/0Vp5PYSm/Whats-App-Image-2026-07-13-at-18-54-40-1.jpg", alt: "Ação comunitária de saúde e orientação do Instituto MultiplicaRio" },
-          { img: "https://i.ibb.co/fW6MGDL/Whats-App-Image-2026-07-13-at-18-54-40.jpg", alt: "Equipe e voluntários durante mutirão de atendimento na Penha" },
         ].map((photo, i) => (
           <div data-photo-index={i} class="flex-none w-[78vw] sm:w-64 md:w-72 aspect-[3/4] snap-start rounded-2xl overflow-hidden shadow-sm border border-gray-100 group">
             <Image
@@ -843,7 +753,7 @@ const webPageSchema = {
               inferSize
               width={350}
               alt={photo.alt}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class={`w-full h-full object-cover ${photo.pos ?? 'object-center'} group-hover:scale-105 transition-transform duration-500`}
               loading="lazy"
               decoding="async"
             />

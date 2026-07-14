@@ -12,7 +12,7 @@ export default defineConfig({
   },
 
   image: {
-    domains: ['i.ibb.co'],
+    domains: ['i.ibb.co', 'images.unsplash.com'],
   },
 
   integrations: [sitemap()]

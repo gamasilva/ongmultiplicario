@@ -47,14 +47,15 @@ export async function getStaticPaths() {
         { label: 'Casos Atendidos', value: '60+' },
         { label: 'Advogados Voluntários', value: '5' },
         { label: 'Famílias Cadastradas', value: '30+' }
-      ]
+      ],
+      pos: 'object-[50%_15%]'
     },
     {
       slug: 'atendimento-terapeutico',
       title: 'Atendimento Terapêutico para Mulheres',
       tag: 'Mulheres',
       date: '05 de Junho de 2026',
-      image: 'https://i.ibb.co/vCh7NhmK/Whats-App-Image-2026-06-22-at-07-27-59-2.jpg',
+      image: '/atendimento_mulheres.jpg',
       alt: 'Roda de conversa de saúde mental e empoderamento feminino',
       description: 'Espaço seguro de escuta qualificada, psicoterapia individual e rodas de conversa sobre saúde mental feminina.',
       longDesc: 'O projeto dedicado ao bem-estar e empoderamento feminino promoveu uma tarde voltada exclusivamente para a saúde mental das mulheres da Penha e região. Psicólogas voluntárias realizaram atendimentos individuais de escuta qualificada, orientando mulheres sobre inteligência emocional, prevenção da violência doméstica e canais de amparo social. Além disso, organizamos uma roda de conversa acolhedora com partilha de experiências cotidianas, incentivando o apoio mútuo e a solidariedade de gênero, promovendo autoestima e dignidade.',
@@ -69,7 +70,7 @@ export async function getStaticPaths() {
       title: 'Consciência e Cuidado Ambiental',
       tag: 'Meio Ambiente',
       date: '30 de Junho de 2026',
-      image: 'https://i.ibb.co/DDWcrJ21/Whats-App-Image-2026-07-13-at-18-54-51.jpg',
+      image: '/sustainability_tree.png',
       alt: 'Ação de conscientização ambiental do Instituto MultiplicaRio',
       description: 'Ações de conscientização sobre sustentabilidade, reaproveitamento de materiais e cuidado com os espaços verdes da comunidade da Penha e região.',
       longDesc: 'O Instituto MultiplicaRio integra a educação ambiental ao seu trabalho social, promovendo conversas de conscientização sobre sustentabilidade, incentivando o reaproveitamento de materiais e o descarte consciente, além do cuidado com os espaços verdes utilizados pela comunidade da Penha e região. A pauta ambiental caminha lado a lado com as demais frentes do Instituto, reforçando que o desenvolvimento social também passa pelo cuidado com o território em que vivemos.',
@@ -97,7 +98,7 @@ const { action } = Astro.props;
     <!-- Fundo de vídeo ou imagem abstrato -->
     <div class="absolute inset-0 z-0">
       <img src={action.image} alt="" class="w-full h-full object-cover opacity-15 blur-sm" />
-      <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/95 via-primary-dark/80 to-primary-dark/95"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-dark via-primary-dark/95 to-primary-dark"></div>
       <div class="absolute inset-0 dot-pattern opacity-10 pointer-events-none"></div>
     </div>
 
@@ -111,11 +112,11 @@ const { action } = Astro.props;
         ✦ {action.tag}
       </div>
 
-      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto">
+      <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight max-w-3xl mx-auto text-white">
         {action.title}
       </h1>
-      
-      <p class="text-white/60 text-sm mt-4 flex items-center justify-center gap-2">
+
+      <p class="text-white/80 text-sm mt-4 flex items-center justify-center gap-2">
         <Calendar class="w-4 h-4 text-primary" /> {action.date}
       </p>
     </div>
@@ -127,7 +128,7 @@ const { action } = Astro.props;
       
       <!-- Imagem de Destaque -->
       <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-200 ring-4 ring-white mb-12">
-        <img src={action.image} alt={action.alt} class="w-full h-full object-cover" />
+        <img src={action.image} alt={action.alt} class={`w-full h-full object-cover ${action.pos ?? 'object-center'}`} />
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
