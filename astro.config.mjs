@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.imultiplicario.com.br',
+  site: 'https://imultiplicario.org.br',
   vite: {
     plugins: [tailwindcss()]
   },
